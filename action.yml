@@ -1,0 +1,33 @@
+name: 'Setup Java environment based on AdoptOpenJDK'
+description: 'Setup your runner with a JDK from AdoptOpenJDK'
+author: 'Jochen Schalanda'
+inputs:
+  release_type:
+    description: 'Type of release, i. e. "releases" for stable builds or "nightly" for the most recent build.'
+    required: false
+    default: 'releases'
+  java-version:
+    description: 'OpenJDK version, example: "openjdk8", "openjdk11", "openjdk13".'
+    required: true
+  openjdk_impl:
+    description: 'OpenJDK implementation, example: "hotspot", "openj9".'
+    required: false
+    default: 'hotspot'
+  architecture:
+    description: 'Architecture of the JDK, example: "x64", "x32", "ppc64", "s390x", "ppc64le", "aarch64".'
+    required: false
+    default: 'x64'
+  heap_size:
+    description: 'Heap size for OpenJ9, example: "normal", "large" (for heaps >=57 GiB).'
+    required: false
+    default: 'normal'
+  release:
+    description: 'Exact release of OpenJDK, example: "latest", "jdk-11.0.4+11.4", "jdk8u172-b00-201807161800". Default: "latest"'
+    required: false
+    default: 'latest'
+runs:
+  using: 'node12'
+  main: 'lib/setup-jdk.js'
+branding:
+  icon: 'download'
+  color: 'blue'

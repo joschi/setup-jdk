@@ -1,0 +1,39 @@
+name: 'test-local'
+on:
+  pull_request:
+    branches:
+      - 'master'
+      - 'releases/*'
+  push:
+    branches:
+      - 'master'
+      - 'releases/*'
+jobs:
+  run:
+    name: Run
+    runs-on: ${{ matrix.operating-system }}
+    strategy:
+      matrix:
+        operating-system: [ubuntu-latest, macOS-latest, windows-latest]
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v1
+
+    - name: Set Node.js 12.x
+      uses: actions/setup-node@v1
+      with:
+        node-version: 12.x
+
+    - name: yarn install
+      run: yarn install
+
+    - name: Lint
+      run: yarn run format-check
+
+    - name: yarn test
+      run: yarn test
+    - name: Smoke Test
+      uses: ./
+      with:
+        java-version: openjdk11
+    - run: java -version

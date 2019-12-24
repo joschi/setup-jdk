@@ -12,7 +12,7 @@ jobs:
         jdk-version: [openjdk8, openjdk11, openjdk13]
     steps:
     - name: Checkout
-      uses: actions/checkout@v1
+      uses: actions/checkout@v2
 
     - name: Set Node.js 12.x
       uses: actions/setup-node@v1

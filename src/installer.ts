@@ -41,10 +41,37 @@ function getOsString(platform: string): string {
   }
 }
 
+function getFeatureVersion(version: string): string {
+  const index: number = version.indexOf('openjdk');
+  if (index == -1) {
+    return version;
+  } else {
+    return version.substring(index);
+  }
+}
+
+function getAdoptOpenJdkUrl(
+  release_type: string,
+  version: string,
+  jvm_impl: string,
+  os: string,
+  arch: string,
+  heap_size: string,
+  release: string
+): string {
+  const feature_version: string = getFeatureVersion(version);
+  if (release == 'latest') {
+    return `https://api.adoptopenjdk.net/v3/binary/latest/${version}/${release_type}/${os}/${arch}/jdk/${jvm_impl}/${heap_size}/adoptopenjdk`;
+  } else {
+    const release_name = encodeURIComponent(release);
+    return `https://api.adoptopenjdk.net/v3/binary/version/${release_name}/${os}/${arch}/jdk/${jvm_impl}/${heap_size}/adoptopenjdk`;
+  }
+}
+
 export async function getJava(
   release_type: string,
   version: string,
-  openjdk_impl: string,
+  jvm_impl: string,
   arch: string,
   heap_size: string,
   release: string
@@ -52,7 +79,7 @@ export async function getJava(
   return downloadJavaBinary(
     release_type,
     version,
-    openjdk_impl,
+    jvm_impl,
     os,
     arch,
     heap_size,
@@ -63,7 +90,7 @@ export async function getJava(
 async function downloadJavaBinary(
   release_type: string,
   version: string,
-  openjdk_impl: string,
+  jvm_impl: string,
   os: string,
   arch: string,
   heap_size: string,
@@ -72,7 +99,7 @@ async function downloadJavaBinary(
   const versionSpec = getCacheVersionSpec(
     release_type,
     version,
-    openjdk_impl,
+    jvm_impl,
     os,
     heap_size,
     release
@@ -84,7 +111,15 @@ async function downloadJavaBinary(
   } else {
     core.debug('Downloading JDK from AdoptOpenJDK');
     const release_encoded = encodeURIComponent(release);
-    const url: string = `https://api.adoptopenjdk.net/v2/binary/${release_type}/${version}?type=jdk&openjdk_impl=${openjdk_impl}&os=${os}&arch=${arch}&release=${release_encoded}&heap_size=${heap_size}`;
+    const url: string = getAdoptOpenJdkUrl(
+      release_type,
+      version,
+      jvm_impl,
+      os,
+      arch,
+      heap_size,
+      release
+    );
     const jdkFile = await tc.downloadTool(url);
     const compressedFileExtension = IS_WINDOWS ? '.zip' : '.tar.gz';
 
@@ -110,12 +145,12 @@ async function downloadJavaBinary(
 function getCacheVersionSpec(
   release_type: string,
   version: string,
-  openjdk_impl: string,
+  jvm_impl: string,
   os: string,
   heap_size: string,
   release: string
 ): string {
-  return `1.0.0-${release_type}-${version}-${openjdk_impl}-${heap_size}-${release}`;
+  return `1.0.0-${release_type}-${version}-${jvm_impl}-${heap_size}-${release}`;
 }
 
 async function extractFiles(

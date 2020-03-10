@@ -3,11 +3,9 @@ on:
   pull_request:
     branches:
       - 'master'
-      - 'releases/*'
   push:
     branches:
       - 'master'
-      - 'releases/*'
 jobs:
   run:
     name: Run
@@ -35,5 +33,5 @@ jobs:
     - name: Smoke Test
       uses: ./
       with:
-        java-version: openjdk11
+        java-version: 11
     - run: java -version

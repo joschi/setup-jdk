@@ -42,12 +42,7 @@ function getOsString(platform: string): string {
 }
 
 function getFeatureVersion(version: string): string {
-  const index: number = version.indexOf('openjdk');
-  if (index == -1) {
-    return version;
-  } else {
-    return version.substring(index);
-  }
+  return version.replace('openjdk', '');
 }
 
 function getAdoptOpenJdkUrl(
@@ -61,7 +56,7 @@ function getAdoptOpenJdkUrl(
 ): string {
   const feature_version: string = getFeatureVersion(version);
   if (release == 'latest') {
-    return `https://api.adoptopenjdk.net/v3/binary/latest/${version}/${release_type}/${os}/${arch}/jdk/${jvm_impl}/${heap_size}/adoptopenjdk`;
+    return `https://api.adoptopenjdk.net/v3/binary/latest/${feature_version}/${release_type}/${os}/${arch}/jdk/${jvm_impl}/${heap_size}/adoptopenjdk`;
   } else {
     const release_name = encodeURIComponent(release);
     return `https://api.adoptopenjdk.net/v3/binary/version/${release_name}/${os}/${arch}/jdk/${jvm_impl}/${heap_size}/adoptopenjdk`;

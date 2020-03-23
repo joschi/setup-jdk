@@ -17,7 +17,7 @@ steps:
 - uses: actions/checkout@latest
 - uses: joschi/setup-jdk@v1
   with:
-    java-version: 'openjdk11' // The OpenJDK version to make available on the path
+    java-version: '11' // The OpenJDK version to make available on the path
     architecture: 'x64' // defaults to 'x64'
 - run: java -cp java HelloWorldApp
 ```
@@ -26,10 +26,10 @@ Matrix Testing:
 ```yaml
 jobs:
   build:
-    runs-on: ubuntu-16.04
+    runs-on: ubuntu-latest
     strategy:
       matrix:
-        java: [ 'openjdk8', 'openjdk11', 'openjdk13' ]
+        java: [ '8', '11', '13' ]
     name: Java ${{ matrix.java }} sample
     steps:
       - uses: actions/checkout@master

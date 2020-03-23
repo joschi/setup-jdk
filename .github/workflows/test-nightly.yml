@@ -9,7 +9,7 @@ jobs:
     strategy:
       matrix:
         operating-system: [ubuntu-latest, macOS-latest, windows-latest]
-        jdk-version: [8, 11, 13]
+        jdk-version: [8, 11, 14]
     steps:
     - name: Checkout
       uses: actions/checkout@v2

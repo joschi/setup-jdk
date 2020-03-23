@@ -10,11 +10,8 @@ on:
       - 'releases/*'
 jobs:
   run:
-    name: Run
-    runs-on: ${{ matrix.operating-system }}
-    strategy:
-      matrix:
-        operating-system: [ubuntu-latest, macOS-latest, windows-latest]
+    name: Build
+    runs-on: ubuntu-latest
     steps:
     - name: Checkout
       uses: actions/checkout@v2
@@ -32,8 +29,27 @@ jobs:
 
     - name: yarn test
       run: yarn test
-    - name: Smoke Test
+  integration-tests:
+    name: Integration Tests
+    runs-on: ${{ matrix.operating-system }}
+    strategy:
+      matrix:
+        operating-system: [ubuntu-latest, macOS-latest, windows-latest]
+        java-versions: [8, 9, 10, 11, 12, 13, 14]
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v2
+
+    - name: Set Node.js 12.x
+      uses: actions/setup-node@v1
+      with:
+        node-version: 12.x
+
+    - name: yarn install
+      run: yarn install
+
+    - name: Install Java ${{ matrix.java-version}}
       uses: ./
       with:
-        java-version: 11
+        java-version: ${{ matrix.java-version }}
     - run: java -version

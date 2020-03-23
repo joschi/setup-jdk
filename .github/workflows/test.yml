@@ -35,7 +35,7 @@ jobs:
     strategy:
       matrix:
         operating-system: [ubuntu-latest, macOS-latest, windows-latest]
-        java-versions: [8, 9, 10, 11, 12, 13, 14]
+        java-version: [8, 9, 10, 11, 12, 13, 14]
     steps:
     - name: Checkout
       uses: actions/checkout@v2

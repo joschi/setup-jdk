@@ -5,7 +5,7 @@ jobs:
     runs-on: ${{ matrix.operating-system }}
     strategy:
       matrix:
-        operating-system: [ubuntu-latest, windows-latest]
+        operating-system: [ubuntu-latest, macOS-latest, windows-latest]
     steps:
     - name: Checkout
       uses: actions/checkout@v2
@@ -24,7 +24,8 @@ jobs:
     runs-on: ${{ matrix.operating-system }}
     strategy:
       matrix:
-        operating-system: [ubuntu-latest, windows-latest]
+        operating-system: [ubuntu-latest, macOS-latest, windows-latest]
+        java-version: [8, 11, 14]
     steps:
     - name: Checkout
       uses: actions/checkout@v2
@@ -34,16 +35,16 @@ jobs:
     - name: Clear tool cache (Windows)
       if: runner.os == 'windows'
       run: move "${{ runner.tool_cache }}" "${{ runner.tool_cache }}.old"
-    - name: Setup Java 13
+    - name: Setup Java ${{ matrix.java-version}}
       uses: ./
       with:
-        java-version: 13.0.2
-    - name: Verify Java 13
+        java-version: ${{ matrix.java-version }}
+    - name: Verify Java ${{ matrix.java-version}}
       if: runner.os != 'windows'
-      run: __tests__/verify-java.sh 13.0.2
-    - name: Verify Java 13 (Windows)
+      run: __tests__/verify-java.sh ${{ matrix.java-version }}
+    - name: Verify Java ${{ matrix.java-version}} (Windows)
       if: runner.os == 'windows'
-      run: __tests__/verify-java.ps1 13.0.2
+      run: __tests__/verify-java.ps1 ${{ matrix.java-version }}
 
   test-proxy:
     runs-on: ubuntu-latest
@@ -61,25 +62,25 @@ jobs:
     - uses: actions/checkout@v2
     - name: Clear tool cache
       run: rm -rf $RUNNER_TOOL_CACHE/*
-    - name: Setup Java 13
+    - name: Setup Java 11
       uses: ./
       with:
-        java-version: 13.0.2
-    - name: Verify Java 13
-      run: __tests__/verify-java.sh 13.0.2
+        java-version: 11
+    - name: Verify Java 11
+      run: __tests__/verify-java.sh 11
 
   test-bypass-proxy:
     runs-on: ubuntu-latest
     env:
       https_proxy: http://no-such-proxy:3128
-      no_proxy: github.com,static.azul.com
+      no_proxy: github.com,static.azul.com,api.adoptopenjdk.net,github-production-release-asset-2e65be.s3.amazonaws.com
     steps:
     - uses: actions/checkout@v2
     - name: Clear tool cache
       run: rm -rf $RUNNER_TOOL_CACHE/*
-    - name: Setup Java 13
+    - name: Setup Java 11
       uses: ./
       with:
-        java-version: 13.0.2
-    - name: Verify Java 13
-      run: __tests__/verify-java.sh 13.0.2
+        java-version: 11
+    - name: Verify Java 11
+      run: __tests__/verify-java.sh 11

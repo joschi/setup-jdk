@@ -1,11 +1,11 @@
 {
-  "name": "setup-java",
+  "name": "setup-jdk",
   "version": "1.0.0",
   "private": true,
-  "description": "setup java action",
+  "description": "Setup JDK action",
   "main": "dist/index.js",
   "scripts": {
-    "build": "ncc build src/setup-java.ts",
+    "build": "ncc build src/setup-jdk.ts",
     "format": "prettier --write **/*.ts",
     "format-check": "prettier --check **/*.ts",
     "prerelease": "npm run-script build",
@@ -14,14 +14,16 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/actions/setup-java.git"
+    "url": "git+https://github.com/joschi/setup-jdk.git"
   },
   "keywords": [
     "actions",
-    "node",
+    "java",
+    "openjdk",
+    "adoptopenjdk",
     "setup"
   ],
-  "author": "GitHub",
+  "author": "Jochen Schalanda",
   "license": "MIT",
   "dependencies": {
     "@actions/core": "^1.0.0",

@@ -3,6 +3,7 @@ import fs = require('fs');
 import path = require('path');
 import child_process = require('child_process');
 
+const toolName = 'AdoptOpenJDK';
 const toolDir = path.join(__dirname, 'runner', 'tools');
 const tempDir = path.join(__dirname, 'runner', 'temp');
 const javaDir = path.join(__dirname, 'runner', 'java');
@@ -13,19 +14,25 @@ import * as installer from '../src/installer';
 
 let javaFilePath = '';
 let javaUrl = '';
+let os = '';
 if (process.platform === 'win32') {
   javaFilePath = path.join(javaDir, 'java_win.zip');
   javaUrl =
     'https://download.java.net/java/GA/jdk12/33/GPL/openjdk-12_windows-x64_bin.zip';
+  os = 'windows';
 } else if (process.platform === 'darwin') {
   javaFilePath = path.join(javaDir, 'java_mac.tar.gz');
   javaUrl =
     'https://download.java.net/java/GA/jdk12/33/GPL/openjdk-12_osx-x64_bin.tar.gz';
+  os = 'mac';
 } else {
   javaFilePath = path.join(javaDir, 'java_linux.tar.gz');
   javaUrl =
     'https://download.java.net/java/GA/jdk12/33/GPL/openjdk-12_linux-x64_bin.tar.gz';
+  os = 'linux';
 }
+
+jest.setTimeout(10000);
 
 describe('installer tests', () => {
   beforeAll(async () => {
@@ -139,6 +146,166 @@ describe('installer tests', () => {
       'x64',
       'path shouldnt matter, found in cache',
       'jdk'
+    );
+    return;
+  });
+
+  it('Throws if invalid release_type', async () => {
+    let thrown = false;
+    try {
+      await installer.getAdoptOpenJDK(
+        'invalid-release-type',
+        '11',
+        'jdk',
+        'hotspot',
+        'x64',
+        'normal',
+        'latest',
+        ''
+      );
+    } catch {
+      thrown = true;
+    }
+    expect(thrown).toBe(true);
+  });
+
+  it('Throws if invalid version', async () => {
+    let thrown = false;
+    try {
+      await installer.getAdoptOpenJDK(
+        'ga',
+        'invalid-version',
+        'jdk',
+        'hotspot',
+        'x64',
+        'normal',
+        'latest',
+        ''
+      );
+    } catch {
+      thrown = true;
+    }
+    expect(thrown).toBe(true);
+  });
+
+  it('Throws if invalid image_type', async () => {
+    let thrown = false;
+    try {
+      await installer.getAdoptOpenJDK(
+        'ga',
+        '11',
+        'invalid-image_type',
+        'hotspot',
+        'x64',
+        'normal',
+        'latest',
+        ''
+      );
+    } catch {
+      thrown = true;
+    }
+    expect(thrown).toBe(true);
+  });
+
+  it('Throws if invalid openjdk_impl', async () => {
+    let thrown = false;
+    try {
+      await installer.getAdoptOpenJDK(
+        'ga',
+        '11',
+        'jdk',
+        'invalid-openjdk_impl',
+        'x64',
+        'normal',
+        'latest',
+        ''
+      );
+    } catch {
+      thrown = true;
+    }
+    expect(thrown).toBe(true);
+  });
+
+  it('Throws if invalid arch', async () => {
+    let thrown = false;
+    try {
+      await installer.getAdoptOpenJDK(
+        'ga',
+        '11',
+        'jdk',
+        'hotspot',
+        'invalid-arch',
+        'normal',
+        'latest',
+        ''
+      );
+    } catch {
+      thrown = true;
+    }
+    expect(thrown).toBe(true);
+  });
+
+  it('Downloads JDK with normal syntax', async () => {
+    await installer.getAdoptOpenJDK(
+      'ga',
+      '11',
+      'jdk',
+      'hotspot',
+      'x64',
+      'normal',
+      'jdk-11.0.4+11',
+      ''
+    );
+    const JavaDir = path.join(
+      toolDir,
+      toolName,
+      `1.0.0-ga-11-jdk-hotspot-${os}-x64-normal-jdk-11.0.4`,
+      'x64'
+    );
+
+    expect(fs.existsSync(path.join(JavaDir, 'bin'))).toBe(true);
+  }, 100000);
+
+  it('Downloads JRE with normal syntax', async () => {
+    await installer.getAdoptOpenJDK(
+      'ga',
+      '11',
+      'jre',
+      'hotspot',
+      'x64',
+      'normal',
+      'jdk-11.0.4+11',
+      ''
+    );
+    const JavaDir = path.join(
+      toolDir,
+      toolName,
+      `1.0.0-ga-11-jdk-hotspot-${os}-x64-normal-jdk-11.0.4`,
+      'x64'
+    );
+
+    expect(fs.existsSync(path.join(JavaDir, 'bin'))).toBe(true);
+  }, 100000);
+
+  it('Uses version of JDK installed in cache', async () => {
+    const JavaDir: string = path.join(
+      toolDir,
+      toolName,
+      `1.0.0-ga-my-custom-version-jdk-hotspot-${os}-x64-normal-123.4.5`,
+      'x64'
+    );
+    await io.mkdirP(JavaDir);
+    fs.writeFileSync(`${JavaDir}.complete`, 'hello');
+    // This will throw if it doesn't find it in the cache (because no such version exists)
+    await installer.getAdoptOpenJDK(
+      'ga',
+      'my-custom-version',
+      'jdk',
+      'hotspot',
+      'x64',
+      'normal',
+      '123.4.5',
+      ''
     );
     return;
   });

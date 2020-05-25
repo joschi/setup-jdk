@@ -1,0 +1,37 @@
+name: 'nightly'
+on:
+  schedule:
+    - cron: '0 0 * * *'
+jobs:
+  run:
+    name: Run
+    runs-on: ${{ matrix.operating-system }}
+    strategy:
+      matrix:
+        operating-system: [ubuntu-latest, macOS-latest, windows-latest]
+        jdk-version: [8, 11, 14]
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v2
+    - name: Set Node.js 12.x
+      uses: actions/setup-node@v1
+      with:
+        node-version: 12.x
+    - name: npm install
+      run: npm install
+    - name: Clear tool cache
+      if: runner.os != 'windows'
+      run: mv "${{ runner.tool_cache }}" "${{ runner.tool_cache }}.old"
+    - name: Clear tool cache (Windows)
+      if: runner.os == 'windows'
+      run: move "${{ runner.tool_cache }}" "${{ runner.tool_cache }}.old"
+    - name: Setup Java ${{ matrix.java-version}}
+      uses: ./
+      with:
+        java-version: ${{ matrix.jdk-version }}
+    - name: Verify Java ${{ matrix.java-version}}
+      if: runner.os != 'windows'
+      run: __tests__/verify-java.sh ${{ matrix.java-version }}
+    - name: Verify Java ${{ matrix.java-version}} (Windows)
+      if: runner.os == 'windows'
+      run: __tests__/verify-java.ps1 ${{ matrix.java-version }}

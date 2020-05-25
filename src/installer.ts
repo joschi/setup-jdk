@@ -10,6 +10,9 @@ import * as path from 'path';
 import * as semver from 'semver';
 
 const IS_WINDOWS = process.platform === 'win32';
+const IS_MACOS = process.platform === 'darwin';
+const toolName = 'AdoptOpenJDK';
+const os = getOsString(process.platform);
 
 if (!tempDirectory) {
   let baseLocation;
@@ -87,6 +90,7 @@ export async function getJava(
   }
 
   let extendedJavaHome = 'JAVA_HOME_' + version + '_' + arch;
+
   core.exportVariable('JAVA_HOME', toolPath);
   core.exportVariable(extendedJavaHome, toolPath);
   core.addPath(path.join(toolPath, 'bin'));
@@ -174,10 +178,7 @@ async function unzipJavaDownload(
   const stats = fs.statSync(jdkFile);
   if (stats.isFile()) {
     await extractFiles(jdkFile, fileEnding, destinationFolder);
-    const jdkDirectory = path.join(
-      destinationFolder,
-      fs.readdirSync(destinationFolder)[0]
-    );
+    const jdkDirectory = getJdkDirectory(destinationFolder);
     await unpackJars(jdkDirectory, path.join(jdkDirectory, 'bin'));
     return jdkDirectory;
   } else {
@@ -296,4 +297,151 @@ function normalizeVersion(version: string): string {
   }
 
   return version;
+}
+
+function getOsString(platform: string): string {
+  switch (platform) {
+    case 'win32':
+      return 'windows';
+    case 'darwin':
+      return 'mac';
+    default:
+      return 'linux';
+  }
+}
+
+function getCacheVersionSpec(
+  release_type: string,
+  version: string,
+  image_type: string,
+  jvm_impl: string,
+  os: string,
+  arch: string,
+  heap_size: string,
+  release: string
+): string {
+  return `1.0.0-${release_type}-${version}-${image_type}-${jvm_impl}-${os}-${arch}-${heap_size}-${release}`;
+}
+
+export async function getAdoptOpenJDK(
+  release_type: string,
+  version: string,
+  image_type: string,
+  jvm_impl: string,
+  arch: string,
+  heap_size: string,
+  release: string,
+  jdkFile: string
+): Promise<void> {
+  return downloadJavaBinary(
+    release_type,
+    version,
+    image_type,
+    jvm_impl,
+    os,
+    arch,
+    heap_size,
+    release,
+    jdkFile
+  );
+}
+
+function getAdoptOpenJdkUrl(
+  release_type: string,
+  version: string,
+  image_type: string,
+  jvm_impl: string,
+  os: string,
+  arch: string,
+  heap_size: string,
+  release: string
+): string {
+  const feature_version: string = version;
+  const release_type_parsed: string = release_type;
+  if (release == 'latest') {
+    return `https://api.adoptopenjdk.net/v3/binary/latest/${feature_version}/${release_type_parsed}/${os}/${arch}/${image_type}/${jvm_impl}/${heap_size}/adoptopenjdk`;
+  } else {
+    const release_name = encodeURIComponent(release);
+    return `https://api.adoptopenjdk.net/v3/binary/version/${release_name}/${os}/${arch}/${image_type}/${jvm_impl}/${heap_size}/adoptopenjdk`;
+  }
+}
+
+function getJdkDirectory(destinationFolder: string): string {
+  const jdkRoot: string = path.join(
+    destinationFolder,
+    fs.readdirSync(destinationFolder)[0]
+  );
+  if (IS_MACOS) {
+    const binDirectory: string = path.join(jdkRoot, 'bin');
+    if (fs.existsSync(binDirectory)) {
+      return jdkRoot;
+    } else {
+      return path.join(jdkRoot, 'Contents', 'Home');
+    }
+  } else {
+    return jdkRoot;
+  }
+}
+
+async function downloadJavaBinary(
+  release_type: string,
+  version: string,
+  image_type: string,
+  jvm_impl: string,
+  os: string,
+  arch: string,
+  heap_size: string,
+  release: string,
+  jdkFile: string
+): Promise<void> {
+  const versionSpec = getCacheVersionSpec(
+    release_type,
+    version,
+    image_type,
+    jvm_impl,
+    os,
+    arch,
+    heap_size,
+    release
+  );
+  let toolPath = tc.find(toolName, versionSpec, arch);
+
+  if (toolPath) {
+    core.debug(`Tool found in cache ${toolPath}`);
+  } else {
+    let compressedFileExtension = '';
+    if (!jdkFile) {
+      core.debug('Downloading JDK from AdoptOpenJDK');
+      const url: string = getAdoptOpenJdkUrl(
+        release_type,
+        version,
+        image_type,
+        jvm_impl,
+        os,
+        arch,
+        heap_size,
+        release
+      );
+      jdkFile = await tc.downloadTool(url);
+      compressedFileExtension = IS_WINDOWS ? '.zip' : '.tar.gz';
+    }
+
+    compressedFileExtension = compressedFileExtension || getFileEnding(jdkFile);
+    let tempDir: string = path.join(
+      tempDirectory,
+      'adoptopenjdk_' + Math.floor(Math.random() * 2000000000)
+    );
+    const jdkDir = await unzipJavaDownload(
+      jdkFile,
+      compressedFileExtension,
+      tempDir
+    );
+    core.debug(`JDK extracted to ${jdkDir}`);
+    toolPath = await tc.cacheDir(jdkDir, toolName, versionSpec, arch);
+  }
+
+  const extendedJavaHome = `JAVA_HOME_${version}_${arch}`;
+  core.exportVariable('JAVA_HOME', toolPath);
+  core.exportVariable(extendedJavaHome, toolPath);
+  core.addPath(path.join(toolPath, 'bin'));
 }

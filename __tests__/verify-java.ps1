@@ -5,7 +5,7 @@ if (!$args.Count -or !$args[0])
 
 $java_version = & cmd.exe /c "java -version 2>&1" | Out-String
 Write-Host "Found java version: $java_version"
-if (!$java_version.Contains($args[0]))
+if (!$java_version -contains $args[0])
 {
   throw "Unexpected version"
 }

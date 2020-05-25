@@ -1,22 +1,40 @@
-name: 'Setup Java JDK'
-description: 'Set up a specific version of the Java JDK and add the
+name: 'Setup AdoptOpenJDK'
+description: 'Set up a specific version of the Java JDK from AdoptOpenJDK and add the
    command-line tools to the PATH'
-author: 'GitHub'
+author: 'Jochen Schalanda'
 inputs:
+  release_type:
+    description: 'Type of release. Either a release version, known as
+       General Availability ("ga") or an Early Access ("ea"). Default: "ga"'
+    required: false
+    default: 'ga'
   java-version:
-    description: 'The Java version to make available on the path. Takes a whole
-       or semver Java version, or 1.x syntax (e.g. 1.8 => Java 8.x).
-       Early access versions can be specified in the form of e.g. 14-ea,
-       14.0.0-ea, or 14.0.0-ea.28'
+    description: 'OpenJDK feature release version you wish to download. 
+       Feature versions are whole numbers, example 8, 9, 10, 11, 12, 13, 14'
     required: true
   java-package:
-    description: 'The package type (jre, jdk, jdk+fx)'
+    description: 'The package type (jre, jdk). Default: "jdk"'
     required: false
     default: 'jdk'
+  openjdk_impl:
+    description: 'JVM implementation, example: "hotspot", "openj9". Default: "hotspot"'
+    required: false
+    default: 'hotspot'
   architecture:
-    description: 'The architecture (x86, x64) of the package.'
+    description: 'Architecture of the JDK, example: "x64", "x32", "ppc64", "s390x",
+       "ppc64le", "aarch64". Default: "x64"'
     required: false
     default: 'x64'
+  heap_size:
+    description: 'Heap size for OpenJ9, example: "normal", "large" (for heaps >=57 GiB).
+       Default: "normal"'
+    required: false
+    default: 'normal'
+  release:
+    description: 'Exact release of OpenJDK, example: "latest", "jdk-11.0.4+11.4",
+       "jdk8u172-b00-201807161800". Default: "latest"'
+    required: false
+    default: 'latest'
   jdkFile:
     description: 'Path to where the compressed JDK is located. The path could
        be in your source repository or a local path on the agent.'
@@ -39,3 +57,6 @@ inputs:
 runs:
   using: 'node12'
   main: 'dist/index.js'
+branding:
+  icon: 'download'
+  color: 'blue'

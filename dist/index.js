@@ -34,7 +34,7 @@ module.exports =
 /******/ 	// the startup function
 /******/ 	function startup() {
 /******/ 		// Load entry module and return exports
-/******/ 		return __webpack_require__(811);
+/******/ 		return __webpack_require__(540);
 /******/ 	};
 /******/
 /******/ 	// run startup
@@ -3770,6 +3770,7 @@ var HttpCodes;
     HttpCodes[HttpCodes["RequestTimeout"] = 408] = "RequestTimeout";
     HttpCodes[HttpCodes["Conflict"] = 409] = "Conflict";
     HttpCodes[HttpCodes["Gone"] = 410] = "Gone";
+    HttpCodes[HttpCodes["TooManyRequests"] = 429] = "TooManyRequests";
     HttpCodes[HttpCodes["InternalServerError"] = 500] = "InternalServerError";
     HttpCodes[HttpCodes["NotImplemented"] = 501] = "NotImplemented";
     HttpCodes[HttpCodes["BadGateway"] = 502] = "BadGateway";
@@ -3794,8 +3795,18 @@ function getProxyUrl(serverUrl) {
     return proxyUrl ? proxyUrl.href : '';
 }
 exports.getProxyUrl = getProxyUrl;
-const HttpRedirectCodes = [HttpCodes.MovedPermanently, HttpCodes.ResourceMoved, HttpCodes.SeeOther, HttpCodes.TemporaryRedirect, HttpCodes.PermanentRedirect];
-const HttpResponseRetryCodes = [HttpCodes.BadGateway, HttpCodes.ServiceUnavailable, HttpCodes.GatewayTimeout];
+const HttpRedirectCodes = [
+    HttpCodes.MovedPermanently,
+    HttpCodes.ResourceMoved,
+    HttpCodes.SeeOther,
+    HttpCodes.TemporaryRedirect,
+    HttpCodes.PermanentRedirect
+];
+const HttpResponseRetryCodes = [
+    HttpCodes.BadGateway,
+    HttpCodes.ServiceUnavailable,
+    HttpCodes.GatewayTimeout
+];
 const RetryableHttpVerbs = ['OPTIONS', 'GET', 'DELETE', 'HEAD'];
 const ExponentialBackoffCeiling = 10;
 const ExponentialBackoffTimeSlice = 5;
@@ -3920,18 +3931,22 @@ class HttpClient {
      */
     async request(verb, requestUrl, data, headers) {
         if (this._disposed) {
-            throw new Error("Client has already been disposed.");
+            throw new Error('Client has already been disposed.');
         }
         let parsedUrl = url.parse(requestUrl);
         let info = this._prepareRequest(verb, parsedUrl, headers);
         // Only perform retries on reads since writes may not be idempotent.
-        let maxTries = (this._allowRetries && RetryableHttpVerbs.indexOf(verb) != -1) ? this._maxRetries + 1 : 1;
+        let maxTries = this._allowRetries && RetryableHttpVerbs.indexOf(verb) != -1
+            ? this._maxRetries + 1
+            : 1;
         let numTries = 0;
         let response;
         while (numTries < maxTries) {
             response = await this.requestRaw(info, data);
             // Check if it's an authentication challenge
-            if (response && response.message && response.message.statusCode === HttpCodes.Unauthorized) {
+            if (response &&
+                response.message &&
+                response.message.statusCode === HttpCodes.Unauthorized) {
                 let authenticationHandler;
                 for (let i = 0; i < this.handlers.length; i++) {
                     if (this.handlers[i].canHandleAuthentication(response)) {
@@ -3949,21 +3964,32 @@ class HttpClient {
                 }
             }
             let redirectsRemaining = this._maxRedirects;
-            while (HttpRedirectCodes.indexOf(response.message.statusCode) != -1
-                && this._allowRedirects
-                && redirectsRemaining > 0) {
-                const redirectUrl = response.message.headers["location"];
+            while (HttpRedirectCodes.indexOf(response.message.statusCode) != -1 &&
+                this._allowRedirects &&
+                redirectsRemaining > 0) {
+                const redirectUrl = response.message.headers['location'];
                 if (!redirectUrl) {
                     // if there's no location to redirect to, we won't
                     break;
                 }
                 let parsedRedirectUrl = url.parse(redirectUrl);
-                if (parsedUrl.protocol == 'https:' && parsedUrl.protocol != parsedRedirectUrl.protocol && !this._allowRedirectDowngrade) {
-                    throw new Error("Redirect from HTTPS to HTTP protocol. This downgrade is not allowed for security reasons. If you want to allow this behavior, set the allowRedirectDowngrade option to true.");
+                if (parsedUrl.protocol == 'https:' &&
+                    parsedUrl.protocol != parsedRedirectUrl.protocol &&
+                    !this._allowRedirectDowngrade) {
+                    throw new Error('Redirect from HTTPS to HTTP protocol. This downgrade is not allowed for security reasons. If you want to allow this behavior, set the allowRedirectDowngrade option to true.');
                 }
                 // we need to finish reading the response before reassigning response
                 // which will leak the open socket.
                 await response.readBody();
+                // strip authorization header if redirected to a different hostname
+                if (parsedRedirectUrl.hostname !== parsedUrl.hostname) {
+                    for (let header in headers) {
+                        // header names are case insensitive
+                        if (header.toLowerCase() === 'authorization') {
+                            delete headers[header];
+                        }
+                    }
+                }
                 // let's make the request with the new redirectUrl
                 info = this._prepareRequest(verb, parsedRedirectUrl, headers);
                 response = await this.requestRaw(info, data);
@@ -4014,8 +4040,8 @@ class HttpClient {
      */
     requestRawWithCallback(info, data, onResult) {
         let socket;
-        if (typeof (data) === 'string') {
-            info.options.headers["Content-Length"] = Buffer.byteLength(data, 'utf8');
+        if (typeof data === 'string') {
+            info.options.headers['Content-Length'] = Buffer.byteLength(data, 'utf8');
         }
         let callbackCalled = false;
         let handleResult = (err, res) => {
@@ -4028,7 +4054,7 @@ class HttpClient {
             let res = new HttpClientResponse(msg);
             handleResult(null, res);
         });
-        req.on('socket', (sock) => {
+        req.on('socket', sock => {
             socket = sock;
         });
         // If we ever get disconnected, we want the socket to timeout eventually
@@ -4043,10 +4069,10 @@ class HttpClient {
             // res should have headers
             handleResult(err, null);
         });
-        if (data && typeof (data) === 'string') {
+        if (data && typeof data === 'string') {
             req.write(data, 'utf8');
         }
-        if (data && typeof (data) !== 'string') {
+        if (data && typeof data !== 'string') {
             data.on('close', function () {
                 req.end();
             });
@@ -4073,31 +4099,34 @@ class HttpClient {
         const defaultPort = usingSsl ? 443 : 80;
         info.options = {};
         info.options.host = info.parsedUrl.hostname;
-        info.options.port = info.parsedUrl.port ? parseInt(info.parsedUrl.port) : defaultPort;
-        info.options.path = (info.parsedUrl.pathname || '') + (info.parsedUrl.search || '');
+        info.options.port = info.parsedUrl.port
+            ? parseInt(info.parsedUrl.port)
+            : defaultPort;
+        info.options.path =
+            (info.parsedUrl.pathname || '') + (info.parsedUrl.search || '');
         info.options.method = method;
         info.options.headers = this._mergeHeaders(headers);
         if (this.userAgent != null) {
-            info.options.headers["user-agent"] = this.userAgent;
+            info.options.headers['user-agent'] = this.userAgent;
         }
         info.options.agent = this._getAgent(info.parsedUrl);
         // gives handlers an opportunity to participate
         if (this.handlers) {
-            this.handlers.forEach((handler) => {
+            this.handlers.forEach(handler => {
                 handler.prepareRequest(info.options);
             });
         }
         return info;
     }
     _mergeHeaders(headers) {
-        const lowercaseKeys = obj => Object.keys(obj).reduce((c, k) => (c[k.toLowerCase()] = obj[k], c), {});
+        const lowercaseKeys = obj => Object.keys(obj).reduce((c, k) => ((c[k.toLowerCase()] = obj[k]), c), {});
         if (this.requestOptions && this.requestOptions.headers) {
             return Object.assign({}, lowercaseKeys(this.requestOptions.headers), lowercaseKeys(headers));
         }
         return lowercaseKeys(headers || {});
     }
     _getExistingOrDefaultHeader(additionalHeaders, header, _default) {
-        const lowercaseKeys = obj => Object.keys(obj).reduce((c, k) => (c[k.toLowerCase()] = obj[k], c), {});
+        const lowercaseKeys = obj => Object.keys(obj).reduce((c, k) => ((c[k.toLowerCase()] = obj[k]), c), {});
         let clientHeader;
         if (this.requestOptions && this.requestOptions.headers) {
             clientHeader = lowercaseKeys(this.requestOptions.headers)[header];
@@ -4135,7 +4164,7 @@ class HttpClient {
                     proxyAuth: proxyUrl.auth,
                     host: proxyUrl.hostname,
                     port: proxyUrl.port
-                },
+                }
             };
             let tunnelAgent;
             const overHttps = proxyUrl.protocol === 'https:';
@@ -4162,7 +4191,9 @@ class HttpClient {
             // we don't want to set NODE_TLS_REJECT_UNAUTHORIZED=0 since that will affect request for entire process
             // http.RequestOptions doesn't expose a way to modify RequestOptions.agent.options
             // we have to cast it to any and change it directly
-            agent.options = Object.assign(agent.options || {}, { rejectUnauthorized: false });
+            agent.options = Object.assign(agent.options || {}, {
+                rejectUnauthorized: false
+            });
         }
         return agent;
     }
@@ -4223,7 +4254,7 @@ class HttpClient {
                     msg = contents;
                 }
                 else {
-                    msg = "Failed request: (" + statusCode + ")";
+                    msg = 'Failed request: (' + statusCode + ')';
                 }
                 let err = new Error(msg);
                 // attach statusCode and body obj (if available) to the error object
@@ -4240,6 +4271,68 @@ class HttpClient {
     }
 }
 exports.HttpClient = HttpClient;
+
+
+/***/ }),
+
+/***/ 540:
+/***/ (function(__unusedmodule, exports, __webpack_require__) {
+
+"use strict";
+
+var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
+    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
+    return new (P || (P = Promise))(function (resolve, reject) {
+        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
+        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
+        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
+        step((generator = generator.apply(thisArg, _arguments || [])).next());
+    });
+};
+var __importStar = (this && this.__importStar) || function (mod) {
+    if (mod && mod.__esModule) return mod;
+    var result = {};
+    if (mod != null) for (var k in mod) if (Object.hasOwnProperty.call(mod, k)) result[k] = mod[k];
+    result["default"] = mod;
+    return result;
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+const core = __importStar(__webpack_require__(470));
+const installer = __importStar(__webpack_require__(923));
+const auth = __importStar(__webpack_require__(331));
+const path = __importStar(__webpack_require__(622));
+function run() {
+    return __awaiter(this, void 0, void 0, function* () {
+        try {
+            // Type of release. Either a release version, known as General Availability ("ga") or an Early Access ("ea")
+            const release_type = core.getInput('release_type') || 'ga';
+            // OpenJDK feature release version, example: "8", "11", "13".
+            const javaVersion = core.getInput('java-version', { required: true });
+            // OpenJDK implementation, example: "hotspot", "openj9".
+            const openjdk_impl = core.getInput('openjdk_impl') || 'hotspot';
+            // Architecture of the JDK, example: "x64", "x32", "arm", "ppc64", "s390x", "ppc64le", "aarch64", "sparcv9".
+            const arch = core.getInput('architecture', { required: false }) || 'x64';
+            // Heap size for OpenJ9, example: "normal", "large" (for heaps >=57 GiB).
+            const heap_size = core.getInput('heap_size', { required: false }) || 'normal';
+            // Exact release of OpenJDK, example: "latest", "jdk-11.0.4+11.4", "jdk8u172-b00-201807161800".
+            const release = core.getInput('release') || 'latest';
+            // The image type (jre, jdk)
+            const javaPackage = core.getInput('java-package', { required: false }) || 'jdk';
+            const jdkFile = core.getInput('jdkFile', { required: false }) || '';
+            yield installer.getAdoptOpenJDK(release_type, javaVersion, javaPackage, openjdk_impl, arch, heap_size, release, jdkFile);
+            const matchersPath = path.join(__dirname, '..', '.github');
+            console.log(`##[add-matcher]${path.join(matchersPath, 'java.json')}`);
+            const id = core.getInput('server-id', { required: false }) || undefined;
+            const username = core.getInput('server-username', { required: false }) || undefined;
+            const password = core.getInput('server-password', { required: false }) || undefined;
+            yield auth.configAuthentication(id, username, password);
+        }
+        catch (error) {
+            core.setFailed(error.message);
+        }
+    });
+}
+run();
 
 
 /***/ }),
@@ -4521,60 +4614,6 @@ module.exports = require("fs");
 
 /***/ }),
 
-/***/ 811:
-/***/ (function(__unusedmodule, exports, __webpack_require__) {
-
-"use strict";
-
-var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
-    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
-    return new (P || (P = Promise))(function (resolve, reject) {
-        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
-        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
-        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
-        step((generator = generator.apply(thisArg, _arguments || [])).next());
-    });
-};
-var __importStar = (this && this.__importStar) || function (mod) {
-    if (mod && mod.__esModule) return mod;
-    var result = {};
-    if (mod != null) for (var k in mod) if (Object.hasOwnProperty.call(mod, k)) result[k] = mod[k];
-    result["default"] = mod;
-    return result;
-};
-Object.defineProperty(exports, "__esModule", { value: true });
-const core = __importStar(__webpack_require__(470));
-const installer = __importStar(__webpack_require__(923));
-const auth = __importStar(__webpack_require__(331));
-const path = __importStar(__webpack_require__(622));
-function run() {
-    return __awaiter(this, void 0, void 0, function* () {
-        try {
-            let version = core.getInput('version');
-            if (!version) {
-                version = core.getInput('java-version', { required: true });
-            }
-            const arch = core.getInput('architecture', { required: true });
-            const javaPackage = core.getInput('java-package', { required: true });
-            const jdkFile = core.getInput('jdkFile', { required: false }) || '';
-            yield installer.getJava(version, arch, jdkFile, javaPackage);
-            const matchersPath = path.join(__dirname, '..', '.github');
-            console.log(`##[add-matcher]${path.join(matchersPath, 'java.json')}`);
-            const id = core.getInput('server-id', { required: false }) || undefined;
-            const username = core.getInput('server-username', { required: false }) || undefined;
-            const password = core.getInput('server-password', { required: false }) || undefined;
-            yield auth.configAuthentication(id, username, password);
-        }
-        catch (error) {
-            core.setFailed(error.message);
-        }
-    });
-}
-run();
-
-
-/***/ }),
-
 /***/ 826:
 /***/ (function(module, __unusedexports, __webpack_require__) {
 
@@ -4650,6 +4689,9 @@ const fs = __importStar(__webpack_require__(747));
 const path = __importStar(__webpack_require__(622));
 const semver = __importStar(__webpack_require__(280));
 const IS_WINDOWS = process.platform === 'win32';
+const IS_MACOS = process.platform === 'darwin';
+const toolName = 'AdoptOpenJDK';
+const os = getOsString(process.platform);
 if (!tempDirectory) {
     let baseLocation;
     if (IS_WINDOWS) {
@@ -4795,7 +4837,7 @@ function unzipJavaDownload(repoRoot, fileEnding, destinationFolder, extension) {
         const stats = fs.statSync(jdkFile);
         if (stats.isFile()) {
             yield extractFiles(jdkFile, fileEnding, destinationFolder);
-            const jdkDirectory = path.join(destinationFolder, fs.readdirSync(destinationFolder)[0]);
+            const jdkDirectory = getJdkDirectory(destinationFolder);
             yield unpackJars(jdkDirectory, path.join(jdkDirectory, 'bin'));
             return jdkDirectory;
         }
@@ -4898,6 +4940,78 @@ function normalizeVersion(version) {
     }
     return version;
 }
+function getOsString(platform) {
+    switch (platform) {
+        case 'win32':
+            return 'windows';
+        case 'darwin':
+            return 'mac';
+        default:
+            return 'linux';
+    }
+}
+function getCacheVersionSpec(release_type, version, image_type, jvm_impl, os, arch, heap_size, release) {
+    return `1.0.0-${release_type}-${version}-${image_type}-${jvm_impl}-${os}-${arch}-${heap_size}-${release}`;
+}
+function getAdoptOpenJDK(release_type, version, image_type, jvm_impl, arch, heap_size, release, jdkFile) {
+    return __awaiter(this, void 0, void 0, function* () {
+        return downloadJavaBinary(release_type, version, image_type, jvm_impl, os, arch, heap_size, release, jdkFile);
+    });
+}
+exports.getAdoptOpenJDK = getAdoptOpenJDK;
+function getAdoptOpenJdkUrl(release_type, version, image_type, jvm_impl, os, arch, heap_size, release) {
+    const feature_version = version;
+    const release_type_parsed = release_type;
+    if (release == 'latest') {
+        return `https://api.adoptopenjdk.net/v3/binary/latest/${feature_version}/${release_type_parsed}/${os}/${arch}/${image_type}/${jvm_impl}/${heap_size}/adoptopenjdk`;
+    }
+    else {
+        const release_name = encodeURIComponent(release);
+        return `https://api.adoptopenjdk.net/v3/binary/version/${release_name}/${os}/${arch}/${image_type}/${jvm_impl}/${heap_size}/adoptopenjdk`;
+    }
+}
+function getJdkDirectory(destinationFolder) {
+    const jdkRoot = path.join(destinationFolder, fs.readdirSync(destinationFolder)[0]);
+    if (IS_MACOS) {
+        const binDirectory = path.join(jdkRoot, 'bin');
+        if (fs.existsSync(binDirectory)) {
+            return jdkRoot;
+        }
+        else {
+            return path.join(jdkRoot, 'Contents', 'Home');
+        }
+    }
+    else {
+        return jdkRoot;
+    }
+}
+function downloadJavaBinary(release_type, version, image_type, jvm_impl, os, arch, heap_size, release, jdkFile) {
+    return __awaiter(this, void 0, void 0, function* () {
+        const versionSpec = getCacheVersionSpec(release_type, version, image_type, jvm_impl, os, arch, heap_size, release);
+        let toolPath = tc.find(toolName, versionSpec, arch);
+        if (toolPath) {
+            core.debug(`Tool found in cache ${toolPath}`);
+        }
+        else {
+            let compressedFileExtension = '';
+            if (!jdkFile) {
+                core.debug('Downloading JDK from AdoptOpenJDK');
+                const url = getAdoptOpenJdkUrl(release_type, version, image_type, jvm_impl, os, arch, heap_size, release);
+                jdkFile = yield tc.downloadTool(url);
+                compressedFileExtension = IS_WINDOWS ? '.zip' : '.tar.gz';
+            }
+            compressedFileExtension = compressedFileExtension || getFileEnding(jdkFile);
+            let tempDir = path.join(tempDirectory, 'adoptopenjdk_' + Math.floor(Math.random() * 2000000000));
+            const jdkDir = yield unzipJavaDownload(jdkFile, compressedFileExtension, tempDir);
+            core.debug(`JDK extracted to ${jdkDir}`);
+            toolPath = yield tc.cacheDir(jdkDir, toolName, versionSpec, arch);
+        }
+        const extendedJavaHome = `JAVA_HOME_${version}_${arch}`;
+        core.exportVariable('JAVA_HOME', toolPath);
+        core.exportVariable(extendedJavaHome, toolPath);
+        core.addPath(path.join(toolPath, 'bin'));
+    });
+}
 
 
 /***/ }),
@@ -4917,12 +5031,10 @@ function getProxyUrl(reqUrl) {
     }
     let proxyVar;
     if (usingSsl) {
-        proxyVar = process.env["https_proxy"] ||
-            process.env["HTTPS_PROXY"];
+        proxyVar = process.env['https_proxy'] || process.env['HTTPS_PROXY'];
     }
     else {
-        proxyVar = process.env["http_proxy"] ||
-            process.env["HTTP_PROXY"];
+        proxyVar = process.env['http_proxy'] || process.env['HTTP_PROXY'];
     }
     if (proxyVar) {
         proxyUrl = url.parse(proxyVar);
@@ -4934,7 +5046,7 @@ function checkBypass(reqUrl) {
     if (!reqUrl.hostname) {
         return false;
     }
-    let noProxy = process.env["no_proxy"] || process.env["NO_PROXY"] || '';
+    let noProxy = process.env['no_proxy'] || process.env['NO_PROXY'] || '';
     if (!noProxy) {
         return false;
     }
@@ -4955,7 +5067,10 @@ function checkBypass(reqUrl) {
         upperReqHosts.push(`${upperReqHosts[0]}:${reqPort}`);
     }
     // Compare request host against noproxy
-    for (let upperNoProxyItem of noProxy.split(',').map(x => x.trim().toUpperCase()).filter(x => x)) {
+    for (let upperNoProxyItem of noProxy
+        .split(',')
+        .map(x => x.trim().toUpperCase())
+        .filter(x => x)) {
         if (upperReqHosts.some(x => x === upperNoProxyItem)) {
             return true;
         }

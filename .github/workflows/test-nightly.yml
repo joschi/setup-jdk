@@ -10,7 +10,7 @@ jobs:
       matrix:
         operating-system: [ubuntu-latest, macOS-latest, windows-latest]
         java-version: [8, 11, 14]
-        archtecture: ['x64', 'x32']
+        architecture: ['x64', 'x32']
       exclude:
       - operating-system: ubuntu-latest
         architecture: 'x32'

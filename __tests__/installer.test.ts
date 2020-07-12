@@ -266,6 +266,27 @@ describe('installer tests', () => {
     expect(fs.existsSync(path.join(JavaDir, 'bin'))).toBe(true);
   }, 100000);
 
+  it('Downloads JDK with architecture alias x86_64', async () => {
+    await installer.getAdoptOpenJDK(
+      'ga',
+      '11',
+      'jdk',
+      'hotspot',
+      'x86_64',
+      'normal',
+      'jdk-11.0.6+10',
+      ''
+    );
+    const JavaDir = path.join(
+      toolDir,
+      toolName,
+      `1.0.0-ga-11-jdk-hotspot-${os}-x64-normal-jdk-11.0.6`,
+      'x64'
+    );
+
+    expect(fs.existsSync(path.join(JavaDir, 'bin'))).toBe(true);
+  }, 100000);
+
   it('Downloads JRE with normal syntax', async () => {
     await installer.getAdoptOpenJDK(
       'ga',

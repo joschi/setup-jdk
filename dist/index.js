@@ -4692,6 +4692,12 @@ const IS_WINDOWS = process.platform === 'win32';
 const IS_MACOS = process.platform === 'darwin';
 const toolName = 'AdoptOpenJDK';
 const os = getOsString(process.platform);
+const architectureAliases = new Map([
+    ['amd64', 'x64'],
+    ['i686', 'x32'],
+    ['x86', 'x32'],
+    ['x86_64', 'x64']
+]);
 if (!tempDirectory) {
     let baseLocation;
     if (IS_WINDOWS) {
@@ -4995,8 +5001,9 @@ function getJdkDirectory(destinationFolder) {
 }
 function downloadJavaBinary(release_type, version, image_type, jvm_impl, os, arch, heap_size, release, jdkFile) {
     return __awaiter(this, void 0, void 0, function* () {
-        const versionSpec = getCacheVersionSpec(release_type, version, image_type, jvm_impl, os, arch, heap_size, release);
-        let toolPath = tc.find(toolName, versionSpec, arch);
+        const normalizedArchitecture = architectureAliases.get(arch) || arch;
+        const versionSpec = getCacheVersionSpec(release_type, version, image_type, jvm_impl, os, normalizedArchitecture, heap_size, release);
+        let toolPath = tc.find(toolName, versionSpec, normalizedArchitecture);
         if (toolPath) {
             core.debug(`Tool found in cache ${toolPath}`);
         }
@@ -5004,7 +5011,7 @@ function downloadJavaBinary(release_type, version, image_type, jvm_impl, os, arc
             let compressedFileExtension = '';
             if (!jdkFile) {
                 core.debug('Downloading JDK from AdoptOpenJDK');
-                const url = getAdoptOpenJdkUrl(release_type, version, image_type, jvm_impl, os, arch, heap_size, release);
+                const url = getAdoptOpenJdkUrl(release_type, version, image_type, jvm_impl, os, normalizedArchitecture, heap_size, release);
                 jdkFile = yield tc.downloadTool(url);
                 compressedFileExtension = IS_WINDOWS ? '.zip' : '.tar.gz';
             }
@@ -5012,9 +5019,9 @@ function downloadJavaBinary(release_type, version, image_type, jvm_impl, os, arc
             let tempDir = path.join(tempDirectory, 'adoptopenjdk_' + Math.floor(Math.random() * 2000000000));
             const jdkDir = yield unzipJavaDownload(jdkFile, compressedFileExtension, tempDir);
             core.debug(`JDK extracted to ${jdkDir}`);
-            toolPath = yield tc.cacheDir(jdkDir, toolName, versionSpec, arch);
+            toolPath = yield tc.cacheDir(jdkDir, toolName, versionSpec, normalizedArchitecture);
         }
-        let extendedJavaHome = `JAVA_HOME_${version}_${arch}`;
+        let extendedJavaHome = `JAVA_HOME_${version}_${normalizedArchitecture}`;
         core.exportVariable(extendedJavaHome, toolPath); //TODO: remove for v2
         // For portability reasons environment variables should only consist of
         // uppercase letters, digits, and the underscore. Therefore we convert

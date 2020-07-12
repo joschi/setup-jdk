@@ -13,6 +13,12 @@ const IS_WINDOWS = process.platform === 'win32';
 const IS_MACOS = process.platform === 'darwin';
 const toolName = 'AdoptOpenJDK';
 const os = getOsString(process.platform);
+const architectureAliases = new Map<string, string>([
+  ['amd64', 'x64'],
+  ['i686', 'x32'],
+  ['x86', 'x32'],
+  ['x86_64', 'x64']
+]);
 
 if (!tempDirectory) {
   let baseLocation;
@@ -401,17 +407,18 @@ async function downloadJavaBinary(
   release: string,
   jdkFile: string
 ): Promise<void> {
+  const normalizedArchitecture = architectureAliases.get(arch) || arch;
   const versionSpec = getCacheVersionSpec(
     release_type,
     version,
     image_type,
     jvm_impl,
     os,
-    arch,
+    normalizedArchitecture,
     heap_size,
     release
   );
-  let toolPath = tc.find(toolName, versionSpec, arch);
+  let toolPath = tc.find(toolName, versionSpec, normalizedArchitecture);
 
   if (toolPath) {
     core.debug(`Tool found in cache ${toolPath}`);
@@ -425,7 +432,7 @@ async function downloadJavaBinary(
         image_type,
         jvm_impl,
         os,
-        arch,
+        normalizedArchitecture,
         heap_size,
         release
       );
@@ -444,10 +451,15 @@ async function downloadJavaBinary(
       tempDir
     );
     core.debug(`JDK extracted to ${jdkDir}`);
-    toolPath = await tc.cacheDir(jdkDir, toolName, versionSpec, arch);
+    toolPath = await tc.cacheDir(
+      jdkDir,
+      toolName,
+      versionSpec,
+      normalizedArchitecture
+    );
   }
 
-  let extendedJavaHome = `JAVA_HOME_${version}_${arch}`;
+  let extendedJavaHome = `JAVA_HOME_${version}_${normalizedArchitecture}`;
   core.exportVariable(extendedJavaHome, toolPath); //TODO: remove for v2
   // For portability reasons environment variables should only consist of
   // uppercase letters, digits, and the underscore. Therefore we convert

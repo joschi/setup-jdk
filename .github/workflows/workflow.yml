@@ -52,7 +52,6 @@ jobs:
       run: __tests__/verify-java.sh "${{ matrix.java-version }}" "${{ steps.setup-java.outputs.path }}" "${{ steps.setup-java.outputs.version }}"
     - name: Verify Java ${{ matrix.java-version}} (Windows)
       if: runner.os == 'windows'
-      run: __tests__/verify-java.ps1 ${{ matrix.java-version }}
       run: __tests__/verify-java.ps1 "${{ matrix.java-version }}" "${{ steps.setup-java.outputs.path }}" "${{ steps.setup-java.outputs.version }}"
 
   test-proxy:

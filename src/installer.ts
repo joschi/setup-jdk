@@ -457,4 +457,6 @@ async function downloadJavaBinary(
   core.exportVariable('JAVA_HOME', toolPath);
   core.exportVariable(extendedJavaHome, toolPath);
   core.addPath(path.join(toolPath, 'bin'));
+  core.setOutput('path', toolPath);
+  core.setOutput('version', version);
 }

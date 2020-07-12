@@ -451,7 +451,12 @@ async function downloadJavaBinary(
       tempDir
     );
     core.debug(`JDK extracted to ${jdkDir}`);
-    toolPath = await tc.cacheDir(jdkDir, toolName, versionSpec, normalizedArchitecture);
+    toolPath = await tc.cacheDir(
+      jdkDir,
+      toolName,
+      versionSpec,
+      normalizedArchitecture
+    );
   }
 
   let extendedJavaHome = `JAVA_HOME_${version}_${normalizedArchitecture}`;

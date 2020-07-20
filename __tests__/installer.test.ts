@@ -345,7 +345,7 @@ describe('installer tests', () => {
     return;
   });
 
-  it('GitHub issue #9: Allow openjdk\d+ as Java release version', async () => {
+  it('GitHub issue #9: Allow openjdk[0-9]+ as Java release version', async () => {
     await installer.getAdoptOpenJDK(
       'ga',
       'openjdk14',

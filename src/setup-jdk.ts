@@ -44,7 +44,12 @@ async function run() {
     const overwriteSettings =
       core.getInput('overwrite-settings', {required: false}) || 'true';
 
-    await auth.configAuthentication(id, username, password, overwriteSettings === 'true');
+    await auth.configAuthentication(
+      id,
+      username,
+      password,
+      overwriteSettings === 'true'
+    );
   } catch (error) {
     core.setFailed(error.message);
   }

@@ -60,7 +60,11 @@ export function generate(
   `;
 }
 
-async function write(directory: string, settings: string, overwriteSettings: boolean) {
+async function write(
+  directory: string,
+  settings: string,
+  overwriteSettings: boolean
+) {
   const location = path.join(directory, SETTINGS_FILE);
   const exists = fs.existsSync(location);
   if (exists && overwriteSettings) {

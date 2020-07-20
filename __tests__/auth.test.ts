@@ -100,9 +100,7 @@ describe('auth tests', () => {
 
     expect(fs.existsSync(m2Dir)).toBe(true);
     expect(fs.existsSync(settingsFile)).toBe(true);
-    expect(fs.readFileSync(settingsFile, 'utf-8')).toEqual(
-      'FAKE FILE'
-    );
+    expect(fs.readFileSync(settingsFile, 'utf-8')).toEqual('FAKE FILE');
   }, 100000);
 
   it('does not create settings.xml without required parameters', async () => {

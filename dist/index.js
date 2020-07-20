@@ -4687,13 +4687,13 @@ var __importStar = (this && this.__importStar) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 let tempDirectory = process.env['RUNNER_TEMP'] || '';
 const core = __importStar(__webpack_require__(470));
-const io = __importStar(__webpack_require__(1));
 const exec = __importStar(__webpack_require__(986));
-const httpm = __importStar(__webpack_require__(539));
-const tc = __importStar(__webpack_require__(533));
 const fs = __importStar(__webpack_require__(747));
+const httpm = __importStar(__webpack_require__(539));
+const io = __importStar(__webpack_require__(1));
 const path = __importStar(__webpack_require__(622));
 const semver = __importStar(__webpack_require__(280));
+const tc = __importStar(__webpack_require__(533));
 const IS_WINDOWS = process.platform === 'win32';
 const IS_MACOS = process.platform === 'darwin';
 const toolName = 'AdoptOpenJDK';
@@ -5008,7 +5008,8 @@ function getJdkDirectory(destinationFolder) {
 function downloadJavaBinary(release_type, version, image_type, jvm_impl, os, arch, heap_size, release, jdkFile) {
     return __awaiter(this, void 0, void 0, function* () {
         const normalizedArchitecture = architectureAliases.get(arch) || arch;
-        const versionSpec = getCacheVersionSpec(release_type, version, image_type, jvm_impl, os, normalizedArchitecture, heap_size, release);
+        const normalizedVersion = version.replace('openjdk', '');
+        const versionSpec = getCacheVersionSpec(release_type, normalizedVersion, image_type, jvm_impl, os, normalizedArchitecture, heap_size, release);
         let toolPath = tc.find(toolName, versionSpec, normalizedArchitecture);
         if (toolPath) {
             core.debug(`Tool found in cache ${toolPath}`);
@@ -5017,7 +5018,8 @@ function downloadJavaBinary(release_type, version, image_type, jvm_impl, os, arc
             let compressedFileExtension = '';
             if (!jdkFile) {
                 core.debug('Downloading JDK from AdoptOpenJDK');
-                const url = getAdoptOpenJdkUrl(release_type, version, image_type, jvm_impl, os, normalizedArchitecture, heap_size, release);
+                const url = getAdoptOpenJdkUrl(release_type, normalizedVersion, image_type, jvm_impl, os, normalizedArchitecture, heap_size, release);
+                core.debug(`AdoptOpenJDK URL: ${url}`);
                 jdkFile = yield tc.downloadTool(url);
                 compressedFileExtension = IS_WINDOWS ? '.zip' : '.tar.gz';
             }
@@ -5027,7 +5029,7 @@ function downloadJavaBinary(release_type, version, image_type, jvm_impl, os, arc
             core.debug(`JDK extracted to ${jdkDir}`);
             toolPath = yield tc.cacheDir(jdkDir, toolName, versionSpec, normalizedArchitecture);
         }
-        let extendedJavaHome = `JAVA_HOME_${version}_${normalizedArchitecture}`;
+        let extendedJavaHome = `JAVA_HOME_${normalizedVersion}_${normalizedArchitecture}`;
         core.exportVariable(extendedJavaHome, toolPath); //TODO: remove for v2
         // For portability reasons environment variables should only consist of
         // uppercase letters, digits, and the underscore. Therefore we convert
@@ -5038,7 +5040,7 @@ function downloadJavaBinary(release_type, version, image_type, jvm_impl, os, arc
         core.exportVariable(extendedJavaHome, toolPath);
         core.addPath(path.join(toolPath, 'bin'));
         core.setOutput('path', toolPath);
-        core.setOutput('version', version);
+        core.setOutput('version', normalizedVersion);
     });
 }
 

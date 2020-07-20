@@ -1,13 +1,13 @@
 let tempDirectory = process.env['RUNNER_TEMP'] || '';
 
 import * as core from '@actions/core';
-import * as io from '@actions/io';
 import * as exec from '@actions/exec';
-import * as httpm from '@actions/http-client';
-import * as tc from '@actions/tool-cache';
 import * as fs from 'fs';
+import * as httpm from '@actions/http-client';
+import * as io from '@actions/io';
 import * as path from 'path';
 import * as semver from 'semver';
+import * as tc from '@actions/tool-cache';
 
 const IS_WINDOWS = process.platform === 'win32';
 const IS_MACOS = process.platform === 'darwin';
@@ -408,9 +408,10 @@ async function downloadJavaBinary(
   jdkFile: string
 ): Promise<void> {
   const normalizedArchitecture = architectureAliases.get(arch) || arch;
+  const normalizedVersion = version.replace('openjdk', '');
   const versionSpec = getCacheVersionSpec(
     release_type,
-    version,
+    normalizedVersion,
     image_type,
     jvm_impl,
     os,
@@ -428,7 +429,7 @@ async function downloadJavaBinary(
       core.debug('Downloading JDK from AdoptOpenJDK');
       const url: string = getAdoptOpenJdkUrl(
         release_type,
-        version,
+        normalizedVersion,
         image_type,
         jvm_impl,
         os,
@@ -436,6 +437,7 @@ async function downloadJavaBinary(
         heap_size,
         release
       );
+      core.debug(`AdoptOpenJDK URL: ${url}`);
       jdkFile = await tc.downloadTool(url);
       compressedFileExtension = IS_WINDOWS ? '.zip' : '.tar.gz';
     }
@@ -459,7 +461,7 @@ async function downloadJavaBinary(
     );
   }
 
-  let extendedJavaHome = `JAVA_HOME_${version}_${normalizedArchitecture}`;
+  let extendedJavaHome = `JAVA_HOME_${normalizedVersion}_${normalizedArchitecture}`;
   core.exportVariable(extendedJavaHome, toolPath); //TODO: remove for v2
   // For portability reasons environment variables should only consist of
   // uppercase letters, digits, and the underscore. Therefore we convert
@@ -470,5 +472,5 @@ async function downloadJavaBinary(
   core.exportVariable(extendedJavaHome, toolPath);
   core.addPath(path.join(toolPath, 'bin'));
   core.setOutput('path', toolPath);
-  core.setOutput('version', version);
+  core.setOutput('version', normalizedVersion);
 }

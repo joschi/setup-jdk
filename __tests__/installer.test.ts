@@ -344,4 +344,25 @@ describe('installer tests', () => {
     expect(thrown).toBe(true);
     return;
   });
+
+  it('GitHub issue #9: Allow openjdk\d+ as Java release version', async () => {
+    await installer.getAdoptOpenJDK(
+      'ga',
+      'openjdk14',
+      'jdk',
+      'hotspot',
+      'x64',
+      'normal',
+      'latest',
+      ''
+    );
+    const JavaDir = path.join(
+      toolDir,
+      toolName,
+      `1.0.0-ga-14-jdk-hotspot-${os}-x64-normal-latest`,
+      'x64'
+    );
+
+    expect(fs.existsSync(path.join(JavaDir, 'bin'))).toBe(true);
+  }, 100000);
 });

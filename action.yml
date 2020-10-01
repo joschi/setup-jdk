@@ -10,7 +10,7 @@ inputs:
     default: 'ga'
   java-version:
     description: 'OpenJDK feature release version you wish to download. 
-       Feature versions are whole numbers, example 8, 9, 10, 11, 12, 13, 14'
+       Feature versions are whole numbers, example 8, 11, 15'
     required: true
   java-package:
     description: 'The package type (jre, jdk). Default: "jdk"'

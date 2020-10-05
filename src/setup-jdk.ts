@@ -43,7 +43,7 @@ async function run() {
       jdkFile
     );
 
-    const matchersPath = path.join(__dirname, '..', '.github');
+    const matchersPath = path.join(__dirname, '..', '..', '.github');
     console.log(`##[add-matcher]${path.join(matchersPath, 'java.json')}`);
 
     const id = core.getInput(constants.INPUT_SERVER_ID, {required: false});

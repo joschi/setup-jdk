@@ -34,7 +34,7 @@ module.exports =
 /******/ 	// the startup function
 /******/ 	function startup() {
 /******/ 		// Load entry module and return exports
-/******/ 		return __webpack_require__(811);
+/******/ 		return __webpack_require__(540);
 /******/ 	};
 /******/
 /******/ 	// run startup
@@ -354,13 +354,20 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
         step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 };
+var __importStar = (this && this.__importStar) || function (mod) {
+    if (mod && mod.__esModule) return mod;
+    var result = {};
+    if (mod != null) for (var k in mod) if (Object.hasOwnProperty.call(mod, k)) result[k] = mod[k];
+    result["default"] = mod;
+    return result;
+};
 Object.defineProperty(exports, "__esModule", { value: true });
-const os = __webpack_require__(87);
-const events = __webpack_require__(614);
-const child = __webpack_require__(129);
-const path = __webpack_require__(622);
-const io = __webpack_require__(1);
-const ioUtil = __webpack_require__(672);
+const os = __importStar(__webpack_require__(87));
+const events = __importStar(__webpack_require__(614));
+const child = __importStar(__webpack_require__(129));
+const path = __importStar(__webpack_require__(622));
+const io = __importStar(__webpack_require__(1));
+const ioUtil = __importStar(__webpack_require__(672));
 /* eslint-disable @typescript-eslint/unbound-method */
 const IS_WINDOWS = process.platform === 'win32';
 /*
@@ -804,6 +811,12 @@ class ToolRunner extends events.EventEmitter {
                         resolve(exitCode);
                     }
                 });
+                if (this.options.input) {
+                    if (!cp.stdin) {
+                        throw new Error('child process missing stdin');
+                    }
+                    cp.stdin.end(this.options.input);
+                }
             });
         });
     }
@@ -1997,6 +2010,119 @@ function characterData_substringData(node, offset, count) {
 }
 exports.characterData_substringData = characterData_substringData;
 //# sourceMappingURL=CharacterDataAlgorithm.js.map
+
+/***/ }),
+
+/***/ 31:
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
+    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
+    return new (P || (P = Promise))(function (resolve, reject) {
+        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
+        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
+        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
+        step((generator = generator.apply(thisArg, _arguments || [])).next());
+    });
+};
+var __importStar = (this && this.__importStar) || function (mod) {
+    if (mod && mod.__esModule) return mod;
+    var result = {};
+    if (mod != null) for (var k in mod) if (Object.hasOwnProperty.call(mod, k)) result[k] = mod[k];
+    result["default"] = mod;
+    return result;
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+const semver = __importStar(__webpack_require__(280));
+const core_1 = __webpack_require__(470);
+// needs to be require for core node modules to be mocked
+/* eslint @typescript-eslint/no-require-imports: 0 */
+const os = __webpack_require__(87);
+const cp = __webpack_require__(129);
+const fs = __webpack_require__(747);
+function _findMatch(versionSpec, stable, candidates, archFilter) {
+    return __awaiter(this, void 0, void 0, function* () {
+        const platFilter = os.platform();
+        let result;
+        let match;
+        let file;
+        for (const candidate of candidates) {
+            const version = candidate.version;
+            core_1.debug(`check ${version} satisfies ${versionSpec}`);
+            if (semver.satisfies(version, versionSpec) &&
+                (!stable || candidate.stable === stable)) {
+                file = candidate.files.find(item => {
+                    core_1.debug(`${item.arch}===${archFilter} && ${item.platform}===${platFilter}`);
+                    let chk = item.arch === archFilter && item.platform === platFilter;
+                    if (chk && item.platform_version) {
+                        const osVersion = module.exports._getOsVersion();
+                        if (osVersion === item.platform_version) {
+                            chk = true;
+                        }
+                        else {
+                            chk = semver.satisfies(osVersion, item.platform_version);
+                        }
+                    }
+                    return chk;
+                });
+                if (file) {
+                    core_1.debug(`matched ${candidate.version}`);
+                    match = candidate;
+                    break;
+                }
+            }
+        }
+        if (match && file) {
+            // clone since we're mutating the file list to be only the file that matches
+            result = Object.assign({}, match);
+            result.files = [file];
+        }
+        return result;
+    });
+}
+exports._findMatch = _findMatch;
+function _getOsVersion() {
+    // TODO: add windows and other linux, arm variants
+    // right now filtering on version is only an ubuntu and macos scenario for tools we build for hosted (python)
+    const plat = os.platform();
+    let version = '';
+    if (plat === 'darwin') {
+        version = cp.execSync('sw_vers -productVersion').toString();
+    }
+    else if (plat === 'linux') {
+        // lsb_release process not in some containers, readfile
+        // Run cat /etc/lsb-release
+        // DISTRIB_ID=Ubuntu
+        // DISTRIB_RELEASE=18.04
+        // DISTRIB_CODENAME=bionic
+        // DISTRIB_DESCRIPTION="Ubuntu 18.04.4 LTS"
+        const lsbContents = module.exports._readLinuxVersionFile();
+        if (lsbContents) {
+            const lines = lsbContents.split('\n');
+            for (const line of lines) {
+                const parts = line.split('=');
+                if (parts.length === 2 && parts[0].trim() === 'DISTRIB_RELEASE') {
+                    version = parts[1].trim();
+                    break;
+                }
+            }
+        }
+    }
+    return version;
+}
+exports._getOsVersion = _getOsVersion;
+function _readLinuxVersionFile() {
+    const lsbFile = '/etc/lsb-release';
+    let contents = '';
+    if (fs.existsSync(lsbFile)) {
+        contents = fs.readFileSync(lsbFile).toString();
+    }
+    return contents;
+}
+exports._readLinuxVersionFile = _readLinuxVersionFile;
+//# sourceMappingURL=manifest.js.map
 
 /***/ }),
 
@@ -13127,14 +13253,27 @@ exports.FixedSizeSet = FixedSizeSet;
 
 "use strict";
 
+var __createBinding = (this && this.__createBinding) || (Object.create ? (function(o, m, k, k2) {
+    if (k2 === undefined) k2 = k;
+    Object.defineProperty(o, k2, { enumerable: true, get: function() { return m[k]; } });
+}) : (function(o, m, k, k2) {
+    if (k2 === undefined) k2 = k;
+    o[k2] = m[k];
+}));
+var __setModuleDefault = (this && this.__setModuleDefault) || (Object.create ? (function(o, v) {
+    Object.defineProperty(o, "default", { enumerable: true, value: v });
+}) : function(o, v) {
+    o["default"] = v;
+});
 var __importStar = (this && this.__importStar) || function (mod) {
     if (mod && mod.__esModule) return mod;
     var result = {};
-    if (mod != null) for (var k in mod) if (Object.hasOwnProperty.call(mod, k)) result[k] = mod[k];
-    result["default"] = mod;
+    if (mod != null) for (var k in mod) if (k !== "default" && Object.hasOwnProperty.call(mod, k)) __createBinding(result, mod, k);
+    __setModuleDefault(result, mod);
     return result;
 };
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.isDarwin = exports.isWindows = exports.getTempDir = void 0;
 const path = __importStar(__webpack_require__(622));
 function getTempDir() {
     let tempDirectory = process.env.RUNNER_TEMP;
@@ -13163,6 +13302,10 @@ function isWindows() {
     return process.platform === 'win32';
 }
 exports.isWindows = isWindows;
+function isDarwin() {
+    return process.platform === 'darwin';
+}
+exports.isDarwin = isDarwin;
 
 
 /***/ }),
@@ -13243,6 +13386,25 @@ exports.ObjectCache = ObjectCache;
 
 "use strict";
 
+var __createBinding = (this && this.__createBinding) || (Object.create ? (function(o, m, k, k2) {
+    if (k2 === undefined) k2 = k;
+    Object.defineProperty(o, k2, { enumerable: true, get: function() { return m[k]; } });
+}) : (function(o, m, k, k2) {
+    if (k2 === undefined) k2 = k;
+    o[k2] = m[k];
+}));
+var __setModuleDefault = (this && this.__setModuleDefault) || (Object.create ? (function(o, v) {
+    Object.defineProperty(o, "default", { enumerable: true, value: v });
+}) : function(o, v) {
+    o["default"] = v;
+});
+var __importStar = (this && this.__importStar) || function (mod) {
+    if (mod && mod.__esModule) return mod;
+    var result = {};
+    if (mod != null) for (var k in mod) if (k !== "default" && Object.hasOwnProperty.call(mod, k)) __createBinding(result, mod, k);
+    __setModuleDefault(result, mod);
+    return result;
+};
 var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
     function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
     return new (P || (P = Promise))(function (resolve, reject) {
@@ -13252,14 +13414,8 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
         step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 };
-var __importStar = (this && this.__importStar) || function (mod) {
-    if (mod && mod.__esModule) return mod;
-    var result = {};
-    if (mod != null) for (var k in mod) if (Object.hasOwnProperty.call(mod, k)) result[k] = mod[k];
-    result["default"] = mod;
-    return result;
-};
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.generate = exports.configAuthentication = exports.SETTINGS_FILE = exports.M2_DIR = void 0;
 const fs = __importStar(__webpack_require__(747));
 const os = __importStar(__webpack_require__(87));
 const path = __importStar(__webpack_require__(622));
@@ -13269,7 +13425,7 @@ const xmlbuilder2_1 = __webpack_require__(255);
 const constants = __importStar(__webpack_require__(694));
 exports.M2_DIR = '.m2';
 exports.SETTINGS_FILE = 'settings.xml';
-function configAuthentication(id, username, password, gpgPassphrase = undefined) {
+function configAuthentication(id, username, password, overwriteSettings = true, gpgPassphrase = undefined) {
     return __awaiter(this, void 0, void 0, function* () {
         console.log(`creating ${exports.SETTINGS_FILE} with server-id: ${id};`, 'environment variables:', `username=\$${username},`, `password=\$${password},`, `and gpg-passphrase=${gpgPassphrase ? '$' + gpgPassphrase : null}`);
         // when an alternate m2 location is specified use only that location (no .m2 directory)
@@ -13277,7 +13433,7 @@ function configAuthentication(id, username, password, gpgPassphrase = undefined)
         const settingsDirectory = path.join(core.getInput(constants.INPUT_SETTINGS_PATH) || os.homedir(), core.getInput(constants.INPUT_SETTINGS_PATH) ? '' : exports.M2_DIR);
         yield io.mkdirP(settingsDirectory);
         core.debug(`created directory ${settingsDirectory}`);
-        yield write(settingsDirectory, generate(id, username, password, gpgPassphrase));
+        yield write(settingsDirectory, generate(id, username, password, gpgPassphrase), overwriteSettings);
     });
 }
 exports.configAuthentication = configAuthentication;
@@ -13309,14 +13465,19 @@ function generate(id, username, password, gpgPassphrase = undefined) {
     return xmlbuilder2_1.create(xmlObj).end({ headless: true, prettyPrint: true, width: 80 });
 }
 exports.generate = generate;
-function write(directory, settings) {
+function write(directory, settings, overwriteSettings) {
     return __awaiter(this, void 0, void 0, function* () {
         const location = path.join(directory, exports.SETTINGS_FILE);
-        if (fs.existsSync(location)) {
+        const exists = fs.existsSync(location);
+        if (exists && overwriteSettings) {
             console.warn(`overwriting existing file ${location}`);
         }
-        else {
+        else if (!exists) {
             console.log(`writing ${location}`);
+        }
+        else {
+            console.log(`not overwriting existing file ${location}`);
+            return;
         }
         return fs.writeFileSync(location, settings, {
             encoding: 'utf-8',
@@ -19898,13 +20059,17 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const core = __importStar(__webpack_require__(470));
 const io = __importStar(__webpack_require__(1));
 const fs = __importStar(__webpack_require__(747));
+const mm = __importStar(__webpack_require__(31));
 const os = __importStar(__webpack_require__(87));
 const path = __importStar(__webpack_require__(622));
 const httpm = __importStar(__webpack_require__(539));
 const semver = __importStar(__webpack_require__(280));
+const stream = __importStar(__webpack_require__(794));
+const util = __importStar(__webpack_require__(669));
 const v4_1 = __importDefault(__webpack_require__(826));
 const exec_1 = __webpack_require__(986);
 const assert_1 = __webpack_require__(357);
+const retry_helper_1 = __webpack_require__(979);
 class HTTPError extends Error {
     constructor(httpStatusCode) {
         super(`Unexpected HTTP response: ${httpStatusCode}`);
@@ -19914,87 +20079,90 @@ class HTTPError extends Error {
 }
 exports.HTTPError = HTTPError;
 const IS_WINDOWS = process.platform === 'win32';
+const IS_MAC = process.platform === 'darwin';
 const userAgent = 'actions/tool-cache';
-// On load grab temp directory and cache directory and remove them from env (currently don't want to expose this)
-let tempDirectory = process.env['RUNNER_TEMP'] || '';
-let cacheRoot = process.env['RUNNER_TOOL_CACHE'] || '';
-// If directories not found, place them in common temp locations
-if (!tempDirectory || !cacheRoot) {
-    let baseLocation;
-    if (IS_WINDOWS) {
-        // On windows use the USERPROFILE env variable
-        baseLocation = process.env['USERPROFILE'] || 'C:\\';
-    }
-    else {
-        if (process.platform === 'darwin') {
-            baseLocation = '/Users';
-        }
-        else {
-            baseLocation = '/home';
-        }
-    }
-    if (!tempDirectory) {
-        tempDirectory = path.join(baseLocation, 'actions', 'temp');
-    }
-    if (!cacheRoot) {
-        cacheRoot = path.join(baseLocation, 'actions', 'cache');
-    }
-}
 /**
  * Download a tool from an url and stream it into a file
  *
  * @param url       url of tool to download
  * @param dest      path to download tool
+ * @param auth      authorization header
  * @returns         path to downloaded tool
  */
-function downloadTool(url, dest) {
+function downloadTool(url, dest, auth) {
     return __awaiter(this, void 0, void 0, function* () {
-        // Wrap in a promise so that we can resolve from within stream callbacks
-        return new Promise((resolve, reject) => __awaiter(this, void 0, void 0, function* () {
-            try {
-                const http = new httpm.HttpClient(userAgent, [], {
-                    allowRetries: true,
-                    maxRetries: 3
-                });
-                dest = dest || path.join(tempDirectory, v4_1.default());
-                yield io.mkdirP(path.dirname(dest));
-                core.debug(`Downloading ${url}`);
-                core.debug(`Downloading ${dest}`);
-                if (fs.existsSync(dest)) {
-                    throw new Error(`Destination file path ${dest} already exists`);
+        dest = dest || path.join(_getTempDirectory(), v4_1.default());
+        yield io.mkdirP(path.dirname(dest));
+        core.debug(`Downloading ${url}`);
+        core.debug(`Destination ${dest}`);
+        const maxAttempts = 3;
+        const minSeconds = _getGlobal('TEST_DOWNLOAD_TOOL_RETRY_MIN_SECONDS', 10);
+        const maxSeconds = _getGlobal('TEST_DOWNLOAD_TOOL_RETRY_MAX_SECONDS', 20);
+        const retryHelper = new retry_helper_1.RetryHelper(maxAttempts, minSeconds, maxSeconds);
+        return yield retryHelper.execute(() => __awaiter(this, void 0, void 0, function* () {
+            return yield downloadToolAttempt(url, dest || '', auth);
+        }), (err) => {
+            if (err instanceof HTTPError && err.httpStatusCode) {
+                // Don't retry anything less than 500, except 408 Request Timeout and 429 Too Many Requests
+                if (err.httpStatusCode < 500 &&
+                    err.httpStatusCode !== 408 &&
+                    err.httpStatusCode !== 429) {
+                    return false;
                 }
-                const response = yield http.get(url);
-                if (response.message.statusCode !== 200) {
-                    const err = new HTTPError(response.message.statusCode);
-                    core.debug(`Failed to download from "${url}". Code(${response.message.statusCode}) Message(${response.message.statusMessage})`);
-                    throw err;
-                }
-                const file = fs.createWriteStream(dest);
-                file.on('open', () => __awaiter(this, void 0, void 0, function* () {
-                    try {
-                        const stream = response.message.pipe(file);
-                        stream.on('close', () => {
-                            core.debug('download complete');
-                            resolve(dest);
-                        });
-                    }
-                    catch (err) {
-                        core.debug(`Failed to download from "${url}". Code(${response.message.statusCode}) Message(${response.message.statusMessage})`);
-                        reject(err);
-                    }
-                }));
-                file.on('error', err => {
-                    file.end();
-                    reject(err);
-                });
             }
-            catch (err) {
-                reject(err);
-            }
-        }));
+            // Otherwise retry
+            return true;
+        });
     });
 }
 exports.downloadTool = downloadTool;
+function downloadToolAttempt(url, dest, auth) {
+    return __awaiter(this, void 0, void 0, function* () {
+        if (fs.existsSync(dest)) {
+            throw new Error(`Destination file path ${dest} already exists`);
+        }
+        // Get the response headers
+        const http = new httpm.HttpClient(userAgent, [], {
+            allowRetries: false
+        });
+        let headers;
+        if (auth) {
+            core.debug('set auth');
+            headers = {
+                authorization: auth
+            };
+        }
+        const response = yield http.get(url, headers);
+        if (response.message.statusCode !== 200) {
+            const err = new HTTPError(response.message.statusCode);
+            core.debug(`Failed to download from "${url}". Code(${response.message.statusCode}) Message(${response.message.statusMessage})`);
+            throw err;
+        }
+        // Download the response body
+        const pipeline = util.promisify(stream.pipeline);
+        const responseMessageFactory = _getGlobal('TEST_DOWNLOAD_TOOL_RESPONSE_MESSAGE_FACTORY', () => response.message);
+        const readStream = responseMessageFactory();
+        let succeeded = false;
+        try {
+            yield pipeline(readStream, fs.createWriteStream(dest));
+            core.debug('download complete');
+            succeeded = true;
+            return dest;
+        }
+        finally {
+            // Error, delete dest before retry
+            if (!succeeded) {
+                core.debug('download failed');
+                try {
+                    yield io.rmRF(dest);
+                }
+                catch (err) {
+                    core.debug(`Failed to delete '${dest}'. ${err.message}`);
+                }
+            }
+        }
+    });
+}
 /**
  * Extract a .7z file
  *
@@ -20019,9 +20187,10 @@ function extract7z(file, dest, _7zPath) {
         process.chdir(dest);
         if (_7zPath) {
             try {
+                const logLevel = core.isDebug() ? '-bb1' : '-bb0';
                 const args = [
                     'x',
-                    '-bb1',
+                    logLevel,
                     '-bd',
                     '-sccUTF-8',
                     file
@@ -20084,17 +20253,29 @@ function extractTar(file, dest, flags = 'xz') {
         // Create dest
         dest = yield _createExtractFolder(dest);
         // Determine whether GNU tar
+        core.debug('Checking tar --version');
         let versionOutput = '';
         yield exec_1.exec('tar --version', [], {
             ignoreReturnCode: true,
+            silent: true,
             listeners: {
                 stdout: (data) => (versionOutput += data.toString()),
                 stderr: (data) => (versionOutput += data.toString())
             }
         });
+        core.debug(versionOutput.trim());
         const isGnuTar = versionOutput.toUpperCase().includes('GNU TAR');
         // Initialize args
-        const args = [flags];
+        let args;
+        if (flags instanceof Array) {
+            args = flags;
+        }
+        else {
+            args = [flags];
+        }
+        if (core.isDebug() && !flags.includes('v')) {
+            args.push('-v');
+        }
         let destArg = dest;
         let fileArg = file;
         if (IS_WINDOWS && isGnuTar) {
@@ -20114,6 +20295,36 @@ function extractTar(file, dest, flags = 'xz') {
     });
 }
 exports.extractTar = extractTar;
+/**
+ * Extract a xar compatible archive
+ *
+ * @param file     path to the archive
+ * @param dest     destination directory. Optional.
+ * @param flags    flags for the xar. Optional.
+ * @returns        path to the destination directory
+ */
+function extractXar(file, dest, flags = []) {
+    return __awaiter(this, void 0, void 0, function* () {
+        assert_1.ok(IS_MAC, 'extractXar() not supported on current OS');
+        assert_1.ok(file, 'parameter "file" is required');
+        dest = yield _createExtractFolder(dest);
+        let args;
+        if (flags instanceof Array) {
+            args = flags;
+        }
+        else {
+            args = [flags];
+        }
+        args.push('-x', '-C', dest, '-f', file);
+        if (core.isDebug()) {
+            args.push('-v');
+        }
+        const xarPath = yield io.which('xar', true);
+        yield exec_1.exec(`"${xarPath}"`, _unique(args));
+        return dest;
+    });
+}
+exports.extractXar = extractXar;
 /**
  * Extract a zip
  *
@@ -20144,7 +20355,7 @@ function extractZipWin(file, dest) {
         const escapedDest = dest.replace(/'/g, "''").replace(/"|\n|\r/g, '');
         const command = `$ErrorActionPreference = 'Stop' ; try { Add-Type -AssemblyName System.IO.Compression.FileSystem } catch { } ; [System.IO.Compression.ZipFile]::ExtractToDirectory('${escapedFile}', '${escapedDest}')`;
         // run powershell
-        const powershellPath = yield io.which('powershell');
+        const powershellPath = yield io.which('powershell', true);
         const args = [
             '-NoLogo',
             '-Sta',
@@ -20160,8 +20371,12 @@ function extractZipWin(file, dest) {
 }
 function extractZipNix(file, dest) {
     return __awaiter(this, void 0, void 0, function* () {
-        const unzipPath = yield io.which('unzip');
-        yield exec_1.exec(`"${unzipPath}"`, [file], { cwd: dest });
+        const unzipPath = yield io.which('unzip', true);
+        const args = [file];
+        if (!core.isDebug()) {
+            args.unshift('-q');
+        }
+        yield exec_1.exec(`"${unzipPath}"`, args, { cwd: dest });
     });
 }
 /**
@@ -20252,7 +20467,7 @@ function find(toolName, versionSpec, arch) {
     let toolPath = '';
     if (versionSpec) {
         versionSpec = semver.clean(versionSpec) || '';
-        const cachePath = path.join(cacheRoot, toolName, versionSpec, arch);
+        const cachePath = path.join(_getCacheDirectory(), toolName, versionSpec, arch);
         core.debug(`checking cache: ${cachePath}`);
         if (fs.existsSync(cachePath) && fs.existsSync(`${cachePath}.complete`)) {
             core.debug(`Found tool in cache ${toolName} ${versionSpec} ${arch}`);
@@ -20274,7 +20489,7 @@ exports.find = find;
 function findAllVersions(toolName, arch) {
     const versions = [];
     arch = arch || os.arch();
-    const toolPath = path.join(cacheRoot, toolName);
+    const toolPath = path.join(_getCacheDirectory(), toolName);
     if (fs.existsSync(toolPath)) {
         const children = fs.readdirSync(toolPath);
         for (const child of children) {
@@ -20289,11 +20504,56 @@ function findAllVersions(toolName, arch) {
     return versions;
 }
 exports.findAllVersions = findAllVersions;
+function getManifestFromRepo(owner, repo, auth, branch = 'master') {
+    return __awaiter(this, void 0, void 0, function* () {
+        let releases = [];
+        const treeUrl = `https://api.github.com/repos/${owner}/${repo}/git/trees/${branch}`;
+        const http = new httpm.HttpClient('tool-cache');
+        const headers = {};
+        if (auth) {
+            core.debug('set auth');
+            headers.authorization = auth;
+        }
+        const response = yield http.getJson(treeUrl, headers);
+        if (!response.result) {
+            return releases;
+        }
+        let manifestUrl = '';
+        for (const item of response.result.tree) {
+            if (item.path === 'versions-manifest.json') {
+                manifestUrl = item.url;
+                break;
+            }
+        }
+        headers['accept'] = 'application/vnd.github.VERSION.raw';
+        let versionsRaw = yield (yield http.get(manifestUrl, headers)).readBody();
+        if (versionsRaw) {
+            // shouldn't be needed but protects against invalid json saved with BOM
+            versionsRaw = versionsRaw.replace(/^\uFEFF/, '');
+            try {
+                releases = JSON.parse(versionsRaw);
+            }
+            catch (_a) {
+                core.debug('Invalid json');
+            }
+        }
+        return releases;
+    });
+}
+exports.getManifestFromRepo = getManifestFromRepo;
+function findFromManifest(versionSpec, stable, manifest, archFilter = os.arch()) {
+    return __awaiter(this, void 0, void 0, function* () {
+        // wrap the internal impl
+        const match = yield mm._findMatch(versionSpec, stable, manifest, archFilter);
+        return match;
+    });
+}
+exports.findFromManifest = findFromManifest;
 function _createExtractFolder(dest) {
     return __awaiter(this, void 0, void 0, function* () {
         if (!dest) {
             // create a temp dir
-            dest = path.join(tempDirectory, v4_1.default());
+            dest = path.join(_getTempDirectory(), v4_1.default());
         }
         yield io.mkdirP(dest);
         return dest;
@@ -20301,7 +20561,7 @@ function _createExtractFolder(dest) {
 }
 function _createToolPath(tool, version, arch) {
     return __awaiter(this, void 0, void 0, function* () {
-        const folderPath = path.join(cacheRoot, tool, semver.clean(version) || version, arch || '');
+        const folderPath = path.join(_getCacheDirectory(), tool, semver.clean(version) || version, arch || '');
         core.debug(`destination ${folderPath}`);
         const markerPath = `${folderPath}.complete`;
         yield io.rmRF(folderPath);
@@ -20311,7 +20571,7 @@ function _createToolPath(tool, version, arch) {
     });
 }
 function _completeToolPath(tool, version, arch) {
-    const folderPath = path.join(cacheRoot, tool, semver.clean(version) || version, arch || '');
+    const folderPath = path.join(_getCacheDirectory(), tool, semver.clean(version) || version, arch || '');
     const markerPath = `${folderPath}.complete`;
     fs.writeFileSync(markerPath, '');
     core.debug('finished caching tool');
@@ -20347,6 +20607,38 @@ function _evaluateVersions(versions, versionSpec) {
         core.debug('match not found');
     }
     return version;
+}
+/**
+ * Gets RUNNER_TOOL_CACHE
+ */
+function _getCacheDirectory() {
+    const cacheDirectory = process.env['RUNNER_TOOL_CACHE'] || '';
+    assert_1.ok(cacheDirectory, 'Expected RUNNER_TOOL_CACHE to be defined');
+    return cacheDirectory;
+}
+/**
+ * Gets RUNNER_TEMP
+ */
+function _getTempDirectory() {
+    const tempDirectory = process.env['RUNNER_TEMP'] || '';
+    assert_1.ok(tempDirectory, 'Expected RUNNER_TEMP to be defined');
+    return tempDirectory;
+}
+/**
+ * Gets a global variable
+ */
+function _getGlobal(key, defaultValue) {
+    /* eslint-disable @typescript-eslint/no-explicit-any */
+    const value = global[key];
+    /* eslint-enable @typescript-eslint/no-explicit-any */
+    return value !== undefined ? value : defaultValue;
+}
+/**
+ * Returns an array of unique values.
+ * @param values Values to make unique.
+ */
+function _unique(values) {
+    return Array.from(new Set(values));
 }
 //# sourceMappingURL=tool-cache.js.map
 
@@ -20935,6 +21227,104 @@ class HttpClient {
     }
 }
 exports.HttpClient = HttpClient;
+
+
+/***/ }),
+
+/***/ 540:
+/***/ (function(__unusedmodule, exports, __webpack_require__) {
+
+"use strict";
+
+var __createBinding = (this && this.__createBinding) || (Object.create ? (function(o, m, k, k2) {
+    if (k2 === undefined) k2 = k;
+    Object.defineProperty(o, k2, { enumerable: true, get: function() { return m[k]; } });
+}) : (function(o, m, k, k2) {
+    if (k2 === undefined) k2 = k;
+    o[k2] = m[k];
+}));
+var __setModuleDefault = (this && this.__setModuleDefault) || (Object.create ? (function(o, v) {
+    Object.defineProperty(o, "default", { enumerable: true, value: v });
+}) : function(o, v) {
+    o["default"] = v;
+});
+var __importStar = (this && this.__importStar) || function (mod) {
+    if (mod && mod.__esModule) return mod;
+    var result = {};
+    if (mod != null) for (var k in mod) if (k !== "default" && Object.hasOwnProperty.call(mod, k)) __createBinding(result, mod, k);
+    __setModuleDefault(result, mod);
+    return result;
+};
+var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
+    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
+    return new (P || (P = Promise))(function (resolve, reject) {
+        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
+        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
+        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
+        step((generator = generator.apply(thisArg, _arguments || [])).next());
+    });
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+const core = __importStar(__webpack_require__(470));
+const installer = __importStar(__webpack_require__(923));
+const auth = __importStar(__webpack_require__(331));
+const gpg = __importStar(__webpack_require__(884));
+const constants = __importStar(__webpack_require__(694));
+const path = __importStar(__webpack_require__(622));
+function run() {
+    return __awaiter(this, void 0, void 0, function* () {
+        try {
+            // Type of release. Either a release version, known as General Availability ("ga") or an Early Access ("ea")
+            const release_type = core.getInput(constants.INPUT_RELEASE_TYPE) || 'ga';
+            // OpenJDK feature release version, example: "8", "11", "13".
+            const javaVersion = core.getInput(constants.INPUT_JAVA_VERSION, {
+                required: true
+            });
+            // OpenJDK implementation, example: "hotspot", "openj9".
+            const openjdk_impl = core.getInput(constants.INPUT_OPENJDK_IMPL) || 'hotspot';
+            // Architecture of the JDK, example: "x64", "x32", "arm", "ppc64", "s390x", "ppc64le", "aarch64", "sparcv9".
+            const arch = core.getInput(constants.INPUT_ARCHITECTURE, { required: true }) || 'x64';
+            // Heap size for OpenJ9, example: "normal", "large" (for heaps >=57 GiB).
+            const heap_size = core.getInput(constants.INPUT_HEAP_SIZE, { required: false }) || 'normal';
+            // Exact release of OpenJDK, example: "latest", "jdk-11.0.4+11.4", "jdk8u172-b00-201807161800".
+            const release = core.getInput(constants.INPUT_RELEASE, { required: false }) || 'latest';
+            // The image type (jre, jdk)
+            const javaPackage = core.getInput(constants.INPUT_JAVA_PACKAGE, {
+                required: true
+            }) || 'jdk';
+            const jdkFile = core.getInput(constants.INPUT_JDK_FILE, { required: false });
+            yield installer.getAdoptOpenJDK(release_type, javaVersion, javaPackage, openjdk_impl, arch, heap_size, release, jdkFile);
+            const matchersPath = path.join(__dirname, '..', '..', '.github');
+            console.log(`##[add-matcher]${path.join(matchersPath, 'java.json')}`);
+            const id = core.getInput(constants.INPUT_SERVER_ID, { required: false });
+            const username = core.getInput(constants.INPUT_SERVER_USERNAME, {
+                required: false
+            });
+            const password = core.getInput(constants.INPUT_SERVER_PASSWORD, {
+                required: false
+            });
+            const overwriteSettings = core.getInput(constants.INPUT_OVERWRITE_SETTINGS, { required: false }) ||
+                'true';
+            const gpgPrivateKey = core.getInput(constants.INPUT_GPG_PRIVATE_KEY, { required: false }) ||
+                constants.INPUT_DEFAULT_GPG_PRIVATE_KEY;
+            const gpgPassphrase = core.getInput(constants.INPUT_GPG_PASSPHRASE, { required: false }) ||
+                (gpgPrivateKey ? constants.INPUT_DEFAULT_GPG_PASSPHRASE : undefined);
+            if (gpgPrivateKey) {
+                core.setSecret(gpgPrivateKey);
+            }
+            yield auth.configAuthentication(id, username, password, overwriteSettings === 'true', gpgPassphrase);
+            if (gpgPrivateKey) {
+                core.info('importing private key');
+                const keyFingerprint = (yield gpg.importKey(gpgPrivateKey)) || '';
+                core.saveState(constants.STATE_GPG_PRIVATE_KEY_FINGERPRINT, keyFingerprint);
+            }
+        }
+        catch (error) {
+            core.setFailed(error.message);
+        }
+    });
+}
+run();
 
 
 /***/ }),
@@ -25753,6 +26143,7 @@ exports.range = range;
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.STATE_GPG_PRIVATE_KEY_FINGERPRINT = exports.INPUT_DEFAULT_GPG_PASSPHRASE = exports.INPUT_DEFAULT_GPG_PRIVATE_KEY = exports.INPUT_OVERWRITE_SETTINGS = exports.INPUT_RELEASE = exports.INPUT_HEAP_SIZE = exports.INPUT_OPENJDK_IMPL = exports.INPUT_RELEASE_TYPE = exports.INPUT_GPG_PASSPHRASE = exports.INPUT_GPG_PRIVATE_KEY = exports.INPUT_SETTINGS_PATH = exports.INPUT_SERVER_PASSWORD = exports.INPUT_SERVER_USERNAME = exports.INPUT_SERVER_ID = exports.INPUT_JDK_FILE = exports.INPUT_JAVA_PACKAGE = exports.INPUT_ARCHITECTURE = exports.INPUT_JAVA_VERSION = exports.INPUT_VERSION = void 0;
 exports.INPUT_VERSION = 'version';
 exports.INPUT_JAVA_VERSION = 'java-version';
 exports.INPUT_ARCHITECTURE = 'architecture';
@@ -25764,6 +26155,11 @@ exports.INPUT_SERVER_PASSWORD = 'server-password';
 exports.INPUT_SETTINGS_PATH = 'settings-path';
 exports.INPUT_GPG_PRIVATE_KEY = 'gpg-private-key';
 exports.INPUT_GPG_PASSPHRASE = 'gpg-passphrase';
+exports.INPUT_RELEASE_TYPE = 'release_type';
+exports.INPUT_OPENJDK_IMPL = 'openjdk_impl';
+exports.INPUT_HEAP_SIZE = 'heap_size';
+exports.INPUT_RELEASE = 'release';
+exports.INPUT_OVERWRITE_SETTINGS = 'overwrite-settings';
 exports.INPUT_DEFAULT_GPG_PRIVATE_KEY = undefined;
 exports.INPUT_DEFAULT_GPG_PASSPHRASE = 'GPG_PASSPHRASE';
 exports.STATE_GPG_PRIVATE_KEY_FINGERPRINT = 'gpg-private-key-fingerprint';
@@ -28579,6 +28975,13 @@ exports.AbortSignalImpl = AbortSignalImpl;
 
 /***/ }),
 
+/***/ 794:
+/***/ (function(module) {
+
+module.exports = require("stream");
+
+/***/ }),
+
 /***/ 796:
 /***/ (function(__unusedmodule, exports, __webpack_require__) {
 
@@ -28745,83 +29148,6 @@ class NodeIteratorImpl extends TraverserImpl_1.TraverserImpl {
 }
 exports.NodeIteratorImpl = NodeIteratorImpl;
 //# sourceMappingURL=NodeIteratorImpl.js.map
-
-/***/ }),
-
-/***/ 811:
-/***/ (function(__unusedmodule, exports, __webpack_require__) {
-
-"use strict";
-
-var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
-    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
-    return new (P || (P = Promise))(function (resolve, reject) {
-        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
-        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
-        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
-        step((generator = generator.apply(thisArg, _arguments || [])).next());
-    });
-};
-var __importStar = (this && this.__importStar) || function (mod) {
-    if (mod && mod.__esModule) return mod;
-    var result = {};
-    if (mod != null) for (var k in mod) if (Object.hasOwnProperty.call(mod, k)) result[k] = mod[k];
-    result["default"] = mod;
-    return result;
-};
-Object.defineProperty(exports, "__esModule", { value: true });
-const core = __importStar(__webpack_require__(470));
-const installer = __importStar(__webpack_require__(923));
-const auth = __importStar(__webpack_require__(331));
-const gpg = __importStar(__webpack_require__(884));
-const constants = __importStar(__webpack_require__(694));
-const path = __importStar(__webpack_require__(622));
-function run() {
-    return __awaiter(this, void 0, void 0, function* () {
-        try {
-            let version = core.getInput(constants.INPUT_VERSION);
-            if (!version) {
-                version = core.getInput(constants.INPUT_JAVA_VERSION, { required: true });
-            }
-            const arch = core.getInput(constants.INPUT_ARCHITECTURE, { required: true });
-            if (!['x86', 'x64'].includes(arch)) {
-                throw new Error(`architecture "${arch}" is not in [x86 | x64]`);
-            }
-            const javaPackage = core.getInput(constants.INPUT_JAVA_PACKAGE, {
-                required: true
-            });
-            const jdkFile = core.getInput(constants.INPUT_JDK_FILE, { required: false });
-            yield installer.getJava(version, arch, jdkFile, javaPackage);
-            const matchersPath = path.join(__dirname, '..', '..', '.github');
-            core.info(`##[add-matcher]${path.join(matchersPath, 'java.json')}`);
-            const id = core.getInput(constants.INPUT_SERVER_ID, { required: false });
-            const username = core.getInput(constants.INPUT_SERVER_USERNAME, {
-                required: false
-            });
-            const password = core.getInput(constants.INPUT_SERVER_PASSWORD, {
-                required: false
-            });
-            const gpgPrivateKey = core.getInput(constants.INPUT_GPG_PRIVATE_KEY, { required: false }) ||
-                constants.INPUT_DEFAULT_GPG_PRIVATE_KEY;
-            const gpgPassphrase = core.getInput(constants.INPUT_GPG_PASSPHRASE, { required: false }) ||
-                (gpgPrivateKey ? constants.INPUT_DEFAULT_GPG_PASSPHRASE : undefined);
-            if (gpgPrivateKey) {
-                core.setSecret(gpgPrivateKey);
-            }
-            yield auth.configAuthentication(id, username, password, gpgPassphrase);
-            if (gpgPrivateKey) {
-                core.info('importing private key');
-                const keyFingerprint = (yield gpg.importKey(gpgPrivateKey)) || '';
-                core.saveState(constants.STATE_GPG_PRIVATE_KEY_FINGERPRINT, keyFingerprint);
-            }
-        }
-        catch (error) {
-            core.setFailed(error.message);
-        }
-    });
-}
-run();
-
 
 /***/ }),
 
@@ -32684,6 +33010,25 @@ exports.CompareCache = CompareCache;
 
 "use strict";
 
+var __createBinding = (this && this.__createBinding) || (Object.create ? (function(o, m, k, k2) {
+    if (k2 === undefined) k2 = k;
+    Object.defineProperty(o, k2, { enumerable: true, get: function() { return m[k]; } });
+}) : (function(o, m, k, k2) {
+    if (k2 === undefined) k2 = k;
+    o[k2] = m[k];
+}));
+var __setModuleDefault = (this && this.__setModuleDefault) || (Object.create ? (function(o, v) {
+    Object.defineProperty(o, "default", { enumerable: true, value: v });
+}) : function(o, v) {
+    o["default"] = v;
+});
+var __importStar = (this && this.__importStar) || function (mod) {
+    if (mod && mod.__esModule) return mod;
+    var result = {};
+    if (mod != null) for (var k in mod) if (k !== "default" && Object.hasOwnProperty.call(mod, k)) __createBinding(result, mod, k);
+    __setModuleDefault(result, mod);
+    return result;
+};
 var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
     function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
     return new (P || (P = Promise))(function (resolve, reject) {
@@ -32693,14 +33038,8 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
         step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 };
-var __importStar = (this && this.__importStar) || function (mod) {
-    if (mod && mod.__esModule) return mod;
-    var result = {};
-    if (mod != null) for (var k in mod) if (Object.hasOwnProperty.call(mod, k)) result[k] = mod[k];
-    result["default"] = mod;
-    return result;
-};
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.deleteKey = exports.importKey = exports.PRIVATE_KEY_FILE = void 0;
 const fs = __importStar(__webpack_require__(747));
 const path = __importStar(__webpack_require__(622));
 const io = __importStar(__webpack_require__(1));
@@ -33467,6 +33806,25 @@ WebIDLAlgorithm_1.idl_defineConst(CDATASectionImpl.prototype, "_nodeType", inter
 
 "use strict";
 
+var __createBinding = (this && this.__createBinding) || (Object.create ? (function(o, m, k, k2) {
+    if (k2 === undefined) k2 = k;
+    Object.defineProperty(o, k2, { enumerable: true, get: function() { return m[k]; } });
+}) : (function(o, m, k, k2) {
+    if (k2 === undefined) k2 = k;
+    o[k2] = m[k];
+}));
+var __setModuleDefault = (this && this.__setModuleDefault) || (Object.create ? (function(o, v) {
+    Object.defineProperty(o, "default", { enumerable: true, value: v });
+}) : function(o, v) {
+    o["default"] = v;
+});
+var __importStar = (this && this.__importStar) || function (mod) {
+    if (mod && mod.__esModule) return mod;
+    var result = {};
+    if (mod != null) for (var k in mod) if (k !== "default" && Object.hasOwnProperty.call(mod, k)) __createBinding(result, mod, k);
+    __setModuleDefault(result, mod);
+    return result;
+};
 var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
     function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
     return new (P || (P = Promise))(function (resolve, reject) {
@@ -33476,25 +33834,28 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
         step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 };
-var __importStar = (this && this.__importStar) || function (mod) {
-    if (mod && mod.__esModule) return mod;
-    var result = {};
-    if (mod != null) for (var k in mod) if (Object.hasOwnProperty.call(mod, k)) result[k] = mod[k];
-    result["default"] = mod;
-    return result;
-};
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.getAdoptOpenJDK = exports.getJava = void 0;
 const core = __importStar(__webpack_require__(470));
-const io = __importStar(__webpack_require__(1));
 const exec = __importStar(__webpack_require__(986));
-const httpm = __importStar(__webpack_require__(539));
-const tc = __importStar(__webpack_require__(533));
 const fs = __importStar(__webpack_require__(747));
+const httpm = __importStar(__webpack_require__(539));
+const io = __importStar(__webpack_require__(1));
 const path = __importStar(__webpack_require__(622));
 const semver = __importStar(__webpack_require__(280));
+const tc = __importStar(__webpack_require__(533));
 const util = __importStar(__webpack_require__(322));
-const tempDirectory = util.getTempDir();
 const IS_WINDOWS = util.isWindows();
+const IS_MACOS = util.isDarwin();
+const toolName = 'AdoptOpenJDK';
+const os = getOsString(process.platform);
+const architectureAliases = new Map([
+    ['amd64', 'x64'],
+    ['i686', 'x32'],
+    ['x86', 'x32'],
+    ['x86_64', 'x64']
+]);
+const tempDirectory = util.getTempDir();
 function getJava(version, arch, jdkFile, javaPackage) {
     return __awaiter(this, void 0, void 0, function* () {
         let toolPath = tc.find(javaPackage, version);
@@ -33632,7 +33993,7 @@ function unzipJavaDownload(repoRoot, fileEnding, destinationFolder, extension) {
         const stats = fs.statSync(jdkFile);
         if (stats.isFile()) {
             yield extractFiles(jdkFile, fileEnding, destinationFolder);
-            const jdkDirectory = path.join(destinationFolder, fs.readdirSync(destinationFolder)[0]);
+            const jdkDirectory = getJdkDirectory(destinationFolder);
             yield unpackJars(jdkDirectory, path.join(jdkDirectory, 'bin'));
             return jdkDirectory;
         }
@@ -33736,6 +34097,89 @@ function normalizeVersion(version) {
         }
     }
     return version;
+}
+function getOsString(platform) {
+    switch (platform) {
+        case 'win32':
+            return 'windows';
+        case 'darwin':
+            return 'mac';
+        default:
+            return 'linux';
+    }
+}
+function getCacheVersionSpec(release_type, version, image_type, jvm_impl, os, arch, heap_size, release) {
+    return `1.0.0-${release_type}-${version}-${image_type}-${jvm_impl}-${os}-${arch}-${heap_size}-${release}`;
+}
+function getAdoptOpenJDK(release_type, version, image_type, jvm_impl, arch, heap_size, release, jdkFile) {
+    return __awaiter(this, void 0, void 0, function* () {
+        return downloadJavaBinary(release_type, version, image_type, jvm_impl, os, arch, heap_size, release, jdkFile);
+    });
+}
+exports.getAdoptOpenJDK = getAdoptOpenJDK;
+function getAdoptOpenJdkUrl(release_type, version, image_type, jvm_impl, os, arch, heap_size, release) {
+    const feature_version = version;
+    const release_type_parsed = release_type;
+    if (release == 'latest') {
+        return `https://api.adoptopenjdk.net/v3/binary/latest/${feature_version}/${release_type_parsed}/${os}/${arch}/${image_type}/${jvm_impl}/${heap_size}/adoptopenjdk`;
+    }
+    else {
+        const release_name = encodeURIComponent(release);
+        return `https://api.adoptopenjdk.net/v3/binary/version/${release_name}/${os}/${arch}/${image_type}/${jvm_impl}/${heap_size}/adoptopenjdk`;
+    }
+}
+function getJdkDirectory(destinationFolder) {
+    const jdkRoot = path.join(destinationFolder, fs.readdirSync(destinationFolder)[0]);
+    if (IS_MACOS) {
+        const binDirectory = path.join(jdkRoot, 'bin');
+        if (fs.existsSync(binDirectory)) {
+            return jdkRoot;
+        }
+        else {
+            return path.join(jdkRoot, 'Contents', 'Home');
+        }
+    }
+    else {
+        return jdkRoot;
+    }
+}
+function downloadJavaBinary(release_type, version, image_type, jvm_impl, os, arch, heap_size, release, jdkFile) {
+    return __awaiter(this, void 0, void 0, function* () {
+        const normalizedArchitecture = architectureAliases.get(arch) || arch;
+        const normalizedVersion = version.replace('openjdk', '');
+        const versionSpec = getCacheVersionSpec(release_type, normalizedVersion, image_type, jvm_impl, os, normalizedArchitecture, heap_size, release);
+        let toolPath = tc.find(toolName, versionSpec, normalizedArchitecture);
+        if (toolPath) {
+            core.debug(`Tool found in cache ${toolPath}`);
+        }
+        else {
+            let compressedFileExtension = '';
+            if (!jdkFile) {
+                core.debug('Downloading JDK from AdoptOpenJDK');
+                const url = getAdoptOpenJdkUrl(release_type, normalizedVersion, image_type, jvm_impl, os, normalizedArchitecture, heap_size, release);
+                core.debug(`AdoptOpenJDK URL: ${url}`);
+                jdkFile = yield tc.downloadTool(url);
+                compressedFileExtension = IS_WINDOWS ? '.zip' : '.tar.gz';
+            }
+            compressedFileExtension = compressedFileExtension || getFileEnding(jdkFile);
+            let tempDir = path.join(tempDirectory, 'adoptopenjdk_' + Math.floor(Math.random() * 2000000000));
+            const jdkDir = yield unzipJavaDownload(jdkFile, compressedFileExtension, tempDir);
+            core.debug(`JDK extracted to ${jdkDir}`);
+            toolPath = yield tc.cacheDir(jdkDir, toolName, versionSpec, normalizedArchitecture);
+        }
+        let extendedJavaHome = `JAVA_HOME_${normalizedVersion}_${normalizedArchitecture}`;
+        core.exportVariable(extendedJavaHome, toolPath); //TODO: remove for v2
+        // For portability reasons environment variables should only consist of
+        // uppercase letters, digits, and the underscore. Therefore we convert
+        // the extendedJavaHome variable to upper case and replace '.' symbols and
+        // any other non-alphanumeric characters with an underscore.
+        extendedJavaHome = extendedJavaHome.toUpperCase().replace(/[^0-9A-Z_]/g, '_');
+        core.exportVariable('JAVA_HOME', toolPath);
+        core.exportVariable(extendedJavaHome, toolPath);
+        core.addPath(path.join(toolPath, 'bin'));
+        core.setOutput('path', toolPath);
+        core.setOutput('version', normalizedVersion);
+    });
 }
 
 
@@ -35106,6 +35550,83 @@ exports.ObjectCache = ObjectCache;
 
 /***/ }),
 
+/***/ 979:
+/***/ (function(__unusedmodule, exports, __webpack_require__) {
+
+"use strict";
+
+var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
+    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
+    return new (P || (P = Promise))(function (resolve, reject) {
+        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
+        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
+        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
+        step((generator = generator.apply(thisArg, _arguments || [])).next());
+    });
+};
+var __importStar = (this && this.__importStar) || function (mod) {
+    if (mod && mod.__esModule) return mod;
+    var result = {};
+    if (mod != null) for (var k in mod) if (Object.hasOwnProperty.call(mod, k)) result[k] = mod[k];
+    result["default"] = mod;
+    return result;
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+const core = __importStar(__webpack_require__(470));
+/**
+ * Internal class for retries
+ */
+class RetryHelper {
+    constructor(maxAttempts, minSeconds, maxSeconds) {
+        if (maxAttempts < 1) {
+            throw new Error('max attempts should be greater than or equal to 1');
+        }
+        this.maxAttempts = maxAttempts;
+        this.minSeconds = Math.floor(minSeconds);
+        this.maxSeconds = Math.floor(maxSeconds);
+        if (this.minSeconds > this.maxSeconds) {
+            throw new Error('min seconds should be less than or equal to max seconds');
+        }
+    }
+    execute(action, isRetryable) {
+        return __awaiter(this, void 0, void 0, function* () {
+            let attempt = 1;
+            while (attempt < this.maxAttempts) {
+                // Try
+                try {
+                    return yield action();
+                }
+                catch (err) {
+                    if (isRetryable && !isRetryable(err)) {
+                        throw err;
+                    }
+                    core.info(err.message);
+                }
+                // Sleep
+                const seconds = this.getSleepAmount();
+                core.info(`Waiting ${seconds} seconds before trying again`);
+                yield this.sleep(seconds);
+                attempt++;
+            }
+            // Last attempt
+            return yield action();
+        });
+    }
+    getSleepAmount() {
+        return (Math.floor(Math.random() * (this.maxSeconds - this.minSeconds + 1)) +
+            this.minSeconds);
+    }
+    sleep(seconds) {
+        return __awaiter(this, void 0, void 0, function* () {
+            return new Promise(resolve => setTimeout(resolve, seconds * 1000));
+        });
+    }
+}
+exports.RetryHelper = RetryHelper;
+//# sourceMappingURL=retry-helper.js.map
+
+/***/ }),
+
 /***/ 983:
 /***/ (function(__unusedmodule, exports, __webpack_require__) {
 
@@ -35277,8 +35798,15 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
         step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 };
+var __importStar = (this && this.__importStar) || function (mod) {
+    if (mod && mod.__esModule) return mod;
+    var result = {};
+    if (mod != null) for (var k in mod) if (Object.hasOwnProperty.call(mod, k)) result[k] = mod[k];
+    result["default"] = mod;
+    return result;
+};
 Object.defineProperty(exports, "__esModule", { value: true });
-const tr = __webpack_require__(9);
+const tr = __importStar(__webpack_require__(9));
 /**
  * Exec a command.
  * Output will be streamed to the live console.

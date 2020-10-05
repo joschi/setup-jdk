@@ -5,7 +5,7 @@
   "description": "Setup JDK action",
   "main": "dist/setup/index.js",
   "scripts": {
-    "build": "ncc build -o dist/setup src/setup-java.ts && ncc build -o dist/cleanup src/cleanup-java.ts",
+    "build": "ncc build -o dist/setup src/setup-jdk.ts && ncc build -o dist/cleanup src/cleanup-java.ts",
     "format": "prettier --write **/*.ts",
     "format-check": "prettier --check **/*.ts",
     "prerelease": "npm run-script build",

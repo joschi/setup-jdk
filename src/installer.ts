@@ -1,5 +1,3 @@
-let tempDirectory = process.env['RUNNER_TEMP'] || '';
-
 import * as core from '@actions/core';
 import * as exec from '@actions/exec';
 import * as fs from 'fs';
@@ -8,9 +6,10 @@ import * as io from '@actions/io';
 import * as path from 'path';
 import * as semver from 'semver';
 import * as tc from '@actions/tool-cache';
+import * as util from './util';
 
-const IS_WINDOWS = process.platform === 'win32';
-const IS_MACOS = process.platform === 'darwin';
+const IS_WINDOWS = util.isWindows();
+const IS_MACOS = util.isDarwin();
 const toolName = 'AdoptOpenJDK';
 const os = getOsString(process.platform);
 const architectureAliases = new Map<string, string>([
@@ -20,20 +19,7 @@ const architectureAliases = new Map<string, string>([
   ['x86_64', 'x64']
 ]);
 
-if (!tempDirectory) {
-  let baseLocation;
-  if (IS_WINDOWS) {
-    // On windows use the USERPROFILE env variable
-    baseLocation = process.env['USERPROFILE'] || 'C:\\';
-  } else {
-    if (process.platform === 'darwin') {
-      baseLocation = '/Users';
-    } else {
-      baseLocation = '/home';
-    }
-  }
-  tempDirectory = path.join(baseLocation, 'actions', 'temp');
-}
+const tempDirectory = util.getTempDir();
 
 export async function getJava(
   version: string,
@@ -69,7 +55,7 @@ export async function getJava(
 
       const contents = await response.readBody();
       const refs = contents.match(/<a href.*\">/gi) || [];
-      const downloadInfo = getDownloadInfo(refs, version, javaPackage);
+      const downloadInfo = getDownloadInfo(refs, version, arch, javaPackage);
       jdkFile = await tc.downloadTool(downloadInfo.url);
       version = downloadInfo.version;
       compressedFileExtension = IS_WINDOWS ? '.zip' : '.tar.gz';
@@ -202,19 +188,25 @@ async function unzipJavaDownload(
 function getDownloadInfo(
   refs: string[],
   version: string,
+  arch: string,
   javaPackage: string
 ): {version: string; url: string} {
   version = normalizeVersion(version);
+
+  const archExtension = arch === 'x86' ? 'i686' : 'x64';
+
   let extension = '';
   if (IS_WINDOWS) {
-    extension = `-win_x64.zip`;
+    extension = `-win_${archExtension}.zip`;
   } else {
     if (process.platform === 'darwin') {
-      extension = `-macosx_x64.tar.gz`;
+      extension = `-macosx_${archExtension}.tar.gz`;
     } else {
-      extension = `-linux_x64.tar.gz`;
+      extension = `-linux_${archExtension}.tar.gz`;
     }
   }
+
+  core.debug(`Searching for files with extension: ${extension}`);
 
   let pkgRegexp = new RegExp('');
   let pkgTypeLength = 0;

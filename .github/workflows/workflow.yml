@@ -80,9 +80,12 @@ jobs:
 
   test-bypass-proxy:
     runs-on: ubuntu-latest
+    container:
+      image: ubuntu:latest
+      options: --dns 127.0.0.1
     env:
       https_proxy: http://no-such-proxy:3128
-      no_proxy: github.com,static.azul.com,api.adoptopenjdk.net,github-production-release-asset-2e65be.s3.amazonaws.com
+      no_proxy: github.com,api.github.com,static.azul.com,api.adoptopenjdk.net,github-production-release-asset-2e65be.s3.amazonaws.com
     steps:
     - uses: actions/checkout@v2
     - name: Clear tool cache

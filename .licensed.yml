@@ -12,3 +12,5 @@ allowed:
 
 reviewed:
   npm:
+    # bsd-3-clause
+    - sprintf-js

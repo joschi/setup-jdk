@@ -77,20 +77,3 @@ jobs:
         java-version: 11
     - name: Verify Java 11
       run: __tests__/verify-java.sh 11 "${{ steps.setup-java.outputs.path }}" "${{ steps.setup-java.outputs.version }}"
-
-  test-bypass-proxy:
-    runs-on: ubuntu-latest
-    env:
-      https_proxy: http://no-such-proxy:3128
-      no_proxy: github.com,static.azul.com,api.adoptopenjdk.net,github-production-release-asset-2e65be.s3.amazonaws.com
-    steps:
-    - uses: actions/checkout@v2
-    - name: Clear tool cache
-      run: rm -rf $RUNNER_TOOL_CACHE/*
-    - name: Setup Java 11
-      id: setup-java
-      uses: ./
-      with:
-        java-version: 11
-    - name: Verify Java 11
-      run: __tests__/verify-java.sh 11 "${{ steps.setup-java.outputs.path }}" "${{ steps.setup-java.outputs.version }}"

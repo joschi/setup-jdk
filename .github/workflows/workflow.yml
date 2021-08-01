@@ -62,27 +62,3 @@ jobs:
     - name: Verify Java ${{ matrix.java-version}} (Windows)
       if: runner.os == 'windows'
       run: __tests__/verify-java.ps1 "${{ matrix.java-version }}" "${{ steps.setup-java.outputs.path }}" "${{ steps.setup-java.outputs.version }}"
-
-  test-proxy:
-    runs-on: ubuntu-latest
-    container:
-      image: ubuntu:latest
-      options: --dns 127.0.0.1
-    services:
-      squid-proxy:
-        image: datadog/squid:latest
-        ports:
-          - 3128:3128
-    env:
-      https_proxy: http://squid-proxy:3128
-    steps:
-    - uses: actions/checkout@v2
-    - name: Clear tool cache
-      run: rm -rf $RUNNER_TOOL_CACHE/*
-    - name: Setup Java 11
-      id: setup-java
-      uses: ./
-      with:
-        java-version: 11
-    - name: Verify Java 11
-      run: __tests__/verify-java.sh 11 "${{ steps.setup-java.outputs.path }}" "${{ steps.setup-java.outputs.version }}"

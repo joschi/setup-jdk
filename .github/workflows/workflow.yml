@@ -1,5 +1,14 @@
 name: Main workflow
-on: [push, pull_request]
+on:
+  pull_request:
+    paths-ignore:
+      - '**.md'
+  push:
+    branches:
+      - master
+      - releases/*
+    paths-ignore:
+      - '**.md'
 jobs:
   build:
     runs-on: ${{ matrix.operating-system }}

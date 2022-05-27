@@ -41,9 +41,9 @@ module.exports =
 /******/ 	return startup();
 /******/ })
 /************************************************************************/
-/******/ ({
-
-/***/ 1:
+/******/ ([
+/* 0 */,
+/* 1 */
 /***/ (function(__unusedmodule, exports, __webpack_require__) {
 
 "use strict";
@@ -390,8 +390,14 @@ function copyFile(srcFile, destFile, force) {
 //# sourceMappingURL=io.js.map
 
 /***/ }),
-
-/***/ 9:
+/* 2 */,
+/* 3 */,
+/* 4 */,
+/* 5 */,
+/* 6 */,
+/* 7 */,
+/* 8 */,
+/* 9 */
 /***/ (function(__unusedmodule, exports, __webpack_require__) {
 
 "use strict";
@@ -1015,8 +1021,8 @@ class ExecState extends events.EventEmitter {
 //# sourceMappingURL=toolrunner.js.map
 
 /***/ }),
-
-/***/ 11:
+/* 10 */,
+/* 11 */
 /***/ (function(__unusedmodule, exports) {
 
 "use strict";
@@ -1107,15 +1113,18 @@ exports.ASCIIAlphanumeric = /[0-9A-Za-z]/;
 //# sourceMappingURL=CodePoints.js.map
 
 /***/ }),
-
-/***/ 16:
+/* 12 */,
+/* 13 */,
+/* 14 */,
+/* 15 */,
+/* 16 */
 /***/ (function(module) {
 
 module.exports = require("tls");
 
 /***/ }),
-
-/***/ 18:
+/* 17 */,
+/* 18 */
 /***/ (function(__unusedmodule, exports, __webpack_require__) {
 
 "use strict";
@@ -1174,8 +1183,10 @@ exports.NonDocumentTypeChildNodeImpl = NonDocumentTypeChildNodeImpl;
 //# sourceMappingURL=NonDocumentTypeChildNodeImpl.js.map
 
 /***/ }),
-
-/***/ 22:
+/* 19 */,
+/* 20 */,
+/* 21 */,
+/* 22 */
 /***/ (function(__unusedmodule, exports, __webpack_require__) {
 
 "use strict";
@@ -2010,8 +2021,7 @@ exports.range_getPartiallyContainedNodes = range_getPartiallyContainedNodes;
 //# sourceMappingURL=RangeAlgorithm.js.map
 
 /***/ }),
-
-/***/ 23:
+/* 23 */
 /***/ (function(__unusedmodule, exports, __webpack_require__) {
 
 "use strict";
@@ -2051,8 +2061,10 @@ exports.string = string;
 //# sourceMappingURL=index.js.map
 
 /***/ }),
-
-/***/ 27:
+/* 24 */,
+/* 25 */,
+/* 26 */,
+/* 27 */
 /***/ (function(__unusedmodule, exports, __webpack_require__) {
 
 "use strict";
@@ -2198,8 +2210,10 @@ exports.characterData_substringData = characterData_substringData;
 //# sourceMappingURL=CharacterDataAlgorithm.js.map
 
 /***/ }),
-
-/***/ 31:
+/* 28 */,
+/* 29 */,
+/* 30 */,
+/* 31 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -2333,8 +2347,8 @@ exports._readLinuxVersionFile = _readLinuxVersionFile;
 //# sourceMappingURL=manifest.js.map
 
 /***/ }),
-
-/***/ 33:
+/* 32 */,
+/* 33 */
 /***/ (function(__unusedmodule, exports, __webpack_require__) {
 
 "use strict";
@@ -2948,8 +2962,8 @@ exports.element_insertAdjacent = element_insertAdjacent;
 //# sourceMappingURL=ElementAlgorithm.js.map
 
 /***/ }),
-
-/***/ 35:
+/* 34 */,
+/* 35 */
 /***/ (function(__unusedmodule, exports) {
 
 "use strict";
@@ -3302,8 +3316,14 @@ exports.InvalidCharacterError = InvalidCharacterError;
 //# sourceMappingURL=DOMException.js.map
 
 /***/ }),
-
-/***/ 43:
+/* 36 */,
+/* 37 */,
+/* 38 */,
+/* 39 */,
+/* 40 */,
+/* 41 */,
+/* 42 */,
+/* 43 */
 /***/ (function(__unusedmodule, exports, __webpack_require__) {
 
 "use strict";
@@ -3441,8 +3461,7 @@ exports.CharacterDataImpl = CharacterDataImpl;
 //# sourceMappingURL=CharacterDataImpl.js.map
 
 /***/ }),
-
-/***/ 44:
+/* 44 */
 /***/ (function(module, __unusedexports, __webpack_require__) {
 
 "use strict";
@@ -3622,8 +3641,9 @@ module.exports = new Type('tag:yaml.org,2002:int', {
 
 
 /***/ }),
-
-/***/ 47:
+/* 45 */,
+/* 46 */,
+/* 47 */
 /***/ (function(__unusedmodule, exports) {
 
 "use strict";
@@ -3734,8 +3754,9 @@ exports.StringWalker = StringWalker;
 //# sourceMappingURL=StringWalker.js.map
 
 /***/ }),
-
-/***/ 50:
+/* 48 */,
+/* 49 */,
+/* 50 */
 /***/ (function(__unusedmodule, exports, __webpack_require__) {
 
 "use strict";
@@ -3902,8 +3923,10 @@ exports.ObjectReader = ObjectReader;
 //# sourceMappingURL=ObjectReader.js.map
 
 /***/ }),
-
-/***/ 54:
+/* 51 */,
+/* 52 */,
+/* 53 */,
+/* 54 */
 /***/ (function(__unusedmodule, exports, __webpack_require__) {
 
 "use strict";
@@ -3970,8 +3993,12 @@ exports.tokenList_serializeSteps = tokenList_serializeSteps;
 //# sourceMappingURL=DOMTokenListAlgorithm.js.map
 
 /***/ }),
-
-/***/ 60:
+/* 55 */,
+/* 56 */,
+/* 57 */,
+/* 58 */,
+/* 59 */,
+/* 60 */
 /***/ (function(__unusedmodule, exports, __webpack_require__) {
 
 "use strict";
@@ -4046,8 +4073,11 @@ exports.parentNode_convertNodesIntoANode = parentNode_convertNodesIntoANode;
 //# sourceMappingURL=ParentNodeAlgorithm.js.map
 
 /***/ }),
-
-/***/ 65:
+/* 61 */,
+/* 62 */,
+/* 63 */,
+/* 64 */,
+/* 65 */
 /***/ (function(__unusedmodule, exports, __webpack_require__) {
 
 "use strict";
@@ -4341,8 +4371,16 @@ function updateAnElementID(element, localName, value, namespace) {
 //# sourceMappingURL=DOMAlgorithm.js.map
 
 /***/ }),
-
-/***/ 75:
+/* 66 */,
+/* 67 */,
+/* 68 */,
+/* 69 */,
+/* 70 */,
+/* 71 */,
+/* 72 */,
+/* 73 */,
+/* 74 */,
+/* 75 */
 /***/ (function(module, __unusedexports, __webpack_require__) {
 
 "use strict";
@@ -4402,8 +4440,13 @@ module.exports = new Type('tag:yaml.org,2002:pairs', {
 
 
 /***/ }),
-
-/***/ 82:
+/* 76 */,
+/* 77 */,
+/* 78 */,
+/* 79 */,
+/* 80 */,
+/* 81 */,
+/* 82 */
 /***/ (function(__unusedmodule, exports) {
 
 "use strict";
@@ -4411,7 +4454,7 @@ module.exports = new Type('tag:yaml.org,2002:pairs', {
 // We use any as a valid input type
 /* eslint-disable @typescript-eslint/no-explicit-any */
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.toCommandValue = void 0;
+exports.toCommandProperties = exports.toCommandValue = void 0;
 /**
  * Sanitizes an input into a string so it can be passed into issueCommand safely
  * @param input input to sanitize into a string
@@ -4426,11 +4469,33 @@ function toCommandValue(input) {
     return JSON.stringify(input);
 }
 exports.toCommandValue = toCommandValue;
+/**
+ *
+ * @param annotationProperties
+ * @returns The command properties to send with the actual annotation command
+ * See IssueCommandProperties: https://github.com/actions/runner/blob/main/src/Runner.Worker/ActionCommandManager.cs#L646
+ */
+function toCommandProperties(annotationProperties) {
+    if (!Object.keys(annotationProperties).length) {
+        return {};
+    }
+    return {
+        title: annotationProperties.title,
+        file: annotationProperties.file,
+        line: annotationProperties.startLine,
+        endLine: annotationProperties.endLine,
+        col: annotationProperties.startColumn,
+        endColumn: annotationProperties.endColumn
+    };
+}
+exports.toCommandProperties = toCommandProperties;
 //# sourceMappingURL=utils.js.map
 
 /***/ }),
-
-/***/ 86:
+/* 83 */,
+/* 84 */,
+/* 85 */,
+/* 86 */
 /***/ (function(__unusedmodule, exports, __webpack_require__) {
 
 "use strict";
@@ -4739,15 +4804,13 @@ exports.create_domTokenList = create_domTokenList;
 //# sourceMappingURL=CreateAlgorithm.js.map
 
 /***/ }),
-
-/***/ 87:
+/* 87 */
 /***/ (function(module) {
 
 module.exports = require("os");
 
 /***/ }),
-
-/***/ 88:
+/* 88 */
 /***/ (function(__unusedmodule, exports, __webpack_require__) {
 
 "use strict";
@@ -4865,8 +4928,8 @@ exports.NamedNodeMapImpl = NamedNodeMapImpl;
 //# sourceMappingURL=NamedNodeMapImpl.js.map
 
 /***/ }),
-
-/***/ 90:
+/* 89 */,
+/* 90 */
 /***/ (function(__unusedmodule, exports, __webpack_require__) {
 
 "use strict";
@@ -5521,8 +5584,8 @@ WebIDLAlgorithm_1.idl_defineConst(RangeImpl.prototype, "END_TO_START", 3);
 //# sourceMappingURL=RangeImpl.js.map
 
 /***/ }),
-
-/***/ 92:
+/* 91 */,
+/* 92 */
 /***/ (function(__unusedmodule, exports, __webpack_require__) {
 
 "use strict";
@@ -5752,8 +5815,7 @@ exports.JSONWriter = JSONWriter;
 //# sourceMappingURL=JSONWriter.js.map
 
 /***/ }),
-
-/***/ 93:
+/* 93 */
 /***/ (function(module, __unusedexports, __webpack_require__) {
 
 "use strict";
@@ -5836,28 +5898,76 @@ module.exports = Mark;
 
 
 /***/ }),
-
-/***/ 95:
-/***/ (function(__unusedmodule, exports, __webpack_require__) {
+/* 94 */,
+/* 95 */
+/***/ (function(__unusedmodule, exports) {
 
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
-var MapWriter_1 = __webpack_require__(750);
-exports.MapWriter = MapWriter_1.MapWriter;
-var XMLWriter_1 = __webpack_require__(764);
-exports.XMLWriter = XMLWriter_1.XMLWriter;
-var ObjectWriter_1 = __webpack_require__(419);
-exports.ObjectWriter = ObjectWriter_1.ObjectWriter;
-var JSONWriter_1 = __webpack_require__(92);
-exports.JSONWriter = JSONWriter_1.JSONWriter;
-var YAMLWriter_1 = __webpack_require__(325);
-exports.YAMLWriter = YAMLWriter_1.YAMLWriter;
-//# sourceMappingURL=index.js.map
+exports.checkBypass = exports.getProxyUrl = void 0;
+function getProxyUrl(reqUrl) {
+    const usingSsl = reqUrl.protocol === 'https:';
+    if (checkBypass(reqUrl)) {
+        return undefined;
+    }
+    const proxyVar = (() => {
+        if (usingSsl) {
+            return process.env['https_proxy'] || process.env['HTTPS_PROXY'];
+        }
+        else {
+            return process.env['http_proxy'] || process.env['HTTP_PROXY'];
+        }
+    })();
+    if (proxyVar) {
+        return new URL(proxyVar);
+    }
+    else {
+        return undefined;
+    }
+}
+exports.getProxyUrl = getProxyUrl;
+function checkBypass(reqUrl) {
+    if (!reqUrl.hostname) {
+        return false;
+    }
+    const noProxy = process.env['no_proxy'] || process.env['NO_PROXY'] || '';
+    if (!noProxy) {
+        return false;
+    }
+    // Determine the request port
+    let reqPort;
+    if (reqUrl.port) {
+        reqPort = Number(reqUrl.port);
+    }
+    else if (reqUrl.protocol === 'http:') {
+        reqPort = 80;
+    }
+    else if (reqUrl.protocol === 'https:') {
+        reqPort = 443;
+    }
+    // Format the request hostname and hostname with port
+    const upperReqHosts = [reqUrl.hostname.toUpperCase()];
+    if (typeof reqPort === 'number') {
+        upperReqHosts.push(`${upperReqHosts[0]}:${reqPort}`);
+    }
+    // Compare request host against noproxy
+    for (const upperNoProxyItem of noProxy
+        .split(',')
+        .map(x => x.trim().toUpperCase())
+        .filter(x => x)) {
+        if (upperReqHosts.some(x => x === upperNoProxyItem)) {
+            return true;
+        }
+    }
+    return false;
+}
+exports.checkBypass = checkBypass;
+//# sourceMappingURL=proxy.js.map
 
 /***/ }),
-
-/***/ 97:
+/* 96 */,
+/* 97 */
 /***/ (function(__unusedmodule, exports, __webpack_require__) {
 
 "use strict";
@@ -6335,8 +6445,7 @@ exports.concatenate = concatenate;
 //# sourceMappingURL=String.js.map
 
 /***/ }),
-
-/***/ 98:
+/* 98 */
 /***/ (function(__unusedmodule, exports, __webpack_require__) {
 
 "use strict";
@@ -7821,8 +7930,8 @@ exports.XMLSerializerImpl = XMLSerializerImpl;
 //# sourceMappingURL=XMLSerializerImpl.js.map
 
 /***/ }),
-
-/***/ 100:
+/* 99 */,
+/* 100 */
 /***/ (function(module, __unusedexports, __webpack_require__) {
 
 "use strict";
@@ -7858,8 +7967,8 @@ module.exports = new Type('tag:yaml.org,2002:set', {
 
 
 /***/ }),
-
-/***/ 102:
+/* 101 */,
+/* 102 */
 /***/ (function(__unusedmodule, exports, __webpack_require__) {
 
 "use strict";
@@ -7907,8 +8016,10 @@ exports.issueCommand = issueCommand;
 //# sourceMappingURL=file-command.js.map
 
 /***/ }),
-
-/***/ 106:
+/* 103 */,
+/* 104 */,
+/* 105 */,
+/* 106 */
 /***/ (function(__unusedmodule, exports, __webpack_require__) {
 
 "use strict";
@@ -8056,8 +8167,8 @@ exports.eventTarget_removeAllEventListeners = eventTarget_removeAllEventListener
 //# sourceMappingURL=EventTargetAlgorithm.js.map
 
 /***/ }),
-
-/***/ 108:
+/* 107 */,
+/* 108 */
 /***/ (function(__unusedmodule, exports, __webpack_require__) {
 
 "use strict";
@@ -9058,8 +9169,10 @@ exports.event_deactivateAnEventHandler = event_deactivateAnEventHandler;
 //# sourceMappingURL=EventAlgorithm.js.map
 
 /***/ }),
-
-/***/ 112:
+/* 109 */,
+/* 110 */,
+/* 111 */,
+/* 112 */
 /***/ (function(__unusedmodule, exports, __webpack_require__) {
 
 "use strict";
@@ -9103,8 +9216,7 @@ exports.JSONReader = JSONReader;
 //# sourceMappingURL=JSONReader.js.map
 
 /***/ }),
-
-/***/ 113:
+/* 113 */
 /***/ (function(__unusedmodule, exports, __webpack_require__) {
 
 "use strict";
@@ -9212,15 +9324,32 @@ util_1.applyMixin(ElementImpl_1.ElementImpl, SlotableImpl_1.SlotableImpl);
 //# sourceMappingURL=index.js.map
 
 /***/ }),
-
-/***/ 129:
+/* 114 */,
+/* 115 */,
+/* 116 */,
+/* 117 */,
+/* 118 */,
+/* 119 */,
+/* 120 */,
+/* 121 */,
+/* 122 */,
+/* 123 */,
+/* 124 */,
+/* 125 */,
+/* 126 */,
+/* 127 */,
+/* 128 */,
+/* 129 */
 /***/ (function(module) {
 
 module.exports = require("child_process");
 
 /***/ }),
-
-/***/ 134:
+/* 130 */,
+/* 131 */,
+/* 132 */,
+/* 133 */,
+/* 134 */
 /***/ (function(__unusedmodule, exports) {
 
 "use strict";
@@ -9248,8 +9377,11 @@ exports.pop = pop;
 //# sourceMappingURL=Stack.js.map
 
 /***/ }),
-
-/***/ 139:
+/* 135 */,
+/* 136 */,
+/* 137 */,
+/* 138 */,
+/* 139 */
 /***/ (function(module, __unusedexports, __webpack_require__) {
 
 // Unique ID creation requires a high quality random # generator.  In node.js
@@ -9263,8 +9395,8 @@ module.exports = function nodeRNG() {
 
 
 /***/ }),
-
-/***/ 141:
+/* 140 */,
+/* 141 */
 /***/ (function(__unusedmodule, exports, __webpack_require__) {
 
 "use strict";
@@ -9535,8 +9667,11 @@ exports.debug = debug; // for test
 
 
 /***/ }),
-
-/***/ 146:
+/* 142 */,
+/* 143 */,
+/* 144 */,
+/* 145 */,
+/* 146 */
 /***/ (function(__unusedmodule, exports, __webpack_require__) {
 
 "use strict";
@@ -9667,8 +9802,11 @@ exports.orderedSet_contains = orderedSet_contains;
 //# sourceMappingURL=OrderedSetAlgorithm.js.map
 
 /***/ }),
-
-/***/ 151:
+/* 147 */,
+/* 148 */,
+/* 149 */,
+/* 150 */,
+/* 151 */
 /***/ (function(__unusedmodule, exports, __webpack_require__) {
 
 "use strict";
@@ -9950,8 +10088,9 @@ exports.observer_queueAttributeMutationRecord = observer_queueAttributeMutationR
 //# sourceMappingURL=MutationObserverAlgorithm.js.map
 
 /***/ }),
-
-/***/ 154:
+/* 152 */,
+/* 153 */,
+/* 154 */
 /***/ (function(__unusedmodule, exports, __webpack_require__) {
 
 "use strict";
@@ -10183,8 +10322,14 @@ exports.text_split = text_split;
 //# sourceMappingURL=TextAlgorithm.js.map
 
 /***/ }),
-
-/***/ 162:
+/* 155 */,
+/* 156 */,
+/* 157 */,
+/* 158 */,
+/* 159 */,
+/* 160 */,
+/* 161 */,
+/* 162 */
 /***/ (function(__unusedmodule, exports, __webpack_require__) {
 
 "use strict";
@@ -10213,8 +10358,7 @@ exports.attr_setAnExistingAttributeValue = attr_setAnExistingAttributeValue;
 //# sourceMappingURL=AttrAlgorithm.js.map
 
 /***/ }),
-
-/***/ 163:
+/* 163 */
 /***/ (function(__unusedmodule, exports, __webpack_require__) {
 
 "use strict";
@@ -10250,12 +10394,11 @@ __export(__webpack_require__(464));
 __export(__webpack_require__(873));
 __export(__webpack_require__(705));
 __export(__webpack_require__(495));
-__export(__webpack_require__(442));
+__export(__webpack_require__(576));
 //# sourceMappingURL=index.js.map
 
 /***/ }),
-
-/***/ 164:
+/* 164 */
 /***/ (function(__unusedmodule, exports, __webpack_require__) {
 
 "use strict";
@@ -10321,8 +10464,14 @@ exports.CustomEventImpl = CustomEventImpl;
 //# sourceMappingURL=CustomEventImpl.js.map
 
 /***/ }),
-
-/***/ 172:
+/* 165 */,
+/* 166 */,
+/* 167 */,
+/* 168 */,
+/* 169 */,
+/* 170 */,
+/* 171 */,
+/* 172 */
 /***/ (function(__unusedmodule, exports) {
 
 "use strict";
@@ -10346,8 +10495,8 @@ var TokenType;
 //# sourceMappingURL=interfaces.js.map
 
 /***/ }),
-
-/***/ 174:
+/* 173 */,
+/* 174 */
 /***/ (function(__unusedmodule, exports, __webpack_require__) {
 
 "use strict";
@@ -10502,8 +10651,7 @@ WebIDLAlgorithm_1.idl_defineConst(DOMImplementationImpl.prototype, "_ID", "@oozc
 //# sourceMappingURL=DOMImplementationImpl.js.map
 
 /***/ }),
-
-/***/ 175:
+/* 175 */
 /***/ (function(__unusedmodule, exports, __webpack_require__) {
 
 "use strict";
@@ -10693,8 +10841,11 @@ exports.MutationObserverImpl = MutationObserverImpl;
 //# sourceMappingURL=MutationObserverImpl.js.map
 
 /***/ }),
-
-/***/ 180:
+/* 176 */,
+/* 177 */,
+/* 178 */,
+/* 179 */,
+/* 180 */
 /***/ (function(__unusedmodule, exports, __webpack_require__) {
 
 "use strict";
@@ -11016,8 +11167,16 @@ exports.shadowTree_assignASlot = shadowTree_assignASlot;
 //# sourceMappingURL=ShadowTreeAlgorithm.js.map
 
 /***/ }),
-
-/***/ 190:
+/* 181 */,
+/* 182 */,
+/* 183 */,
+/* 184 */,
+/* 185 */,
+/* 186 */,
+/* 187 */,
+/* 188 */,
+/* 189 */,
+/* 190 */
 /***/ (function(__unusedmodule, exports, __webpack_require__) {
 
 "use strict";
@@ -11188,8 +11347,20 @@ exports.XMLCBWriter = XMLCBWriter;
 //# sourceMappingURL=XMLCBWriter.js.map
 
 /***/ }),
-
-/***/ 204:
+/* 191 */,
+/* 192 */,
+/* 193 */,
+/* 194 */,
+/* 195 */,
+/* 196 */,
+/* 197 */,
+/* 198 */,
+/* 199 */,
+/* 200 */,
+/* 201 */,
+/* 202 */,
+/* 203 */,
+/* 204 */
 /***/ (function(__unusedmodule, exports, __webpack_require__) {
 
 "use strict";
@@ -11352,15 +11523,19 @@ exports.HTMLCollectionImpl = HTMLCollectionImpl;
 //# sourceMappingURL=HTMLCollectionImpl.js.map
 
 /***/ }),
-
-/***/ 211:
+/* 205 */,
+/* 206 */,
+/* 207 */,
+/* 208 */,
+/* 209 */,
+/* 210 */,
+/* 211 */
 /***/ (function(module) {
 
 module.exports = require("https");
 
 /***/ }),
-
-/***/ 212:
+/* 212 */
 /***/ (function(__unusedmodule, exports, __webpack_require__) {
 
 "use strict";
@@ -11372,15 +11547,27 @@ exports.DOMParser = DOMParserImpl_1.DOMParserImpl;
 //# sourceMappingURL=index.js.map
 
 /***/ }),
-
-/***/ 213:
+/* 213 */
 /***/ (function(module) {
 
 module.exports = require("timers");
 
 /***/ }),
-
-/***/ 228:
+/* 214 */,
+/* 215 */,
+/* 216 */,
+/* 217 */,
+/* 218 */,
+/* 219 */,
+/* 220 */,
+/* 221 */,
+/* 222 */,
+/* 223 */,
+/* 224 */,
+/* 225 */,
+/* 226 */,
+/* 227 */,
+/* 228 */
 /***/ (function(module, __unusedexports, __webpack_require__) {
 
 "use strict";
@@ -11422,8 +11609,25 @@ module.exports = new Type('tag:yaml.org,2002:bool', {
 
 
 /***/ }),
-
-/***/ 247:
+/* 229 */,
+/* 230 */,
+/* 231 */,
+/* 232 */,
+/* 233 */,
+/* 234 */,
+/* 235 */,
+/* 236 */,
+/* 237 */,
+/* 238 */,
+/* 239 */,
+/* 240 */,
+/* 241 */,
+/* 242 */,
+/* 243 */,
+/* 244 */,
+/* 245 */,
+/* 246 */,
+/* 247 */
 /***/ (function(__unusedmodule, exports) {
 
 "use strict";
@@ -11446,8 +11650,11 @@ exports.DocumentOrShadowRootImpl = DocumentOrShadowRootImpl;
 //# sourceMappingURL=DocumentOrShadowRootImpl.js.map
 
 /***/ }),
-
-/***/ 252:
+/* 248 */,
+/* 249 */,
+/* 250 */,
+/* 251 */,
+/* 252 */
 /***/ (function(__unusedmodule, exports, __webpack_require__) {
 
 "use strict";
@@ -11464,8 +11671,9 @@ exports.XMLSerializer = serializer_1.XMLSerializer;
 //# sourceMappingURL=index.js.map
 
 /***/ }),
-
-/***/ 255:
+/* 253 */,
+/* 254 */,
+/* 255 */
 /***/ (function(__unusedmodule, exports, __webpack_require__) {
 
 "use strict";
@@ -11481,8 +11689,14 @@ exports.fragmentCB = builder_1.fragmentCB;
 //# sourceMappingURL=index.js.map
 
 /***/ }),
-
-/***/ 263:
+/* 256 */,
+/* 257 */,
+/* 258 */,
+/* 259 */,
+/* 260 */,
+/* 261 */,
+/* 262 */,
+/* 263 */
 /***/ (function(__unusedmodule, exports) {
 
 "use strict";
@@ -11659,8 +11873,8 @@ exports.isomorphicDecode = isomorphicDecode;
 //# sourceMappingURL=ByteSequence.js.map
 
 /***/ }),
-
-/***/ 265:
+/* 264 */,
+/* 265 */
 /***/ (function(module, __unusedexports, __webpack_require__) {
 
 "use strict";
@@ -11684,8 +11898,7 @@ module.exports = new Schema({
 
 
 /***/ }),
-
-/***/ 266:
+/* 266 */
 /***/ (function(__unusedmodule, exports, __webpack_require__) {
 
 "use strict";
@@ -11879,8 +12092,12 @@ exports.NodeListStaticImpl = NodeListStaticImpl;
 //# sourceMappingURL=NodeListStaticImpl.js.map
 
 /***/ }),
-
-/***/ 272:
+/* 267 */,
+/* 268 */,
+/* 269 */,
+/* 270 */,
+/* 271 */,
+/* 272 */
 /***/ (function(__unusedmodule, exports, __webpack_require__) {
 
 "use strict";
@@ -11991,8 +12208,13 @@ exports.nodeIterator_iteratorList = nodeIterator_iteratorList;
 //# sourceMappingURL=NodeIteratorAlgorithm.js.map
 
 /***/ }),
-
-/***/ 279:
+/* 273 */,
+/* 274 */,
+/* 275 */,
+/* 276 */,
+/* 277 */,
+/* 278 */,
+/* 279 */
 /***/ (function(__unusedmodule, exports, __webpack_require__) {
 
 "use strict";
@@ -12306,8 +12528,7 @@ exports.sortInDescendingOrder = sortInDescendingOrder;
 //# sourceMappingURL=Map.js.map
 
 /***/ }),
-
-/***/ 280:
+/* 280 */
 /***/ (function(module, exports) {
 
 exports = module.exports = SemVer
@@ -13909,8 +14130,12 @@ function coerce (version, options) {
 
 
 /***/ }),
-
-/***/ 286:
+/* 281 */,
+/* 282 */,
+/* 283 */,
+/* 284 */,
+/* 285 */,
+/* 286 */
 /***/ (function(__unusedmodule, exports) {
 
 "use strict";
@@ -13947,8 +14172,15 @@ exports.OpaqueOrigin = ["", "", null, null];
 //# sourceMappingURL=interfaces.js.map
 
 /***/ }),
-
-/***/ 295:
+/* 287 */,
+/* 288 */,
+/* 289 */,
+/* 290 */,
+/* 291 */,
+/* 292 */,
+/* 293 */,
+/* 294 */,
+/* 295 */
 /***/ (function(__unusedmodule, exports, __webpack_require__) {
 
 "use strict";
@@ -13980,15 +14212,21 @@ exports.fragmentCB = fragmentCB;
 //# sourceMappingURL=BuilderFunctionsCB.js.map
 
 /***/ }),
-
-/***/ 304:
+/* 296 */,
+/* 297 */,
+/* 298 */,
+/* 299 */,
+/* 300 */,
+/* 301 */,
+/* 302 */,
+/* 303 */,
+/* 304 */
 /***/ (function(module) {
 
 module.exports = require("string_decoder");
 
 /***/ }),
-
-/***/ 305:
+/* 305 */
 /***/ (function(__unusedmodule, exports, __webpack_require__) {
 
 "use strict";
@@ -14132,8 +14370,13 @@ exports.BaseReader = BaseReader;
 //# sourceMappingURL=BaseReader.js.map
 
 /***/ }),
-
-/***/ 312:
+/* 306 */,
+/* 307 */,
+/* 308 */,
+/* 309 */,
+/* 310 */,
+/* 311 */,
+/* 312 */
 /***/ (function(module, __unusedexports, __webpack_require__) {
 
 "use strict";
@@ -14256,8 +14499,16 @@ module.exports = new Type('tag:yaml.org,2002:float', {
 
 
 /***/ }),
-
-/***/ 322:
+/* 313 */,
+/* 314 */,
+/* 315 */,
+/* 316 */,
+/* 317 */,
+/* 318 */,
+/* 319 */,
+/* 320 */,
+/* 321 */,
+/* 322 */
 /***/ (function(__unusedmodule, exports, __webpack_require__) {
 
 "use strict";
@@ -14318,8 +14569,9 @@ exports.isDarwin = isDarwin;
 
 
 /***/ }),
-
-/***/ 325:
+/* 323 */,
+/* 324 */,
+/* 325 */
 /***/ (function(__unusedmodule, exports, __webpack_require__) {
 
 "use strict";
@@ -14513,8 +14765,12 @@ exports.YAMLWriter = YAMLWriter;
 //# sourceMappingURL=YAMLWriter.js.map
 
 /***/ }),
-
-/***/ 331:
+/* 326 */,
+/* 327 */,
+/* 328 */,
+/* 329 */,
+/* 330 */,
+/* 331 */
 /***/ (function(__unusedmodule, exports, __webpack_require__) {
 
 "use strict";
@@ -14621,8 +14877,19 @@ function write(directory, settings, overwriteSettings) {
 
 
 /***/ }),
-
-/***/ 344:
+/* 332 */,
+/* 333 */,
+/* 334 */,
+/* 335 */,
+/* 336 */,
+/* 337 */,
+/* 338 */,
+/* 339 */,
+/* 340 */,
+/* 341 */,
+/* 342 */,
+/* 343 */,
+/* 344 */
 /***/ (function(__unusedmodule, exports) {
 
 "use strict";
@@ -14736,8 +15003,12 @@ exports.customElement_lookUpACustomElementDefinition = customElement_lookUpACust
 //# sourceMappingURL=CustomElementAlgorithm.js.map
 
 /***/ }),
-
-/***/ 350:
+/* 345 */,
+/* 346 */,
+/* 347 */,
+/* 348 */,
+/* 349 */,
+/* 350 */
 /***/ (function(__unusedmodule, exports, __webpack_require__) {
 
 "use strict";
@@ -14819,8 +15090,8 @@ exports.boundaryPoint_position = boundaryPoint_position;
 //# sourceMappingURL=BoundaryPointAlgorithm.js.map
 
 /***/ }),
-
-/***/ 352:
+/* 351 */,
+/* 352 */
 /***/ (function(module, __unusedexports, __webpack_require__) {
 
 "use strict";
@@ -14920,15 +15191,131 @@ module.exports = new Type('tag:yaml.org,2002:js/function', {
 
 
 /***/ }),
-
-/***/ 357:
+/* 353 */,
+/* 354 */,
+/* 355 */,
+/* 356 */,
+/* 357 */
 /***/ (function(module) {
 
 module.exports = require("assert");
 
 /***/ }),
+/* 358 */,
+/* 359 */,
+/* 360 */,
+/* 361 */,
+/* 362 */,
+/* 363 */
+/***/ (function(__unusedmodule, exports) {
 
-/***/ 386:
+"use strict";
+
+var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
+    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
+    return new (P || (P = Promise))(function (resolve, reject) {
+        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
+        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
+        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
+        step((generator = generator.apply(thisArg, _arguments || [])).next());
+    });
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.PersonalAccessTokenCredentialHandler = exports.BearerCredentialHandler = exports.BasicCredentialHandler = void 0;
+class BasicCredentialHandler {
+    constructor(username, password) {
+        this.username = username;
+        this.password = password;
+    }
+    prepareRequest(options) {
+        if (!options.headers) {
+            throw Error('The request has no headers');
+        }
+        options.headers['Authorization'] = `Basic ${Buffer.from(`${this.username}:${this.password}`).toString('base64')}`;
+    }
+    // This handler cannot handle 401
+    canHandleAuthentication() {
+        return false;
+    }
+    handleAuthentication() {
+        return __awaiter(this, void 0, void 0, function* () {
+            throw new Error('not implemented');
+        });
+    }
+}
+exports.BasicCredentialHandler = BasicCredentialHandler;
+class BearerCredentialHandler {
+    constructor(token) {
+        this.token = token;
+    }
+    // currently implements pre-authorization
+    // TODO: support preAuth = false where it hooks on 401
+    prepareRequest(options) {
+        if (!options.headers) {
+            throw Error('The request has no headers');
+        }
+        options.headers['Authorization'] = `Bearer ${this.token}`;
+    }
+    // This handler cannot handle 401
+    canHandleAuthentication() {
+        return false;
+    }
+    handleAuthentication() {
+        return __awaiter(this, void 0, void 0, function* () {
+            throw new Error('not implemented');
+        });
+    }
+}
+exports.BearerCredentialHandler = BearerCredentialHandler;
+class PersonalAccessTokenCredentialHandler {
+    constructor(token) {
+        this.token = token;
+    }
+    // currently implements pre-authorization
+    // TODO: support preAuth = false where it hooks on 401
+    prepareRequest(options) {
+        if (!options.headers) {
+            throw Error('The request has no headers');
+        }
+        options.headers['Authorization'] = `Basic ${Buffer.from(`PAT:${this.token}`).toString('base64')}`;
+    }
+    // This handler cannot handle 401
+    canHandleAuthentication() {
+        return false;
+    }
+    handleAuthentication() {
+        return __awaiter(this, void 0, void 0, function* () {
+            throw new Error('not implemented');
+        });
+    }
+}
+exports.PersonalAccessTokenCredentialHandler = PersonalAccessTokenCredentialHandler;
+//# sourceMappingURL=auth.js.map
+
+/***/ }),
+/* 364 */,
+/* 365 */,
+/* 366 */,
+/* 367 */,
+/* 368 */,
+/* 369 */,
+/* 370 */,
+/* 371 */,
+/* 372 */,
+/* 373 */,
+/* 374 */,
+/* 375 */,
+/* 376 */,
+/* 377 */,
+/* 378 */,
+/* 379 */,
+/* 380 */,
+/* 381 */,
+/* 382 */,
+/* 383 */,
+/* 384 */,
+/* 385 */,
+/* 386 */
 /***/ (function(module, __unusedexports, __webpack_require__) {
 
 "use strict";
@@ -14963,8 +15350,12 @@ module.exports = new Type('tag:yaml.org,2002:js/undefined', {
 
 
 /***/ }),
-
-/***/ 392:
+/* 387 */,
+/* 388 */,
+/* 389 */,
+/* 390 */,
+/* 391 */,
+/* 392 */
 /***/ (function(__unusedmodule, exports) {
 
 "use strict";
@@ -15121,16 +15512,34 @@ exports.NamespacePrefixMap = NamespacePrefixMap;
 //# sourceMappingURL=NamespacePrefixMap.js.map
 
 /***/ }),
-
-/***/ 413:
+/* 393 */,
+/* 394 */,
+/* 395 */,
+/* 396 */,
+/* 397 */,
+/* 398 */,
+/* 399 */,
+/* 400 */,
+/* 401 */,
+/* 402 */,
+/* 403 */,
+/* 404 */,
+/* 405 */,
+/* 406 */,
+/* 407 */,
+/* 408 */,
+/* 409 */,
+/* 410 */,
+/* 411 */,
+/* 412 */,
+/* 413 */
 /***/ (function(module, __unusedexports, __webpack_require__) {
 
 module.exports = __webpack_require__(141);
 
 
 /***/ }),
-
-/***/ 414:
+/* 414 */
 /***/ (function(module, __unusedexports, __webpack_require__) {
 
 "use strict";
@@ -15144,15 +15553,16 @@ module.exports = yaml;
 
 
 /***/ }),
-
-/***/ 417:
+/* 415 */,
+/* 416 */,
+/* 417 */
 /***/ (function(module) {
 
 module.exports = require("crypto");
 
 /***/ }),
-
-/***/ 419:
+/* 418 */,
+/* 419 */
 /***/ (function(__unusedmodule, exports, __webpack_require__) {
 
 "use strict";
@@ -15642,8 +16052,12 @@ exports.ObjectWriter = ObjectWriter;
 //# sourceMappingURL=ObjectWriter.js.map
 
 /***/ }),
-
-/***/ 425:
+/* 420 */,
+/* 421 */,
+/* 422 */,
+/* 423 */,
+/* 424 */,
+/* 425 */
 /***/ (function(__unusedmodule, exports, __webpack_require__) {
 
 "use strict";
@@ -15961,8 +16375,8 @@ exports.DOMTokenListImpl = DOMTokenListImpl;
 //# sourceMappingURL=DOMTokenListImpl.js.map
 
 /***/ }),
-
-/***/ 427:
+/* 426 */,
+/* 427 */
 /***/ (function(__unusedmodule, exports, __webpack_require__) {
 
 "use strict";
@@ -16281,8 +16695,8 @@ WebIDLAlgorithm_1.idl_defineConst(EventImpl.prototype, "BUBBLING_PHASE", 3);
 //# sourceMappingURL=EventImpl.js.map
 
 /***/ }),
-
-/***/ 429:
+/* 428 */,
+/* 429 */
 /***/ (function(__unusedmodule, exports, __webpack_require__) {
 
 "use strict";
@@ -16323,8 +16737,8 @@ exports.SlotableImpl = SlotableImpl;
 //# sourceMappingURL=SlotableImpl.js.map
 
 /***/ }),
-
-/***/ 431:
+/* 430 */,
+/* 431 */
 /***/ (function(__unusedmodule, exports, __webpack_require__) {
 
 "use strict";
@@ -16422,179 +16836,43 @@ function escapeProperty(s) {
 //# sourceMappingURL=command.js.map
 
 /***/ }),
-
-/***/ 442:
-/***/ (function(__unusedmodule, exports) {
+/* 432 */,
+/* 433 */,
+/* 434 */,
+/* 435 */,
+/* 436 */,
+/* 437 */,
+/* 438 */,
+/* 439 */,
+/* 440 */,
+/* 441 */,
+/* 442 */
+/***/ (function(__unusedmodule, exports, __webpack_require__) {
 
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
-/**
- * Determines if the given string is valid for a `"Name"` construct.
- *
- * @param name - name string to test
- */
-function xml_isName(name) {
-    for (var i = 0; i < name.length; i++) {
-        var n = name.charCodeAt(i);
-        // NameStartChar
-        if ((n >= 97 && n <= 122) || // [a-z]
-            (n >= 65 && n <= 90) || // [A-Z]
-            n === 58 || n === 95 || // ':' or '_'
-            (n >= 0xC0 && n <= 0xD6) ||
-            (n >= 0xD8 && n <= 0xF6) ||
-            (n >= 0xF8 && n <= 0x2FF) ||
-            (n >= 0x370 && n <= 0x37D) ||
-            (n >= 0x37F && n <= 0x1FFF) ||
-            (n >= 0x200C && n <= 0x200D) ||
-            (n >= 0x2070 && n <= 0x218F) ||
-            (n >= 0x2C00 && n <= 0x2FEF) ||
-            (n >= 0x3001 && n <= 0xD7FF) ||
-            (n >= 0xF900 && n <= 0xFDCF) ||
-            (n >= 0xFDF0 && n <= 0xFFFD)) {
-            continue;
-        }
-        else if (i !== 0 &&
-            (n === 45 || n === 46 || // '-' or '.'
-                (n >= 48 && n <= 57) || // [0-9]
-                (n === 0xB7) ||
-                (n >= 0x0300 && n <= 0x036F) ||
-                (n >= 0x203F && n <= 0x2040))) {
-            continue;
-        }
-        if (n >= 0xD800 && n <= 0xDBFF && i < name.length - 1) {
-            var n2 = name.charCodeAt(i + 1);
-            if (n2 >= 0xDC00 && n2 <= 0xDFFF) {
-                n = (n - 0xD800) * 0x400 + n2 - 0xDC00 + 0x10000;
-                i++;
-                if (n >= 0x10000 && n <= 0xEFFFF) {
-                    continue;
-                }
-            }
-        }
-        return false;
-    }
-    return true;
-}
-exports.xml_isName = xml_isName;
-/**
- * Determines if the given string is valid for a `"QName"` construct.
- *
- * @param name - name string to test
- */
-function xml_isQName(name) {
-    var colonFound = false;
-    for (var i = 0; i < name.length; i++) {
-        var n = name.charCodeAt(i);
-        // NameStartChar
-        if ((n >= 97 && n <= 122) || // [a-z]
-            (n >= 65 && n <= 90) || // [A-Z]
-            n === 95 || // '_'
-            (n >= 0xC0 && n <= 0xD6) ||
-            (n >= 0xD8 && n <= 0xF6) ||
-            (n >= 0xF8 && n <= 0x2FF) ||
-            (n >= 0x370 && n <= 0x37D) ||
-            (n >= 0x37F && n <= 0x1FFF) ||
-            (n >= 0x200C && n <= 0x200D) ||
-            (n >= 0x2070 && n <= 0x218F) ||
-            (n >= 0x2C00 && n <= 0x2FEF) ||
-            (n >= 0x3001 && n <= 0xD7FF) ||
-            (n >= 0xF900 && n <= 0xFDCF) ||
-            (n >= 0xFDF0 && n <= 0xFFFD)) {
-            continue;
-        }
-        else if (i !== 0 &&
-            (n === 45 || n === 46 || // '-' or '.'
-                (n >= 48 && n <= 57) || // [0-9]
-                (n === 0xB7) ||
-                (n >= 0x0300 && n <= 0x036F) ||
-                (n >= 0x203F && n <= 0x2040))) {
-            continue;
-        }
-        else if (i !== 0 && n === 58) { // :
-            if (colonFound)
-                return false; // multiple colons in qname
-            if (i === name.length - 1)
-                return false; // colon at the end of qname
-            colonFound = true;
-            continue;
-        }
-        if (n >= 0xD800 && n <= 0xDBFF && i < name.length - 1) {
-            var n2 = name.charCodeAt(i + 1);
-            if (n2 >= 0xDC00 && n2 <= 0xDFFF) {
-                n = (n - 0xD800) * 0x400 + n2 - 0xDC00 + 0x10000;
-                i++;
-                if (n >= 0x10000 && n <= 0xEFFFF) {
-                    continue;
-                }
-            }
-        }
-        return false;
-    }
-    return true;
-}
-exports.xml_isQName = xml_isQName;
-/**
- * Determines if the given string contains legal characters.
- *
- * @param chars - sequence of characters to test
- */
-function xml_isLegalChar(chars) {
-    for (var i = 0; i < chars.length; i++) {
-        var n = chars.charCodeAt(i);
-        // #x9 | #xA | #xD | [#x20-#xD7FF] | [#xE000-#xFFFD] | [#x10000-#x10FFFF]
-        if (n === 0x9 || n === 0xA || n === 0xD ||
-            (n >= 0x20 && n <= 0xD7FF) ||
-            (n >= 0xE000 && n <= 0xFFFD)) {
-            continue;
-        }
-        if (n >= 0xD800 && n <= 0xDBFF && i < chars.length - 1) {
-            var n2 = chars.charCodeAt(i + 1);
-            if (n2 >= 0xDC00 && n2 <= 0xDFFF) {
-                n = (n - 0xD800) * 0x400 + n2 - 0xDC00 + 0x10000;
-                i++;
-                if (n >= 0x10000 && n <= 0x10FFFF) {
-                    continue;
-                }
-            }
-        }
-        return false;
-    }
-    return true;
-}
-exports.xml_isLegalChar = xml_isLegalChar;
-/**
- * Determines if the given string contains legal characters for a public
- * identifier.
- *
- * @param chars - sequence of characters to test
- */
-function xml_isPubidChar(chars) {
-    for (var i = 0; i < chars.length; i++) {
-        // PubId chars are all in the ASCII range, no need to check surrogates
-        var n = chars.charCodeAt(i);
-        // #x20 | #xD | #xA | [a-zA-Z0-9] | [-'()+,./:=?;!*#@$_%]
-        if ((n >= 97 && n <= 122) || // [a-z]
-            (n >= 65 && n <= 90) || // [A-Z]
-            (n >= 39 && n <= 59) || // ['()*+,-./] | [0-9] | [:;]
-            n === 0x20 || n === 0xD || n === 0xA || // #x20 | #xD | #xA
-            (n >= 35 && n <= 37) || // [#$%]
-            n === 33 || // !
-            n === 61 || n === 63 || n === 64 || n === 95) { // [=?@_]
-            continue;
-        }
-        else {
-            return false;
-        }
-    }
-    return true;
-}
-exports.xml_isPubidChar = xml_isPubidChar;
-//# sourceMappingURL=XMLAlgorithm.js.map
+var MapWriter_1 = __webpack_require__(750);
+exports.MapWriter = MapWriter_1.MapWriter;
+var XMLWriter_1 = __webpack_require__(764);
+exports.XMLWriter = XMLWriter_1.XMLWriter;
+var ObjectWriter_1 = __webpack_require__(419);
+exports.ObjectWriter = ObjectWriter_1.ObjectWriter;
+var JSONWriter_1 = __webpack_require__(92);
+exports.JSONWriter = JSONWriter_1.JSONWriter;
+var YAMLWriter_1 = __webpack_require__(325);
+exports.YAMLWriter = YAMLWriter_1.YAMLWriter;
+//# sourceMappingURL=index.js.map
 
 /***/ }),
-
-/***/ 450:
+/* 443 */,
+/* 444 */,
+/* 445 */,
+/* 446 */,
+/* 447 */,
+/* 448 */,
+/* 449 */,
+/* 450 */
 /***/ (function(module, __unusedexports, __webpack_require__) {
 
 "use strict";
@@ -16609,8 +16887,13 @@ module.exports = new Type('tag:yaml.org,2002:str', {
 
 
 /***/ }),
-
-/***/ 457:
+/* 451 */,
+/* 452 */,
+/* 453 */,
+/* 454 */,
+/* 455 */,
+/* 456 */,
+/* 457 */
 /***/ (function(module, __unusedexports, __webpack_require__) {
 
 "use strict";
@@ -18261,8 +18544,11 @@ module.exports.safeLoad    = safeLoad;
 
 
 /***/ }),
-
-/***/ 462:
+/* 458 */,
+/* 459 */,
+/* 460 */,
+/* 461 */,
+/* 462 */
 /***/ (function(__unusedmodule, exports, __webpack_require__) {
 
 "use strict";
@@ -19905,8 +20191,8 @@ exports.BaseWriter = BaseWriter;
 //# sourceMappingURL=BaseWriter.js.map
 
 /***/ }),
-
-/***/ 464:
+/* 463 */,
+/* 464 */
 /***/ (function(__unusedmodule, exports, __webpack_require__) {
 
 "use strict";
@@ -19974,8 +20260,10 @@ exports.traversal_filter = traversal_filter;
 //# sourceMappingURL=TraversalAlgorithm.js.map
 
 /***/ }),
-
-/***/ 468:
+/* 465 */,
+/* 466 */,
+/* 467 */,
+/* 468 */
 /***/ (function(__unusedmodule, exports, __webpack_require__) {
 
 "use strict";
@@ -20201,8 +20489,8 @@ exports.XMLParserImpl = XMLParserImpl;
 //# sourceMappingURL=XMLParserImpl.js.map
 
 /***/ }),
-
-/***/ 470:
+/* 469 */,
+/* 470 */
 /***/ (function(__unusedmodule, exports, __webpack_require__) {
 
 "use strict";
@@ -20236,12 +20524,13 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.getState = exports.saveState = exports.group = exports.endGroup = exports.startGroup = exports.info = exports.warning = exports.error = exports.debug = exports.isDebug = exports.setFailed = exports.setCommandEcho = exports.setOutput = exports.getBooleanInput = exports.getMultilineInput = exports.getInput = exports.addPath = exports.setSecret = exports.exportVariable = exports.ExitCode = void 0;
+exports.getIDToken = exports.getState = exports.saveState = exports.group = exports.endGroup = exports.startGroup = exports.info = exports.notice = exports.warning = exports.error = exports.debug = exports.isDebug = exports.setFailed = exports.setCommandEcho = exports.setOutput = exports.getBooleanInput = exports.getMultilineInput = exports.getInput = exports.addPath = exports.setSecret = exports.exportVariable = exports.ExitCode = void 0;
 const command_1 = __webpack_require__(431);
 const file_command_1 = __webpack_require__(102);
 const utils_1 = __webpack_require__(82);
 const os = __importStar(__webpack_require__(87));
 const path = __importStar(__webpack_require__(622));
+const oidc_utils_1 = __webpack_require__(742);
 /**
  * The code to exit an action
  */
@@ -20414,19 +20703,30 @@ exports.debug = debug;
 /**
  * Adds an error issue
  * @param message error issue message. Errors will be converted to string via toString()
+ * @param properties optional properties to add to the annotation.
  */
-function error(message) {
-    command_1.issue('error', message instanceof Error ? message.toString() : message);
+function error(message, properties = {}) {
+    command_1.issueCommand('error', utils_1.toCommandProperties(properties), message instanceof Error ? message.toString() : message);
 }
 exports.error = error;
 /**
- * Adds an warning issue
+ * Adds a warning issue
  * @param message warning issue message. Errors will be converted to string via toString()
+ * @param properties optional properties to add to the annotation.
  */
-function warning(message) {
-    command_1.issue('warning', message instanceof Error ? message.toString() : message);
+function warning(message, properties = {}) {
+    command_1.issueCommand('warning', utils_1.toCommandProperties(properties), message instanceof Error ? message.toString() : message);
 }
 exports.warning = warning;
+/**
+ * Adds a notice issue
+ * @param message notice issue message. Errors will be converted to string via toString()
+ * @param properties optional properties to add to the annotation.
+ */
+function notice(message, properties = {}) {
+    command_1.issueCommand('notice', utils_1.toCommandProperties(properties), message instanceof Error ? message.toString() : message);
+}
+exports.notice = notice;
 /**
  * Writes info to log with console.log.
  * @param message info message
@@ -20499,11 +20799,34 @@ function getState(name) {
     return process.env[`STATE_${name}`] || '';
 }
 exports.getState = getState;
+function getIDToken(aud) {
+    return __awaiter(this, void 0, void 0, function* () {
+        return yield oidc_utils_1.OidcClient.getIDToken(aud);
+    });
+}
+exports.getIDToken = getIDToken;
+/**
+ * Summary exports
+ */
+var summary_1 = __webpack_require__(665);
+Object.defineProperty(exports, "summary", { enumerable: true, get: function () { return summary_1.summary; } });
+/**
+ * @deprecated use core.summary
+ */
+var summary_2 = __webpack_require__(665);
+Object.defineProperty(exports, "markdownSummary", { enumerable: true, get: function () { return summary_2.markdownSummary; } });
 //# sourceMappingURL=core.js.map
 
 /***/ }),
-
-/***/ 479:
+/* 471 */,
+/* 472 */,
+/* 473 */,
+/* 474 */,
+/* 475 */,
+/* 476 */,
+/* 477 */,
+/* 478 */,
+/* 479 */
 /***/ (function(__unusedmodule, exports, __webpack_require__) {
 
 "use strict";
@@ -21682,8 +22005,10 @@ exports.mutation_remove = mutation_remove;
 //# sourceMappingURL=MutationAlgorithm.js.map
 
 /***/ }),
-
-/***/ 483:
+/* 480 */,
+/* 481 */,
+/* 482 */,
+/* 483 */
 /***/ (function(__unusedmodule, exports, __webpack_require__) {
 
 "use strict";
@@ -21710,8 +22035,10 @@ exports.selectors_scopeMatchASelectorsString = selectors_scopeMatchASelectorsStr
 //# sourceMappingURL=SelectorsAlgorithm.js.map
 
 /***/ }),
-
-/***/ 487:
+/* 484 */,
+/* 485 */,
+/* 486 */,
+/* 487 */
 /***/ (function(__unusedmodule, exports, __webpack_require__) {
 
 "use strict";
@@ -21758,8 +22085,7 @@ exports.TraverserImpl = TraverserImpl;
 //# sourceMappingURL=TraverserImpl.js.map
 
 /***/ }),
-
-/***/ 488:
+/* 488 */
 /***/ (function(__unusedmodule, exports, __webpack_require__) {
 
 "use strict";
@@ -22310,8 +22636,11 @@ WebIDLAlgorithm_1.idl_defineConst(DocumentImpl.prototype, "_nodeType", interface
 //# sourceMappingURL=DocumentImpl.js.map
 
 /***/ }),
-
-/***/ 493:
+/* 489 */,
+/* 490 */,
+/* 491 */,
+/* 492 */,
+/* 493 */
 /***/ (function(__unusedmodule, exports, __webpack_require__) {
 
 "use strict";
@@ -22478,8 +22807,8 @@ exports.document_adopt = document_adopt;
 //# sourceMappingURL=DocumentAlgorithm.js.map
 
 /***/ }),
-
-/***/ 495:
+/* 494 */,
+/* 495 */
 /***/ (function(__unusedmodule, exports) {
 
 "use strict";
@@ -22499,8 +22828,7 @@ exports.idl_defineConst = idl_defineConst;
 //# sourceMappingURL=WebIDLAlgorithm.js.map
 
 /***/ }),
-
-/***/ 496:
+/* 496 */
 /***/ (function(__unusedmodule, exports, __webpack_require__) {
 
 "use strict";
@@ -22973,8 +23301,7 @@ exports.range = range;
 //# sourceMappingURL=Set.js.map
 
 /***/ }),
-
-/***/ 497:
+/* 497 */
 /***/ (function(__unusedmodule, exports, __webpack_require__) {
 
 "use strict";
@@ -23141,8 +23468,10 @@ exports.YAMLCBWriter = YAMLCBWriter;
 //# sourceMappingURL=YAMLCBWriter.js.map
 
 /***/ }),
-
-/***/ 501:
+/* 498 */,
+/* 499 */,
+/* 500 */,
+/* 501 */
 /***/ (function(__unusedmodule, exports) {
 
 "use strict";
@@ -23170,8 +23499,17 @@ exports.dequeue = dequeue;
 //# sourceMappingURL=Queue.js.map
 
 /***/ }),
-
-/***/ 512:
+/* 502 */,
+/* 503 */,
+/* 504 */,
+/* 505 */,
+/* 506 */,
+/* 507 */,
+/* 508 */,
+/* 509 */,
+/* 510 */,
+/* 511 */,
+/* 512 */
 /***/ (function(__unusedmodule, exports) {
 
 "use strict";
@@ -23200,8 +23538,16 @@ exports.BaseCBWriter = BaseCBWriter;
 //# sourceMappingURL=BaseCBWriter.js.map
 
 /***/ }),
-
-/***/ 522:
+/* 513 */,
+/* 514 */,
+/* 515 */,
+/* 516 */,
+/* 517 */,
+/* 518 */,
+/* 519 */,
+/* 520 */,
+/* 521 */,
+/* 522 */
 /***/ (function(__unusedmodule, exports, __webpack_require__) {
 
 "use strict";
@@ -23330,8 +23676,8 @@ exports.convertAJSONDerivedJavaScriptValueToAnInfraValue = convertAJSONDerivedJa
 //# sourceMappingURL=JSON.js.map
 
 /***/ }),
-
-/***/ 524:
+/* 523 */,
+/* 524 */
 /***/ (function(__unusedmodule, exports) {
 
 "use strict";
@@ -23396,8 +23742,15 @@ exports.CompareCache = CompareCache;
 //# sourceMappingURL=CompareCache.js.map
 
 /***/ }),
-
-/***/ 533:
+/* 525 */,
+/* 526 */,
+/* 527 */,
+/* 528 */,
+/* 529 */,
+/* 530 */,
+/* 531 */,
+/* 532 */,
+/* 533 */
 /***/ (function(__unusedmodule, exports, __webpack_require__) {
 
 "use strict";
@@ -24068,8 +24421,8 @@ function _unique(values) {
 //# sourceMappingURL=tool-cache.js.map
 
 /***/ }),
-
-/***/ 535:
+/* 534 */,
+/* 535 */
 /***/ (function(__unusedmodule, exports, __webpack_require__) {
 
 "use strict";
@@ -24090,8 +24443,8 @@ exports.fragmentCB = BuilderFunctionsCB_1.fragmentCB;
 //# sourceMappingURL=index.js.map
 
 /***/ }),
-
-/***/ 537:
+/* 536 */,
+/* 537 */
 /***/ (function(__unusedmodule, exports) {
 
 "use strict";
@@ -24167,8 +24520,8 @@ exports.AbstractRangeImpl = AbstractRangeImpl;
 //# sourceMappingURL=AbstractRangeImpl.js.map
 
 /***/ }),
-
-/***/ 539:
+/* 538 */,
+/* 539 */
 /***/ (function(__unusedmodule, exports, __webpack_require__) {
 
 "use strict";
@@ -24712,8 +25065,7 @@ exports.HttpClient = HttpClient;
 
 
 /***/ }),
-
-/***/ 540:
+/* 540 */
 /***/ (function(__unusedmodule, exports, __webpack_require__) {
 
 "use strict";
@@ -24755,6 +25107,7 @@ const constants = __importStar(__webpack_require__(694));
 const path = __importStar(__webpack_require__(622));
 function run() {
     return __awaiter(this, void 0, void 0, function* () {
+        core.notice('The joschi/setup-jdk GitHub Action is deprecated. Please consider switching to the official actions/setup-java action v2 or later which also supports AdoptOpenJDK and its successor Eclipse Temurin: https://github.com/actions/setup-java/tree/v2.5.0#basic');
         try {
             // Type of release. Either a release version, known as General Availability ("ga") or an Early Access ("ea")
             const release_type = core.getInput(constants.INPUT_RELEASE_TYPE) || 'ga';
@@ -24810,8 +25163,7 @@ run();
 
 
 /***/ }),
-
-/***/ 541:
+/* 541 */
 /***/ (function(__unusedmodule, exports, __webpack_require__) {
 
 "use strict";
@@ -25360,8 +25712,16 @@ exports.node_locateANamespace = node_locateANamespace;
 //# sourceMappingURL=NodeAlgorithm.js.map
 
 /***/ }),
-
-/***/ 551:
+/* 542 */,
+/* 543 */,
+/* 544 */,
+/* 545 */,
+/* 546 */,
+/* 547 */,
+/* 548 */,
+/* 549 */,
+/* 550 */,
+/* 551 */
 /***/ (function(__unusedmodule, exports, __webpack_require__) {
 
 "use strict";
@@ -26158,8 +26518,11 @@ exports.XMLBuilderCBImpl = XMLBuilderCBImpl;
 //# sourceMappingURL=XMLBuilderCBImpl.js.map
 
 /***/ }),
-
-/***/ 556:
+/* 552 */,
+/* 553 */,
+/* 554 */,
+/* 555 */,
+/* 556 */
 /***/ (function(module) {
 
 "use strict";
@@ -26209,8 +26572,8 @@ module.exports = YAMLException;
 
 
 /***/ }),
-
-/***/ 558:
+/* 557 */,
+/* 558 */
 /***/ (function(__unusedmodule, exports, __webpack_require__) {
 
 "use strict";
@@ -26325,8 +26688,15 @@ WebIDLAlgorithm_1.idl_defineConst(DocumentTypeImpl.prototype, "_nodeType", inter
 //# sourceMappingURL=DocumentTypeImpl.js.map
 
 /***/ }),
-
-/***/ 567:
+/* 559 */,
+/* 560 */,
+/* 561 */,
+/* 562 */,
+/* 563 */,
+/* 564 */,
+/* 565 */,
+/* 566 */,
+/* 567 */
 /***/ (function(__unusedmodule, exports, __webpack_require__) {
 
 "use strict";
@@ -26343,8 +26713,13 @@ exports.YAMLReader = YAMLReader_1.YAMLReader;
 //# sourceMappingURL=index.js.map
 
 /***/ }),
-
-/***/ 574:
+/* 568 */,
+/* 569 */,
+/* 570 */,
+/* 571 */,
+/* 572 */,
+/* 573 */,
+/* 574 */
 /***/ (function(__unusedmodule, exports, __webpack_require__) {
 
 "use strict";
@@ -26381,8 +26756,7 @@ exports.NonElementParentNodeImpl = NonElementParentNodeImpl;
 //# sourceMappingURL=NonElementParentNodeImpl.js.map
 
 /***/ }),
-
-/***/ 575:
+/* 575 */
 /***/ (function(__unusedmodule, exports) {
 
 "use strict";
@@ -26444,8 +26818,181 @@ exports.LocalNameSet = LocalNameSet;
 //# sourceMappingURL=LocalNameSet.js.map
 
 /***/ }),
+/* 576 */
+/***/ (function(__unusedmodule, exports) {
 
-/***/ 581:
+"use strict";
+
+Object.defineProperty(exports, "__esModule", { value: true });
+/**
+ * Determines if the given string is valid for a `"Name"` construct.
+ *
+ * @param name - name string to test
+ */
+function xml_isName(name) {
+    for (var i = 0; i < name.length; i++) {
+        var n = name.charCodeAt(i);
+        // NameStartChar
+        if ((n >= 97 && n <= 122) || // [a-z]
+            (n >= 65 && n <= 90) || // [A-Z]
+            n === 58 || n === 95 || // ':' or '_'
+            (n >= 0xC0 && n <= 0xD6) ||
+            (n >= 0xD8 && n <= 0xF6) ||
+            (n >= 0xF8 && n <= 0x2FF) ||
+            (n >= 0x370 && n <= 0x37D) ||
+            (n >= 0x37F && n <= 0x1FFF) ||
+            (n >= 0x200C && n <= 0x200D) ||
+            (n >= 0x2070 && n <= 0x218F) ||
+            (n >= 0x2C00 && n <= 0x2FEF) ||
+            (n >= 0x3001 && n <= 0xD7FF) ||
+            (n >= 0xF900 && n <= 0xFDCF) ||
+            (n >= 0xFDF0 && n <= 0xFFFD)) {
+            continue;
+        }
+        else if (i !== 0 &&
+            (n === 45 || n === 46 || // '-' or '.'
+                (n >= 48 && n <= 57) || // [0-9]
+                (n === 0xB7) ||
+                (n >= 0x0300 && n <= 0x036F) ||
+                (n >= 0x203F && n <= 0x2040))) {
+            continue;
+        }
+        if (n >= 0xD800 && n <= 0xDBFF && i < name.length - 1) {
+            var n2 = name.charCodeAt(i + 1);
+            if (n2 >= 0xDC00 && n2 <= 0xDFFF) {
+                n = (n - 0xD800) * 0x400 + n2 - 0xDC00 + 0x10000;
+                i++;
+                if (n >= 0x10000 && n <= 0xEFFFF) {
+                    continue;
+                }
+            }
+        }
+        return false;
+    }
+    return true;
+}
+exports.xml_isName = xml_isName;
+/**
+ * Determines if the given string is valid for a `"QName"` construct.
+ *
+ * @param name - name string to test
+ */
+function xml_isQName(name) {
+    var colonFound = false;
+    for (var i = 0; i < name.length; i++) {
+        var n = name.charCodeAt(i);
+        // NameStartChar
+        if ((n >= 97 && n <= 122) || // [a-z]
+            (n >= 65 && n <= 90) || // [A-Z]
+            n === 95 || // '_'
+            (n >= 0xC0 && n <= 0xD6) ||
+            (n >= 0xD8 && n <= 0xF6) ||
+            (n >= 0xF8 && n <= 0x2FF) ||
+            (n >= 0x370 && n <= 0x37D) ||
+            (n >= 0x37F && n <= 0x1FFF) ||
+            (n >= 0x200C && n <= 0x200D) ||
+            (n >= 0x2070 && n <= 0x218F) ||
+            (n >= 0x2C00 && n <= 0x2FEF) ||
+            (n >= 0x3001 && n <= 0xD7FF) ||
+            (n >= 0xF900 && n <= 0xFDCF) ||
+            (n >= 0xFDF0 && n <= 0xFFFD)) {
+            continue;
+        }
+        else if (i !== 0 &&
+            (n === 45 || n === 46 || // '-' or '.'
+                (n >= 48 && n <= 57) || // [0-9]
+                (n === 0xB7) ||
+                (n >= 0x0300 && n <= 0x036F) ||
+                (n >= 0x203F && n <= 0x2040))) {
+            continue;
+        }
+        else if (i !== 0 && n === 58) { // :
+            if (colonFound)
+                return false; // multiple colons in qname
+            if (i === name.length - 1)
+                return false; // colon at the end of qname
+            colonFound = true;
+            continue;
+        }
+        if (n >= 0xD800 && n <= 0xDBFF && i < name.length - 1) {
+            var n2 = name.charCodeAt(i + 1);
+            if (n2 >= 0xDC00 && n2 <= 0xDFFF) {
+                n = (n - 0xD800) * 0x400 + n2 - 0xDC00 + 0x10000;
+                i++;
+                if (n >= 0x10000 && n <= 0xEFFFF) {
+                    continue;
+                }
+            }
+        }
+        return false;
+    }
+    return true;
+}
+exports.xml_isQName = xml_isQName;
+/**
+ * Determines if the given string contains legal characters.
+ *
+ * @param chars - sequence of characters to test
+ */
+function xml_isLegalChar(chars) {
+    for (var i = 0; i < chars.length; i++) {
+        var n = chars.charCodeAt(i);
+        // #x9 | #xA | #xD | [#x20-#xD7FF] | [#xE000-#xFFFD] | [#x10000-#x10FFFF]
+        if (n === 0x9 || n === 0xA || n === 0xD ||
+            (n >= 0x20 && n <= 0xD7FF) ||
+            (n >= 0xE000 && n <= 0xFFFD)) {
+            continue;
+        }
+        if (n >= 0xD800 && n <= 0xDBFF && i < chars.length - 1) {
+            var n2 = chars.charCodeAt(i + 1);
+            if (n2 >= 0xDC00 && n2 <= 0xDFFF) {
+                n = (n - 0xD800) * 0x400 + n2 - 0xDC00 + 0x10000;
+                i++;
+                if (n >= 0x10000 && n <= 0x10FFFF) {
+                    continue;
+                }
+            }
+        }
+        return false;
+    }
+    return true;
+}
+exports.xml_isLegalChar = xml_isLegalChar;
+/**
+ * Determines if the given string contains legal characters for a public
+ * identifier.
+ *
+ * @param chars - sequence of characters to test
+ */
+function xml_isPubidChar(chars) {
+    for (var i = 0; i < chars.length; i++) {
+        // PubId chars are all in the ASCII range, no need to check surrogates
+        var n = chars.charCodeAt(i);
+        // #x20 | #xD | #xA | [a-zA-Z0-9] | [-'()+,./:=?;!*#@$_%]
+        if ((n >= 97 && n <= 122) || // [a-z]
+            (n >= 65 && n <= 90) || // [A-Z]
+            (n >= 39 && n <= 59) || // ['()*+,-./] | [0-9] | [:;]
+            n === 0x20 || n === 0xD || n === 0xA || // #x20 | #xD | #xA
+            (n >= 35 && n <= 37) || // [#$%]
+            n === 33 || // !
+            n === 61 || n === 63 || n === 64 || n === 95) { // [=?@_]
+            continue;
+        }
+        else {
+            return false;
+        }
+    }
+    return true;
+}
+exports.xml_isPubidChar = xml_isPubidChar;
+//# sourceMappingURL=XMLAlgorithm.js.map
+
+/***/ }),
+/* 577 */,
+/* 578 */,
+/* 579 */,
+/* 580 */,
+/* 581 */
 /***/ (function(__unusedmodule, exports, __webpack_require__) {
 
 "use strict";
@@ -26533,8 +27080,17 @@ exports.ShadowRootImpl = ShadowRootImpl;
 //# sourceMappingURL=ShadowRootImpl.js.map
 
 /***/ }),
-
-/***/ 592:
+/* 582 */,
+/* 583 */,
+/* 584 */,
+/* 585 */,
+/* 586 */,
+/* 587 */,
+/* 588 */,
+/* 589 */,
+/* 590 */,
+/* 591 */,
+/* 592 */
 /***/ (function(__unusedmodule, exports, __webpack_require__) {
 
 "use strict";
@@ -26979,8 +27535,9 @@ exports.utf8Decode = utf8Decode;
 //# sourceMappingURL=index.js.map
 
 /***/ }),
-
-/***/ 595:
+/* 593 */,
+/* 594 */,
+/* 595 */
 /***/ (function(__unusedmodule, exports, __webpack_require__) {
 
 "use strict";
@@ -27015,7 +27572,7 @@ var __values = (this && this.__values) || function(o) {
 Object.defineProperty(exports, "__esModule", { value: true });
 var interfaces_1 = __webpack_require__(625);
 var util_1 = __webpack_require__(592);
-var writers_1 = __webpack_require__(95);
+var writers_1 = __webpack_require__(442);
 var interfaces_2 = __webpack_require__(970);
 var util_2 = __webpack_require__(918);
 var algorithm_1 = __webpack_require__(163);
@@ -27827,8 +28384,8 @@ exports.XMLBuilderImpl = XMLBuilderImpl;
 //# sourceMappingURL=XMLBuilderImpl.js.map
 
 /***/ }),
-
-/***/ 597:
+/* 596 */,
+/* 597 */
 /***/ (function(__unusedmodule, exports, __webpack_require__) {
 
 "use strict";
@@ -27967,15 +28524,25 @@ exports.EventTargetImpl = EventTargetImpl;
 //# sourceMappingURL=EventTargetImpl.js.map
 
 /***/ }),
-
-/***/ 605:
+/* 598 */,
+/* 599 */,
+/* 600 */,
+/* 601 */,
+/* 602 */,
+/* 603 */,
+/* 604 */,
+/* 605 */
 /***/ (function(module) {
 
 module.exports = require("http");
 
 /***/ }),
-
-/***/ 611:
+/* 606 */,
+/* 607 */,
+/* 608 */,
+/* 609 */,
+/* 610 */,
+/* 611 */
 /***/ (function(module, __unusedexports, __webpack_require__) {
 
 "use strict";
@@ -28000,15 +28567,19 @@ module.exports = new Schema({
 
 
 /***/ }),
-
-/***/ 614:
+/* 612 */,
+/* 613 */,
+/* 614 */
 /***/ (function(module) {
 
 module.exports = require("events");
 
 /***/ }),
-
-/***/ 619:
+/* 615 */,
+/* 616 */,
+/* 617 */,
+/* 618 */,
+/* 619 */
 /***/ (function(__unusedmodule, exports, __webpack_require__) {
 
 "use strict";
@@ -28073,15 +28644,17 @@ WebIDLAlgorithm_1.idl_defineConst(ProcessingInstructionImpl.prototype, "_nodeTyp
 //# sourceMappingURL=ProcessingInstructionImpl.js.map
 
 /***/ }),
-
-/***/ 622:
+/* 620 */,
+/* 621 */,
+/* 622 */
 /***/ (function(module) {
 
 module.exports = require("path");
 
 /***/ }),
-
-/***/ 625:
+/* 623 */,
+/* 624 */,
+/* 625 */
 /***/ (function(__unusedmodule, exports) {
 
 "use strict";
@@ -28162,8 +28735,10 @@ exports.DefaultXMLBuilderCBOptions = {
 //# sourceMappingURL=interfaces.js.map
 
 /***/ }),
-
-/***/ 629:
+/* 626 */,
+/* 627 */,
+/* 628 */,
+/* 629 */
 /***/ (function(module, __unusedexports, __webpack_require__) {
 
 "use strict";
@@ -28230,15 +28805,15 @@ module.exports = new Type('tag:yaml.org,2002:js/regexp', {
 
 
 /***/ }),
-
-/***/ 631:
+/* 630 */,
+/* 631 */
 /***/ (function(module) {
 
 module.exports = require("net");
 
 /***/ }),
-
-/***/ 633:
+/* 632 */,
+/* 633 */
 /***/ (function(module, __unusedexports, __webpack_require__) {
 
 "use strict";
@@ -28257,8 +28832,9 @@ module.exports = new Type('tag:yaml.org,2002:merge', {
 
 
 /***/ }),
-
-/***/ 636:
+/* 634 */,
+/* 635 */,
+/* 636 */
 /***/ (function(__unusedmodule, exports, __webpack_require__) {
 
 "use strict";
@@ -28462,8 +29038,12 @@ exports.NodeListImpl = NodeListImpl;
 //# sourceMappingURL=NodeListImpl.js.map
 
 /***/ }),
-
-/***/ 642:
+/* 637 */,
+/* 638 */,
+/* 639 */,
+/* 640 */,
+/* 641 */,
+/* 642 */
 /***/ (function(__unusedmodule, exports, __webpack_require__) {
 
 "use strict";
@@ -28506,8 +29086,10 @@ exports.DOMParserImpl = DOMParserImpl;
 //# sourceMappingURL=DOMParserImpl.js.map
 
 /***/ }),
-
-/***/ 646:
+/* 643 */,
+/* 644 */,
+/* 645 */,
+/* 646 */
 /***/ (function(__unusedmodule, exports, __webpack_require__) {
 
 "use strict";
@@ -28762,8 +29344,8 @@ exports.TreeWalkerImpl = TreeWalkerImpl;
 //# sourceMappingURL=TreeWalkerImpl.js.map
 
 /***/ }),
-
-/***/ 648:
+/* 647 */,
+/* 648 */
 /***/ (function(__unusedmodule, exports, __webpack_require__) {
 
 "use strict";
@@ -28869,8 +29451,15 @@ exports.dom = DOMImpl.instance;
 //# sourceMappingURL=DOMImpl.js.map
 
 /***/ }),
-
-/***/ 657:
+/* 649 */,
+/* 650 */,
+/* 651 */,
+/* 652 */,
+/* 653 */,
+/* 654 */,
+/* 655 */,
+/* 656 */,
+/* 657 */
 /***/ (function(__unusedmodule, exports, __webpack_require__) {
 
 "use strict";
@@ -29201,8 +29790,10 @@ exports.sortInDescendingOrder = sortInDescendingOrder;
 //# sourceMappingURL=List.js.map
 
 /***/ }),
-
-/***/ 661:
+/* 658 */,
+/* 659 */,
+/* 660 */,
+/* 661 */
 /***/ (function(__unusedmodule, exports, __webpack_require__) {
 
 "use strict";
@@ -29239,8 +29830,9 @@ exports.XMLDocumentImpl = XMLDocumentImpl;
 //# sourceMappingURL=XMLDocumentImpl.js.map
 
 /***/ }),
-
-/***/ 664:
+/* 662 */,
+/* 663 */,
+/* 664 */
 /***/ (function(__unusedmodule, exports, __webpack_require__) {
 
 "use strict";
@@ -29248,7 +29840,7 @@ exports.XMLDocumentImpl = XMLDocumentImpl;
 Object.defineProperty(exports, "__esModule", { value: true });
 var DOMException_1 = __webpack_require__(35);
 var infra_1 = __webpack_require__(23);
-var XMLAlgorithm_1 = __webpack_require__(442);
+var XMLAlgorithm_1 = __webpack_require__(576);
 /**
  * Validates the given qualified name.
  *
@@ -29331,15 +29923,307 @@ exports.namespace_extractQName = namespace_extractQName;
 //# sourceMappingURL=NamespaceAlgorithm.js.map
 
 /***/ }),
+/* 665 */
+/***/ (function(__unusedmodule, exports, __webpack_require__) {
 
-/***/ 669:
+"use strict";
+
+var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
+    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
+    return new (P || (P = Promise))(function (resolve, reject) {
+        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
+        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
+        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
+        step((generator = generator.apply(thisArg, _arguments || [])).next());
+    });
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.summary = exports.markdownSummary = exports.SUMMARY_DOCS_URL = exports.SUMMARY_ENV_VAR = void 0;
+const os_1 = __webpack_require__(87);
+const fs_1 = __webpack_require__(747);
+const { access, appendFile, writeFile } = fs_1.promises;
+exports.SUMMARY_ENV_VAR = 'GITHUB_STEP_SUMMARY';
+exports.SUMMARY_DOCS_URL = 'https://docs.github.com/actions/using-workflows/workflow-commands-for-github-actions#adding-a-job-summary';
+class Summary {
+    constructor() {
+        this._buffer = '';
+    }
+    /**
+     * Finds the summary file path from the environment, rejects if env var is not found or file does not exist
+     * Also checks r/w permissions.
+     *
+     * @returns step summary file path
+     */
+    filePath() {
+        return __awaiter(this, void 0, void 0, function* () {
+            if (this._filePath) {
+                return this._filePath;
+            }
+            const pathFromEnv = process.env[exports.SUMMARY_ENV_VAR];
+            if (!pathFromEnv) {
+                throw new Error(`Unable to find environment variable for $${exports.SUMMARY_ENV_VAR}. Check if your runtime environment supports job summaries.`);
+            }
+            try {
+                yield access(pathFromEnv, fs_1.constants.R_OK | fs_1.constants.W_OK);
+            }
+            catch (_a) {
+                throw new Error(`Unable to access summary file: '${pathFromEnv}'. Check if the file has correct read/write permissions.`);
+            }
+            this._filePath = pathFromEnv;
+            return this._filePath;
+        });
+    }
+    /**
+     * Wraps content in an HTML tag, adding any HTML attributes
+     *
+     * @param {string} tag HTML tag to wrap
+     * @param {string | null} content content within the tag
+     * @param {[attribute: string]: string} attrs key-value list of HTML attributes to add
+     *
+     * @returns {string} content wrapped in HTML element
+     */
+    wrap(tag, content, attrs = {}) {
+        const htmlAttrs = Object.entries(attrs)
+            .map(([key, value]) => ` ${key}="${value}"`)
+            .join('');
+        if (!content) {
+            return `<${tag}${htmlAttrs}>`;
+        }
+        return `<${tag}${htmlAttrs}>${content}</${tag}>`;
+    }
+    /**
+     * Writes text in the buffer to the summary buffer file and empties buffer. Will append by default.
+     *
+     * @param {SummaryWriteOptions} [options] (optional) options for write operation
+     *
+     * @returns {Promise<Summary>} summary instance
+     */
+    write(options) {
+        return __awaiter(this, void 0, void 0, function* () {
+            const overwrite = !!(options === null || options === void 0 ? void 0 : options.overwrite);
+            const filePath = yield this.filePath();
+            const writeFunc = overwrite ? writeFile : appendFile;
+            yield writeFunc(filePath, this._buffer, { encoding: 'utf8' });
+            return this.emptyBuffer();
+        });
+    }
+    /**
+     * Clears the summary buffer and wipes the summary file
+     *
+     * @returns {Summary} summary instance
+     */
+    clear() {
+        return __awaiter(this, void 0, void 0, function* () {
+            return this.emptyBuffer().write({ overwrite: true });
+        });
+    }
+    /**
+     * Returns the current summary buffer as a string
+     *
+     * @returns {string} string of summary buffer
+     */
+    stringify() {
+        return this._buffer;
+    }
+    /**
+     * If the summary buffer is empty
+     *
+     * @returns {boolen} true if the buffer is empty
+     */
+    isEmptyBuffer() {
+        return this._buffer.length === 0;
+    }
+    /**
+     * Resets the summary buffer without writing to summary file
+     *
+     * @returns {Summary} summary instance
+     */
+    emptyBuffer() {
+        this._buffer = '';
+        return this;
+    }
+    /**
+     * Adds raw text to the summary buffer
+     *
+     * @param {string} text content to add
+     * @param {boolean} [addEOL=false] (optional) append an EOL to the raw text (default: false)
+     *
+     * @returns {Summary} summary instance
+     */
+    addRaw(text, addEOL = false) {
+        this._buffer += text;
+        return addEOL ? this.addEOL() : this;
+    }
+    /**
+     * Adds the operating system-specific end-of-line marker to the buffer
+     *
+     * @returns {Summary} summary instance
+     */
+    addEOL() {
+        return this.addRaw(os_1.EOL);
+    }
+    /**
+     * Adds an HTML codeblock to the summary buffer
+     *
+     * @param {string} code content to render within fenced code block
+     * @param {string} lang (optional) language to syntax highlight code
+     *
+     * @returns {Summary} summary instance
+     */
+    addCodeBlock(code, lang) {
+        const attrs = Object.assign({}, (lang && { lang }));
+        const element = this.wrap('pre', this.wrap('code', code), attrs);
+        return this.addRaw(element).addEOL();
+    }
+    /**
+     * Adds an HTML list to the summary buffer
+     *
+     * @param {string[]} items list of items to render
+     * @param {boolean} [ordered=false] (optional) if the rendered list should be ordered or not (default: false)
+     *
+     * @returns {Summary} summary instance
+     */
+    addList(items, ordered = false) {
+        const tag = ordered ? 'ol' : 'ul';
+        const listItems = items.map(item => this.wrap('li', item)).join('');
+        const element = this.wrap(tag, listItems);
+        return this.addRaw(element).addEOL();
+    }
+    /**
+     * Adds an HTML table to the summary buffer
+     *
+     * @param {SummaryTableCell[]} rows table rows
+     *
+     * @returns {Summary} summary instance
+     */
+    addTable(rows) {
+        const tableBody = rows
+            .map(row => {
+            const cells = row
+                .map(cell => {
+                if (typeof cell === 'string') {
+                    return this.wrap('td', cell);
+                }
+                const { header, data, colspan, rowspan } = cell;
+                const tag = header ? 'th' : 'td';
+                const attrs = Object.assign(Object.assign({}, (colspan && { colspan })), (rowspan && { rowspan }));
+                return this.wrap(tag, data, attrs);
+            })
+                .join('');
+            return this.wrap('tr', cells);
+        })
+            .join('');
+        const element = this.wrap('table', tableBody);
+        return this.addRaw(element).addEOL();
+    }
+    /**
+     * Adds a collapsable HTML details element to the summary buffer
+     *
+     * @param {string} label text for the closed state
+     * @param {string} content collapsable content
+     *
+     * @returns {Summary} summary instance
+     */
+    addDetails(label, content) {
+        const element = this.wrap('details', this.wrap('summary', label) + content);
+        return this.addRaw(element).addEOL();
+    }
+    /**
+     * Adds an HTML image tag to the summary buffer
+     *
+     * @param {string} src path to the image you to embed
+     * @param {string} alt text description of the image
+     * @param {SummaryImageOptions} options (optional) addition image attributes
+     *
+     * @returns {Summary} summary instance
+     */
+    addImage(src, alt, options) {
+        const { width, height } = options || {};
+        const attrs = Object.assign(Object.assign({}, (width && { width })), (height && { height }));
+        const element = this.wrap('img', null, Object.assign({ src, alt }, attrs));
+        return this.addRaw(element).addEOL();
+    }
+    /**
+     * Adds an HTML section heading element
+     *
+     * @param {string} text heading text
+     * @param {number | string} [level=1] (optional) the heading level, default: 1
+     *
+     * @returns {Summary} summary instance
+     */
+    addHeading(text, level) {
+        const tag = `h${level}`;
+        const allowedTag = ['h1', 'h2', 'h3', 'h4', 'h5', 'h6'].includes(tag)
+            ? tag
+            : 'h1';
+        const element = this.wrap(allowedTag, text);
+        return this.addRaw(element).addEOL();
+    }
+    /**
+     * Adds an HTML thematic break (<hr>) to the summary buffer
+     *
+     * @returns {Summary} summary instance
+     */
+    addSeparator() {
+        const element = this.wrap('hr', null);
+        return this.addRaw(element).addEOL();
+    }
+    /**
+     * Adds an HTML line break (<br>) to the summary buffer
+     *
+     * @returns {Summary} summary instance
+     */
+    addBreak() {
+        const element = this.wrap('br', null);
+        return this.addRaw(element).addEOL();
+    }
+    /**
+     * Adds an HTML blockquote to the summary buffer
+     *
+     * @param {string} text quote text
+     * @param {string} cite (optional) citation url
+     *
+     * @returns {Summary} summary instance
+     */
+    addQuote(text, cite) {
+        const attrs = Object.assign({}, (cite && { cite }));
+        const element = this.wrap('blockquote', text, attrs);
+        return this.addRaw(element).addEOL();
+    }
+    /**
+     * Adds an HTML anchor tag to the summary buffer
+     *
+     * @param {string} text link text/content
+     * @param {string} href hyperlink
+     *
+     * @returns {Summary} summary instance
+     */
+    addLink(text, href) {
+        const element = this.wrap('a', text, { href });
+        return this.addRaw(element).addEOL();
+    }
+}
+const _summary = new Summary();
+/**
+ * @deprecated use `core.summary`
+ */
+exports.markdownSummary = _summary;
+exports.summary = _summary;
+//# sourceMappingURL=summary.js.map
+
+/***/ }),
+/* 666 */,
+/* 667 */,
+/* 668 */,
+/* 669 */
 /***/ (function(module) {
 
 module.exports = require("util");
 
 /***/ }),
-
-/***/ 672:
+/* 670 */,
+/* 671 */,
+/* 672 */
 /***/ (function(__unusedmodule, exports, __webpack_require__) {
 
 "use strict";
@@ -29522,8 +30406,19 @@ exports.getCmdPath = getCmdPath;
 //# sourceMappingURL=io-util.js.map
 
 /***/ }),
-
-/***/ 685:
+/* 673 */,
+/* 674 */,
+/* 675 */,
+/* 676 */,
+/* 677 */,
+/* 678 */,
+/* 679 */,
+/* 680 */,
+/* 681 */,
+/* 682 */,
+/* 683 */,
+/* 684 */,
+/* 685 */
 /***/ (function(module, __unusedexports, __webpack_require__) {
 
 "use strict";
@@ -30380,8 +31275,7 @@ module.exports.safeDump = safeDump;
 
 
 /***/ }),
-
-/***/ 686:
+/* 686 */
 /***/ (function(__unusedmodule, exports, __webpack_require__) {
 
 "use strict";
@@ -30393,8 +31287,8 @@ exports.XMLSerializer = XMLSerializerImpl_1.XMLSerializerImpl;
 //# sourceMappingURL=index.js.map
 
 /***/ }),
-
-/***/ 688:
+/* 687 */,
+/* 688 */
 /***/ (function(__unusedmodule, exports, __webpack_require__) {
 
 "use strict";
@@ -30448,8 +31342,12 @@ exports.StaticRangeImpl = StaticRangeImpl;
 //# sourceMappingURL=StaticRangeImpl.js.map
 
 /***/ }),
-
-/***/ 694:
+/* 689 */,
+/* 690 */,
+/* 691 */,
+/* 692 */,
+/* 693 */,
+/* 694 */
 /***/ (function(__unusedmodule, exports) {
 
 "use strict";
@@ -30478,8 +31376,7 @@ exports.STATE_GPG_PRIVATE_KEY_FINGERPRINT = 'gpg-private-key-fingerprint';
 
 
 /***/ }),
-
-/***/ 695:
+/* 695 */
 /***/ (function(__unusedmodule, exports, __webpack_require__) {
 
 "use strict";
@@ -31199,8 +32096,15 @@ WebIDLAlgorithm_1.idl_defineConst(ElementImpl.prototype, "_nodeType", interfaces
 //# sourceMappingURL=ElementImpl.js.map
 
 /***/ }),
-
-/***/ 704:
+/* 696 */,
+/* 697 */,
+/* 698 */,
+/* 699 */,
+/* 700 */,
+/* 701 */,
+/* 702 */,
+/* 703 */,
+/* 704 */
 /***/ (function(__unusedmodule, exports) {
 
 "use strict";
@@ -31380,8 +32284,7 @@ exports.FixedSizeSet = FixedSizeSet;
 //# sourceMappingURL=FixedSizeSet.js.map
 
 /***/ }),
-
-/***/ 705:
+/* 705 */
 /***/ (function(__unusedmodule, exports, __webpack_require__) {
 
 "use strict";
@@ -31534,8 +32437,11 @@ exports.treeWalker_traverseSiblings = treeWalker_traverseSiblings;
 //# sourceMappingURL=TreeWalkerAlgorithm.js.map
 
 /***/ }),
-
-/***/ 710:
+/* 706 */,
+/* 707 */,
+/* 708 */,
+/* 709 */,
+/* 710 */
 /***/ (function(__unusedmodule, exports, __webpack_require__) {
 
 "use strict";
@@ -31620,8 +32526,16 @@ exports.abort_signalAbort = abort_signalAbort;
 //# sourceMappingURL=AbortAlgorithm.js.map
 
 /***/ }),
-
-/***/ 720:
+/* 711 */,
+/* 712 */,
+/* 713 */,
+/* 714 */,
+/* 715 */,
+/* 716 */,
+/* 717 */,
+/* 718 */,
+/* 719 */,
+/* 720 */
 /***/ (function(module, __unusedexports, __webpack_require__) {
 
 "use strict";
@@ -31653,8 +32567,8 @@ module.exports = new Schema({
 
 
 /***/ }),
-
-/***/ 722:
+/* 721 */,
+/* 722 */
 /***/ (function(module) {
 
 /**
@@ -31686,8 +32600,7 @@ module.exports = bytesToUuid;
 
 
 /***/ }),
-
-/***/ 723:
+/* 723 */
 /***/ (function(module, __unusedexports, __webpack_require__) {
 
 "use strict";
@@ -31722,8 +32635,13 @@ module.exports = new Schema({
 
 
 /***/ }),
-
-/***/ 730:
+/* 724 */,
+/* 725 */,
+/* 726 */,
+/* 727 */,
+/* 728 */,
+/* 729 */,
+/* 730 */
 /***/ (function(__unusedmodule, exports) {
 
 "use strict";
@@ -31845,8 +32763,9 @@ exports.MutationRecordImpl = MutationRecordImpl;
 //# sourceMappingURL=MutationRecordImpl.js.map
 
 /***/ }),
-
-/***/ 733:
+/* 731 */,
+/* 732 */,
+/* 733 */
 /***/ (function(module, __unusedexports, __webpack_require__) {
 
 "use strict";
@@ -31961,8 +32880,13 @@ module.exports = Schema;
 
 
 /***/ }),
-
-/***/ 740:
+/* 734 */,
+/* 735 */,
+/* 736 */,
+/* 737 */,
+/* 738 */,
+/* 739 */,
+/* 740 */
 /***/ (function(module) {
 
 "use strict";
@@ -32028,8 +32952,91 @@ module.exports.extend         = extend;
 
 
 /***/ }),
+/* 741 */,
+/* 742 */
+/***/ (function(__unusedmodule, exports, __webpack_require__) {
 
-/***/ 743:
+"use strict";
+
+var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
+    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
+    return new (P || (P = Promise))(function (resolve, reject) {
+        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
+        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
+        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
+        step((generator = generator.apply(thisArg, _arguments || [])).next());
+    });
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.OidcClient = void 0;
+const http_client_1 = __webpack_require__(993);
+const auth_1 = __webpack_require__(363);
+const core_1 = __webpack_require__(470);
+class OidcClient {
+    static createHttpClient(allowRetry = true, maxRetry = 10) {
+        const requestOptions = {
+            allowRetries: allowRetry,
+            maxRetries: maxRetry
+        };
+        return new http_client_1.HttpClient('actions/oidc-client', [new auth_1.BearerCredentialHandler(OidcClient.getRequestToken())], requestOptions);
+    }
+    static getRequestToken() {
+        const token = process.env['ACTIONS_ID_TOKEN_REQUEST_TOKEN'];
+        if (!token) {
+            throw new Error('Unable to get ACTIONS_ID_TOKEN_REQUEST_TOKEN env variable');
+        }
+        return token;
+    }
+    static getIDTokenUrl() {
+        const runtimeUrl = process.env['ACTIONS_ID_TOKEN_REQUEST_URL'];
+        if (!runtimeUrl) {
+            throw new Error('Unable to get ACTIONS_ID_TOKEN_REQUEST_URL env variable');
+        }
+        return runtimeUrl;
+    }
+    static getCall(id_token_url) {
+        var _a;
+        return __awaiter(this, void 0, void 0, function* () {
+            const httpclient = OidcClient.createHttpClient();
+            const res = yield httpclient
+                .getJson(id_token_url)
+                .catch(error => {
+                throw new Error(`Failed to get ID Token. \n 
+        Error Code : ${error.statusCode}\n 
+        Error Message: ${error.result.message}`);
+            });
+            const id_token = (_a = res.result) === null || _a === void 0 ? void 0 : _a.value;
+            if (!id_token) {
+                throw new Error('Response json body do not have ID Token field');
+            }
+            return id_token;
+        });
+    }
+    static getIDToken(audience) {
+        return __awaiter(this, void 0, void 0, function* () {
+            try {
+                // New ID Token is requested from action service
+                let id_token_url = OidcClient.getIDTokenUrl();
+                if (audience) {
+                    const encodedAudience = encodeURIComponent(audience);
+                    id_token_url = `${id_token_url}&audience=${encodedAudience}`;
+                }
+                core_1.debug(`ID token url is ${id_token_url}`);
+                const id_token = yield OidcClient.getCall(id_token_url);
+                core_1.setSecret(id_token);
+                return id_token;
+            }
+            catch (error) {
+                throw new Error(`Error message: ${error.message}`);
+            }
+        });
+    }
+}
+exports.OidcClient = OidcClient;
+//# sourceMappingURL=oidc-utils.js.map
+
+/***/ }),
+/* 743 */
 /***/ (function(__unusedmodule, exports, __webpack_require__) {
 
 "use strict";
@@ -32102,15 +33109,18 @@ exports.sanitizeInput = sanitizeInput;
 //# sourceMappingURL=dom.js.map
 
 /***/ }),
-
-/***/ 747:
+/* 744 */,
+/* 745 */,
+/* 746 */,
+/* 747 */
 /***/ (function(module) {
 
 module.exports = require("fs");
 
 /***/ }),
-
-/***/ 750:
+/* 748 */,
+/* 749 */,
+/* 750 */
 /***/ (function(__unusedmodule, exports, __webpack_require__) {
 
 "use strict";
@@ -32202,8 +33212,16 @@ exports.MapWriter = MapWriter;
 //# sourceMappingURL=MapWriter.js.map
 
 /***/ }),
-
-/***/ 760:
+/* 751 */,
+/* 752 */,
+/* 753 */,
+/* 754 */,
+/* 755 */,
+/* 756 */,
+/* 757 */,
+/* 758 */,
+/* 759 */,
+/* 760 */
 /***/ (function(__unusedmodule, exports, __webpack_require__) {
 
 "use strict";
@@ -32261,8 +33279,9 @@ WebIDLAlgorithm_1.idl_defineConst(CommentImpl.prototype, "_nodeType", interfaces
 //# sourceMappingURL=CommentImpl.js.map
 
 /***/ }),
-
-/***/ 763:
+/* 761 */,
+/* 762 */,
+/* 763 */
 /***/ (function(__unusedmodule, exports, __webpack_require__) {
 
 "use strict";
@@ -32350,8 +33369,7 @@ exports.forgivingBase64Decode = forgivingBase64Decode;
 //# sourceMappingURL=Base64.js.map
 
 /***/ }),
-
-/***/ 764:
+/* 764 */
 /***/ (function(__unusedmodule, exports, __webpack_require__) {
 
 "use strict";
@@ -32594,8 +33612,13 @@ exports.XMLWriter = XMLWriter;
 //# sourceMappingURL=XMLWriter.js.map
 
 /***/ }),
-
-/***/ 771:
+/* 765 */,
+/* 766 */,
+/* 767 */,
+/* 768 */,
+/* 769 */,
+/* 770 */,
+/* 771 */
 /***/ (function(__unusedmodule, exports, __webpack_require__) {
 
 "use strict";
@@ -32801,8 +33824,9 @@ exports.XMLReader = XMLReader;
 //# sourceMappingURL=XMLReader.js.map
 
 /***/ }),
-
-/***/ 774:
+/* 772 */,
+/* 773 */,
+/* 774 */
 /***/ (function(__unusedmodule, exports, __webpack_require__) {
 
 "use strict";
@@ -32872,8 +33896,13 @@ WebIDLAlgorithm_1.idl_defineConst(NodeFilterImpl.prototype, "SHOW_NOTATION", 0x8
 //# sourceMappingURL=NodeFilterImpl.js.map
 
 /***/ }),
-
-/***/ 781:
+/* 775 */,
+/* 776 */,
+/* 777 */,
+/* 778 */,
+/* 779 */,
+/* 780 */,
+/* 781 */
 /***/ (function(__unusedmodule, exports, __webpack_require__) {
 
 "use strict";
@@ -33051,8 +34080,7 @@ exports.JSONCBWriter = JSONCBWriter;
 //# sourceMappingURL=JSONCBWriter.js.map
 
 /***/ }),
-
-/***/ 782:
+/* 782 */
 /***/ (function(__unusedmodule, exports) {
 
 "use strict";
@@ -33073,8 +34101,7 @@ exports.isASCIIByte = isASCIIByte;
 //# sourceMappingURL=Byte.js.map
 
 /***/ }),
-
-/***/ 783:
+/* 783 */
 /***/ (function(__unusedmodule, exports, __webpack_require__) {
 
 "use strict";
@@ -33272,8 +34299,7 @@ exports.Guard = Guard;
 //# sourceMappingURL=Guard.js.map
 
 /***/ }),
-
-/***/ 784:
+/* 784 */
 /***/ (function(__unusedmodule, exports, __webpack_require__) {
 
 "use strict";
@@ -33338,15 +34364,23 @@ exports.AbortSignalImpl = AbortSignalImpl;
 //# sourceMappingURL=AbortSignalImpl.js.map
 
 /***/ }),
-
-/***/ 794:
+/* 785 */,
+/* 786 */,
+/* 787 */,
+/* 788 */,
+/* 789 */,
+/* 790 */,
+/* 791 */,
+/* 792 */,
+/* 793 */,
+/* 794 */
 /***/ (function(module) {
 
 module.exports = require("stream");
 
 /***/ }),
-
-/***/ 796:
+/* 795 */,
+/* 796 */
 /***/ (function(__unusedmodule, exports, __webpack_require__) {
 
 "use strict";
@@ -33455,8 +34489,10 @@ WebIDLAlgorithm_1.idl_defineConst(DocumentFragmentImpl.prototype, "_nodeType", i
 //# sourceMappingURL=DocumentFragmentImpl.js.map
 
 /***/ }),
-
-/***/ 800:
+/* 797 */,
+/* 798 */,
+/* 799 */,
+/* 800 */
 /***/ (function(__unusedmodule, exports, __webpack_require__) {
 
 "use strict";
@@ -33548,8 +34584,15 @@ exports.NodeIteratorImpl = NodeIteratorImpl;
 //# sourceMappingURL=NodeIteratorImpl.js.map
 
 /***/ }),
-
-/***/ 809:
+/* 801 */,
+/* 802 */,
+/* 803 */,
+/* 804 */,
+/* 805 */,
+/* 806 */,
+/* 807 */,
+/* 808 */,
+/* 809 */
 /***/ (function(module, __unusedexports, __webpack_require__) {
 
 "use strict";
@@ -33590,8 +34633,10 @@ module.exports = new Type('tag:yaml.org,2002:null', {
 
 
 /***/ }),
-
-/***/ 813:
+/* 810 */,
+/* 811 */,
+/* 812 */,
+/* 813 */
 /***/ (function(__unusedmodule, exports, __webpack_require__) {
 
 "use strict";
@@ -36355,8 +37400,12 @@ exports.asciiSerializationOfAnOrigin = asciiSerializationOfAnOrigin;
 //# sourceMappingURL=URLAlgorithm.js.map
 
 /***/ }),
-
-/***/ 819:
+/* 814 */,
+/* 815 */,
+/* 816 */,
+/* 817 */,
+/* 818 */,
+/* 819 */
 /***/ (function(module, __unusedexports, __webpack_require__) {
 
 "use strict";
@@ -36402,8 +37451,7 @@ module.exports.addConstructor = deprecated('addConstructor');
 
 
 /***/ }),
-
-/***/ 820:
+/* 820 */
 /***/ (function(__unusedmodule, exports, __webpack_require__) {
 
 "use strict";
@@ -36518,8 +37566,12 @@ WebIDLAlgorithm_1.idl_defineConst(TextImpl.prototype, "_nodeType", interfaces_1.
 //# sourceMappingURL=TextImpl.js.map
 
 /***/ }),
-
-/***/ 826:
+/* 821 */,
+/* 822 */,
+/* 823 */,
+/* 824 */,
+/* 825 */,
+/* 826 */
 /***/ (function(module, __unusedexports, __webpack_require__) {
 
 var rng = __webpack_require__(139);
@@ -36554,15 +37606,26 @@ module.exports = v4;
 
 
 /***/ }),
-
-/***/ 835:
+/* 827 */,
+/* 828 */,
+/* 829 */,
+/* 830 */,
+/* 831 */,
+/* 832 */,
+/* 833 */,
+/* 834 */,
+/* 835 */
 /***/ (function(module) {
 
 module.exports = require("url");
 
 /***/ }),
-
-/***/ 841:
+/* 836 */,
+/* 837 */,
+/* 838 */,
+/* 839 */,
+/* 840 */,
+/* 841 */
 /***/ (function(module, __unusedexports, __webpack_require__) {
 
 "use strict";
@@ -36657,8 +37720,7 @@ module.exports = new Type('tag:yaml.org,2002:timestamp', {
 
 
 /***/ }),
-
-/***/ 842:
+/* 842 */
 /***/ (function(module, __unusedexports, __webpack_require__) {
 
 "use strict";
@@ -36709,8 +37771,29 @@ module.exports = new Type('tag:yaml.org,2002:omap', {
 
 
 /***/ }),
-
-/***/ 865:
+/* 843 */,
+/* 844 */,
+/* 845 */,
+/* 846 */,
+/* 847 */,
+/* 848 */,
+/* 849 */,
+/* 850 */,
+/* 851 */,
+/* 852 */,
+/* 853 */,
+/* 854 */,
+/* 855 */,
+/* 856 */,
+/* 857 */,
+/* 858 */,
+/* 859 */,
+/* 860 */,
+/* 861 */,
+/* 862 */,
+/* 863 */,
+/* 864 */,
+/* 865 */
 /***/ (function(__unusedmodule, exports, __webpack_require__) {
 
 "use strict";
@@ -36760,8 +37843,7 @@ exports.YAMLReader = YAMLReader;
 //# sourceMappingURL=YAMLReader.js.map
 
 /***/ }),
-
-/***/ 866:
+/* 866 */
 /***/ (function(__unusedmodule, exports, __webpack_require__) {
 
 "use strict";
@@ -36885,8 +37967,13 @@ WebIDLAlgorithm_1.idl_defineConst(AttrImpl.prototype, "specified", true);
 //# sourceMappingURL=AttrImpl.js.map
 
 /***/ }),
-
-/***/ 873:
+/* 867 */,
+/* 868 */,
+/* 869 */,
+/* 870 */,
+/* 871 */,
+/* 872 */,
+/* 873 */
 /***/ (function(__unusedmodule, exports, __webpack_require__) {
 
 "use strict";
@@ -37745,8 +38832,17 @@ exports.tree_retarget = tree_retarget;
 //# sourceMappingURL=TreeAlgorithm.js.map
 
 /***/ }),
-
-/***/ 884:
+/* 874 */,
+/* 875 */,
+/* 876 */,
+/* 877 */,
+/* 878 */,
+/* 879 */,
+/* 880 */,
+/* 881 */,
+/* 882 */,
+/* 883 */,
+/* 884 */
 /***/ (function(__unusedmodule, exports, __webpack_require__) {
 
 "use strict";
@@ -37826,8 +38922,11 @@ exports.deleteKey = deleteKey;
 
 
 /***/ }),
-
-/***/ 889:
+/* 885 */,
+/* 886 */,
+/* 887 */,
+/* 888 */,
+/* 889 */
 /***/ (function(__unusedmodule, exports) {
 
 "use strict";
@@ -38014,8 +39113,21 @@ exports.ObjectCache = ObjectCache;
 //# sourceMappingURL=ObjectCache.js.map
 
 /***/ }),
-
-/***/ 904:
+/* 890 */,
+/* 891 */,
+/* 892 */,
+/* 893 */,
+/* 894 */,
+/* 895 */,
+/* 896 */,
+/* 897 */,
+/* 898 */,
+/* 899 */,
+/* 900 */,
+/* 901 */,
+/* 902 */,
+/* 903 */,
+/* 904 */
 /***/ (function(__unusedmodule, exports, __webpack_require__) {
 
 "use strict";
@@ -38047,8 +39159,12 @@ exports.Cast = Cast;
 //# sourceMappingURL=Cast.js.map
 
 /***/ }),
-
-/***/ 910:
+/* 905 */,
+/* 906 */,
+/* 907 */,
+/* 908 */,
+/* 909 */,
+/* 910 */
 /***/ (function(module, __unusedexports, __webpack_require__) {
 
 "use strict";
@@ -38080,8 +39196,7 @@ module.exports = Schema.DEFAULT = new Schema({
 
 
 /***/ }),
-
-/***/ 911:
+/* 911 */
 /***/ (function(__unusedmodule, exports, __webpack_require__) {
 
 "use strict";
@@ -38599,8 +39714,8 @@ exports.XMLStringLexer = XMLStringLexer;
 //# sourceMappingURL=XMLStringLexer.js.map
 
 /***/ }),
-
-/***/ 913:
+/* 912 */,
+/* 913 */
 /***/ (function(module, __unusedexports, __webpack_require__) {
 
 "use strict";
@@ -38745,8 +39860,9 @@ module.exports = new Type('tag:yaml.org,2002:binary', {
 
 
 /***/ }),
-
-/***/ 916:
+/* 914 */,
+/* 915 */,
+/* 916 */
 /***/ (function(__unusedmodule, exports) {
 
 "use strict";
@@ -38761,8 +39877,8 @@ exports.XLink = "http://www.w3.org/1999/xlink";
 //# sourceMappingURL=Namespace.js.map
 
 /***/ }),
-
-/***/ 918:
+/* 917 */,
+/* 918 */
 /***/ (function(__unusedmodule, exports, __webpack_require__) {
 
 "use strict";
@@ -38777,8 +39893,8 @@ exports.EmptySet = EmptySet_1.EmptySet;
 //# sourceMappingURL=index.js.map
 
 /***/ }),
-
-/***/ 920:
+/* 919 */,
+/* 920 */
 /***/ (function(__unusedmodule, exports, __webpack_require__) {
 
 "use strict";
@@ -38835,8 +39951,7 @@ WebIDLAlgorithm_1.idl_defineConst(CDATASectionImpl.prototype, "_nodeType", inter
 //# sourceMappingURL=CDATASectionImpl.js.map
 
 /***/ }),
-
-/***/ 921:
+/* 921 */
 /***/ (function(module, __unusedexports, __webpack_require__) {
 
 "use strict";
@@ -38851,8 +39966,8 @@ module.exports = new Type('tag:yaml.org,2002:seq', {
 
 
 /***/ }),
-
-/***/ 923:
+/* 922 */,
+/* 923 */
 /***/ (function(__unusedmodule, exports, __webpack_require__) {
 
 "use strict";
@@ -39235,8 +40350,15 @@ function downloadJavaBinary(release_type, version, image_type, jvm_impl, os, arc
 
 
 /***/ }),
-
-/***/ 932:
+/* 924 */,
+/* 925 */,
+/* 926 */,
+/* 927 */,
+/* 928 */,
+/* 929 */,
+/* 930 */,
+/* 931 */,
+/* 932 */
 /***/ (function(__unusedmodule, exports, __webpack_require__) {
 
 "use strict";
@@ -39299,8 +40421,8 @@ exports.WindowImpl = WindowImpl;
 //# sourceMappingURL=WindowImpl.js.map
 
 /***/ }),
-
-/***/ 934:
+/* 933 */,
+/* 934 */
 /***/ (function(__unusedmodule, exports, __webpack_require__) {
 
 "use strict";
@@ -39464,8 +40586,7 @@ exports.ParentNodeImpl = ParentNodeImpl;
 //# sourceMappingURL=ParentNodeImpl.js.map
 
 /***/ }),
-
-/***/ 935:
+/* 935 */
 /***/ (function(__unusedmodule, exports, __webpack_require__) {
 
 "use strict";
@@ -40362,8 +41483,16 @@ WebIDLAlgorithm_1.idl_defineConst(NodeImpl.prototype, "DOCUMENT_POSITION_IMPLEME
 //# sourceMappingURL=NodeImpl.js.map
 
 /***/ }),
-
-/***/ 945:
+/* 936 */,
+/* 937 */,
+/* 938 */,
+/* 939 */,
+/* 940 */,
+/* 941 */,
+/* 942 */,
+/* 943 */,
+/* 944 */,
+/* 945 */
 /***/ (function(module, __unusedexports, __webpack_require__) {
 
 "use strict";
@@ -40431,8 +41560,8 @@ module.exports = Type;
 
 
 /***/ }),
-
-/***/ 947:
+/* 946 */,
+/* 947 */
 /***/ (function(__unusedmodule, exports) {
 
 "use strict";
@@ -40472,8 +41601,9 @@ exports.Lazy = Lazy;
 //# sourceMappingURL=Lazy.js.map
 
 /***/ }),
-
-/***/ 950:
+/* 948 */,
+/* 949 */,
+/* 950 */
 /***/ (function(__unusedmodule, exports) {
 
 "use strict";
@@ -40537,8 +41667,17 @@ exports.checkBypass = checkBypass;
 
 
 /***/ }),
-
-/***/ 961:
+/* 951 */,
+/* 952 */,
+/* 953 */,
+/* 954 */,
+/* 955 */,
+/* 956 */,
+/* 957 */,
+/* 958 */,
+/* 959 */,
+/* 960 */,
+/* 961 */
 /***/ (function(__unusedmodule, exports, __webpack_require__) {
 
 "use strict";
@@ -40652,8 +41791,13 @@ function setOptions(doc, options, isFragment) {
 //# sourceMappingURL=BuilderFunctions.js.map
 
 /***/ }),
-
-/***/ 968:
+/* 962 */,
+/* 963 */,
+/* 964 */,
+/* 965 */,
+/* 966 */,
+/* 967 */,
+/* 968 */
 /***/ (function(__unusedmodule, exports) {
 
 "use strict";
@@ -40720,8 +41864,8 @@ var EmptySetIterator = /** @class */ (function () {
 //# sourceMappingURL=EmptySet.js.map
 
 /***/ }),
-
-/***/ 970:
+/* 969 */,
+/* 970 */
 /***/ (function(__unusedmodule, exports) {
 
 "use strict";
@@ -40818,8 +41962,15 @@ var HowToCompare;
 //# sourceMappingURL=interfaces.js.map
 
 /***/ }),
-
-/***/ 979:
+/* 971 */,
+/* 972 */,
+/* 973 */,
+/* 974 */,
+/* 975 */,
+/* 976 */,
+/* 977 */,
+/* 978 */,
+/* 979 */
 /***/ (function(__unusedmodule, exports, __webpack_require__) {
 
 "use strict";
@@ -40908,8 +42059,10 @@ exports.RetryHelper = RetryHelper;
 //# sourceMappingURL=retry-helper.js.map
 
 /***/ }),
-
-/***/ 983:
+/* 980 */,
+/* 981 */,
+/* 982 */,
+/* 983 */
 /***/ (function(__unusedmodule, exports, __webpack_require__) {
 
 "use strict";
@@ -41080,8 +42233,9 @@ exports.ChildNodeImpl = ChildNodeImpl;
 //# sourceMappingURL=ChildNodeImpl.js.map
 
 /***/ }),
-
-/***/ 986:
+/* 984 */,
+/* 985 */,
+/* 986 */
 /***/ (function(__unusedmodule, exports, __webpack_require__) {
 
 "use strict";
@@ -41190,8 +42344,8 @@ exports.getExecOutput = getExecOutput;
 //# sourceMappingURL=exec.js.map
 
 /***/ }),
-
-/***/ 988:
+/* 987 */,
+/* 988 */
 /***/ (function(module, __unusedexports, __webpack_require__) {
 
 "use strict";
@@ -41206,8 +42360,8 @@ module.exports = new Type('tag:yaml.org,2002:map', {
 
 
 /***/ }),
-
-/***/ 990:
+/* 989 */,
+/* 990 */
 /***/ (function(__unusedmodule, exports, __webpack_require__) {
 
 "use strict";
@@ -41244,6 +42398,618 @@ var AbortControllerImpl = /** @class */ (function () {
 exports.AbortControllerImpl = AbortControllerImpl;
 //# sourceMappingURL=AbortControllerImpl.js.map
 
-/***/ })
+/***/ }),
+/* 991 */,
+/* 992 */,
+/* 993 */
+/***/ (function(__unusedmodule, exports, __webpack_require__) {
 
-/******/ });
+"use strict";
+
+/* eslint-disable @typescript-eslint/no-explicit-any */
+var __createBinding = (this && this.__createBinding) || (Object.create ? (function(o, m, k, k2) {
+    if (k2 === undefined) k2 = k;
+    Object.defineProperty(o, k2, { enumerable: true, get: function() { return m[k]; } });
+}) : (function(o, m, k, k2) {
+    if (k2 === undefined) k2 = k;
+    o[k2] = m[k];
+}));
+var __setModuleDefault = (this && this.__setModuleDefault) || (Object.create ? (function(o, v) {
+    Object.defineProperty(o, "default", { enumerable: true, value: v });
+}) : function(o, v) {
+    o["default"] = v;
+});
+var __importStar = (this && this.__importStar) || function (mod) {
+    if (mod && mod.__esModule) return mod;
+    var result = {};
+    if (mod != null) for (var k in mod) if (k !== "default" && Object.hasOwnProperty.call(mod, k)) __createBinding(result, mod, k);
+    __setModuleDefault(result, mod);
+    return result;
+};
+var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
+    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
+    return new (P || (P = Promise))(function (resolve, reject) {
+        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
+        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
+        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
+        step((generator = generator.apply(thisArg, _arguments || [])).next());
+    });
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.HttpClient = exports.isHttps = exports.HttpClientResponse = exports.HttpClientError = exports.getProxyUrl = exports.MediaTypes = exports.Headers = exports.HttpCodes = void 0;
+const http = __importStar(__webpack_require__(605));
+const https = __importStar(__webpack_require__(211));
+const pm = __importStar(__webpack_require__(95));
+const tunnel = __importStar(__webpack_require__(413));
+var HttpCodes;
+(function (HttpCodes) {
+    HttpCodes[HttpCodes["OK"] = 200] = "OK";
+    HttpCodes[HttpCodes["MultipleChoices"] = 300] = "MultipleChoices";
+    HttpCodes[HttpCodes["MovedPermanently"] = 301] = "MovedPermanently";
+    HttpCodes[HttpCodes["ResourceMoved"] = 302] = "ResourceMoved";
+    HttpCodes[HttpCodes["SeeOther"] = 303] = "SeeOther";
+    HttpCodes[HttpCodes["NotModified"] = 304] = "NotModified";
+    HttpCodes[HttpCodes["UseProxy"] = 305] = "UseProxy";
+    HttpCodes[HttpCodes["SwitchProxy"] = 306] = "SwitchProxy";
+    HttpCodes[HttpCodes["TemporaryRedirect"] = 307] = "TemporaryRedirect";
+    HttpCodes[HttpCodes["PermanentRedirect"] = 308] = "PermanentRedirect";
+    HttpCodes[HttpCodes["BadRequest"] = 400] = "BadRequest";
+    HttpCodes[HttpCodes["Unauthorized"] = 401] = "Unauthorized";
+    HttpCodes[HttpCodes["PaymentRequired"] = 402] = "PaymentRequired";
+    HttpCodes[HttpCodes["Forbidden"] = 403] = "Forbidden";
+    HttpCodes[HttpCodes["NotFound"] = 404] = "NotFound";
+    HttpCodes[HttpCodes["MethodNotAllowed"] = 405] = "MethodNotAllowed";
+    HttpCodes[HttpCodes["NotAcceptable"] = 406] = "NotAcceptable";
+    HttpCodes[HttpCodes["ProxyAuthenticationRequired"] = 407] = "ProxyAuthenticationRequired";
+    HttpCodes[HttpCodes["RequestTimeout"] = 408] = "RequestTimeout";
+    HttpCodes[HttpCodes["Conflict"] = 409] = "Conflict";
+    HttpCodes[HttpCodes["Gone"] = 410] = "Gone";
+    HttpCodes[HttpCodes["TooManyRequests"] = 429] = "TooManyRequests";
+    HttpCodes[HttpCodes["InternalServerError"] = 500] = "InternalServerError";
+    HttpCodes[HttpCodes["NotImplemented"] = 501] = "NotImplemented";
+    HttpCodes[HttpCodes["BadGateway"] = 502] = "BadGateway";
+    HttpCodes[HttpCodes["ServiceUnavailable"] = 503] = "ServiceUnavailable";
+    HttpCodes[HttpCodes["GatewayTimeout"] = 504] = "GatewayTimeout";
+})(HttpCodes = exports.HttpCodes || (exports.HttpCodes = {}));
+var Headers;
+(function (Headers) {
+    Headers["Accept"] = "accept";
+    Headers["ContentType"] = "content-type";
+})(Headers = exports.Headers || (exports.Headers = {}));
+var MediaTypes;
+(function (MediaTypes) {
+    MediaTypes["ApplicationJson"] = "application/json";
+})(MediaTypes = exports.MediaTypes || (exports.MediaTypes = {}));
+/**
+ * Returns the proxy URL, depending upon the supplied url and proxy environment variables.
+ * @param serverUrl  The server URL where the request will be sent. For example, https://api.github.com
+ */
+function getProxyUrl(serverUrl) {
+    const proxyUrl = pm.getProxyUrl(new URL(serverUrl));
+    return proxyUrl ? proxyUrl.href : '';
+}
+exports.getProxyUrl = getProxyUrl;
+const HttpRedirectCodes = [
+    HttpCodes.MovedPermanently,
+    HttpCodes.ResourceMoved,
+    HttpCodes.SeeOther,
+    HttpCodes.TemporaryRedirect,
+    HttpCodes.PermanentRedirect
+];
+const HttpResponseRetryCodes = [
+    HttpCodes.BadGateway,
+    HttpCodes.ServiceUnavailable,
+    HttpCodes.GatewayTimeout
+];
+const RetryableHttpVerbs = ['OPTIONS', 'GET', 'DELETE', 'HEAD'];
+const ExponentialBackoffCeiling = 10;
+const ExponentialBackoffTimeSlice = 5;
+class HttpClientError extends Error {
+    constructor(message, statusCode) {
+        super(message);
+        this.name = 'HttpClientError';
+        this.statusCode = statusCode;
+        Object.setPrototypeOf(this, HttpClientError.prototype);
+    }
+}
+exports.HttpClientError = HttpClientError;
+class HttpClientResponse {
+    constructor(message) {
+        this.message = message;
+    }
+    readBody() {
+        return __awaiter(this, void 0, void 0, function* () {
+            return new Promise((resolve) => __awaiter(this, void 0, void 0, function* () {
+                let output = Buffer.alloc(0);
+                this.message.on('data', (chunk) => {
+                    output = Buffer.concat([output, chunk]);
+                });
+                this.message.on('end', () => {
+                    resolve(output.toString());
+                });
+            }));
+        });
+    }
+}
+exports.HttpClientResponse = HttpClientResponse;
+function isHttps(requestUrl) {
+    const parsedUrl = new URL(requestUrl);
+    return parsedUrl.protocol === 'https:';
+}
+exports.isHttps = isHttps;
+class HttpClient {
+    constructor(userAgent, handlers, requestOptions) {
+        this._ignoreSslError = false;
+        this._allowRedirects = true;
+        this._allowRedirectDowngrade = false;
+        this._maxRedirects = 50;
+        this._allowRetries = false;
+        this._maxRetries = 1;
+        this._keepAlive = false;
+        this._disposed = false;
+        this.userAgent = userAgent;
+        this.handlers = handlers || [];
+        this.requestOptions = requestOptions;
+        if (requestOptions) {
+            if (requestOptions.ignoreSslError != null) {
+                this._ignoreSslError = requestOptions.ignoreSslError;
+            }
+            this._socketTimeout = requestOptions.socketTimeout;
+            if (requestOptions.allowRedirects != null) {
+                this._allowRedirects = requestOptions.allowRedirects;
+            }
+            if (requestOptions.allowRedirectDowngrade != null) {
+                this._allowRedirectDowngrade = requestOptions.allowRedirectDowngrade;
+            }
+            if (requestOptions.maxRedirects != null) {
+                this._maxRedirects = Math.max(requestOptions.maxRedirects, 0);
+            }
+            if (requestOptions.keepAlive != null) {
+                this._keepAlive = requestOptions.keepAlive;
+            }
+            if (requestOptions.allowRetries != null) {
+                this._allowRetries = requestOptions.allowRetries;
+            }
+            if (requestOptions.maxRetries != null) {
+                this._maxRetries = requestOptions.maxRetries;
+            }
+        }
+    }
+    options(requestUrl, additionalHeaders) {
+        return __awaiter(this, void 0, void 0, function* () {
+            return this.request('OPTIONS', requestUrl, null, additionalHeaders || {});
+        });
+    }
+    get(requestUrl, additionalHeaders) {
+        return __awaiter(this, void 0, void 0, function* () {
+            return this.request('GET', requestUrl, null, additionalHeaders || {});
+        });
+    }
+    del(requestUrl, additionalHeaders) {
+        return __awaiter(this, void 0, void 0, function* () {
+            return this.request('DELETE', requestUrl, null, additionalHeaders || {});
+        });
+    }
+    post(requestUrl, data, additionalHeaders) {
+        return __awaiter(this, void 0, void 0, function* () {
+            return this.request('POST', requestUrl, data, additionalHeaders || {});
+        });
+    }
+    patch(requestUrl, data, additionalHeaders) {
+        return __awaiter(this, void 0, void 0, function* () {
+            return this.request('PATCH', requestUrl, data, additionalHeaders || {});
+        });
+    }
+    put(requestUrl, data, additionalHeaders) {
+        return __awaiter(this, void 0, void 0, function* () {
+            return this.request('PUT', requestUrl, data, additionalHeaders || {});
+        });
+    }
+    head(requestUrl, additionalHeaders) {
+        return __awaiter(this, void 0, void 0, function* () {
+            return this.request('HEAD', requestUrl, null, additionalHeaders || {});
+        });
+    }
+    sendStream(verb, requestUrl, stream, additionalHeaders) {
+        return __awaiter(this, void 0, void 0, function* () {
+            return this.request(verb, requestUrl, stream, additionalHeaders);
+        });
+    }
+    /**
+     * Gets a typed object from an endpoint
+     * Be aware that not found returns a null.  Other errors (4xx, 5xx) reject the promise
+     */
+    getJson(requestUrl, additionalHeaders = {}) {
+        return __awaiter(this, void 0, void 0, function* () {
+            additionalHeaders[Headers.Accept] = this._getExistingOrDefaultHeader(additionalHeaders, Headers.Accept, MediaTypes.ApplicationJson);
+            const res = yield this.get(requestUrl, additionalHeaders);
+            return this._processResponse(res, this.requestOptions);
+        });
+    }
+    postJson(requestUrl, obj, additionalHeaders = {}) {
+        return __awaiter(this, void 0, void 0, function* () {
+            const data = JSON.stringify(obj, null, 2);
+            additionalHeaders[Headers.Accept] = this._getExistingOrDefaultHeader(additionalHeaders, Headers.Accept, MediaTypes.ApplicationJson);
+            additionalHeaders[Headers.ContentType] = this._getExistingOrDefaultHeader(additionalHeaders, Headers.ContentType, MediaTypes.ApplicationJson);
+            const res = yield this.post(requestUrl, data, additionalHeaders);
+            return this._processResponse(res, this.requestOptions);
+        });
+    }
+    putJson(requestUrl, obj, additionalHeaders = {}) {
+        return __awaiter(this, void 0, void 0, function* () {
+            const data = JSON.stringify(obj, null, 2);
+            additionalHeaders[Headers.Accept] = this._getExistingOrDefaultHeader(additionalHeaders, Headers.Accept, MediaTypes.ApplicationJson);
+            additionalHeaders[Headers.ContentType] = this._getExistingOrDefaultHeader(additionalHeaders, Headers.ContentType, MediaTypes.ApplicationJson);
+            const res = yield this.put(requestUrl, data, additionalHeaders);
+            return this._processResponse(res, this.requestOptions);
+        });
+    }
+    patchJson(requestUrl, obj, additionalHeaders = {}) {
+        return __awaiter(this, void 0, void 0, function* () {
+            const data = JSON.stringify(obj, null, 2);
+            additionalHeaders[Headers.Accept] = this._getExistingOrDefaultHeader(additionalHeaders, Headers.Accept, MediaTypes.ApplicationJson);
+            additionalHeaders[Headers.ContentType] = this._getExistingOrDefaultHeader(additionalHeaders, Headers.ContentType, MediaTypes.ApplicationJson);
+            const res = yield this.patch(requestUrl, data, additionalHeaders);
+            return this._processResponse(res, this.requestOptions);
+        });
+    }
+    /**
+     * Makes a raw http request.
+     * All other methods such as get, post, patch, and request ultimately call this.
+     * Prefer get, del, post and patch
+     */
+    request(verb, requestUrl, data, headers) {
+        return __awaiter(this, void 0, void 0, function* () {
+            if (this._disposed) {
+                throw new Error('Client has already been disposed.');
+            }
+            const parsedUrl = new URL(requestUrl);
+            let info = this._prepareRequest(verb, parsedUrl, headers);
+            // Only perform retries on reads since writes may not be idempotent.
+            const maxTries = this._allowRetries && RetryableHttpVerbs.includes(verb)
+                ? this._maxRetries + 1
+                : 1;
+            let numTries = 0;
+            let response;
+            do {
+                response = yield this.requestRaw(info, data);
+                // Check if it's an authentication challenge
+                if (response &&
+                    response.message &&
+                    response.message.statusCode === HttpCodes.Unauthorized) {
+                    let authenticationHandler;
+                    for (const handler of this.handlers) {
+                        if (handler.canHandleAuthentication(response)) {
+                            authenticationHandler = handler;
+                            break;
+                        }
+                    }
+                    if (authenticationHandler) {
+                        return authenticationHandler.handleAuthentication(this, info, data);
+                    }
+                    else {
+                        // We have received an unauthorized response but have no handlers to handle it.
+                        // Let the response return to the caller.
+                        return response;
+                    }
+                }
+                let redirectsRemaining = this._maxRedirects;
+                while (response.message.statusCode &&
+                    HttpRedirectCodes.includes(response.message.statusCode) &&
+                    this._allowRedirects &&
+                    redirectsRemaining > 0) {
+                    const redirectUrl = response.message.headers['location'];
+                    if (!redirectUrl) {
+                        // if there's no location to redirect to, we won't
+                        break;
+                    }
+                    const parsedRedirectUrl = new URL(redirectUrl);
+                    if (parsedUrl.protocol === 'https:' &&
+                        parsedUrl.protocol !== parsedRedirectUrl.protocol &&
+                        !this._allowRedirectDowngrade) {
+                        throw new Error('Redirect from HTTPS to HTTP protocol. This downgrade is not allowed for security reasons. If you want to allow this behavior, set the allowRedirectDowngrade option to true.');
+                    }
+                    // we need to finish reading the response before reassigning response
+                    // which will leak the open socket.
+                    yield response.readBody();
+                    // strip authorization header if redirected to a different hostname
+                    if (parsedRedirectUrl.hostname !== parsedUrl.hostname) {
+                        for (const header in headers) {
+                            // header names are case insensitive
+                            if (header.toLowerCase() === 'authorization') {
+                                delete headers[header];
+                            }
+                        }
+                    }
+                    // let's make the request with the new redirectUrl
+                    info = this._prepareRequest(verb, parsedRedirectUrl, headers);
+                    response = yield this.requestRaw(info, data);
+                    redirectsRemaining--;
+                }
+                if (!response.message.statusCode ||
+                    !HttpResponseRetryCodes.includes(response.message.statusCode)) {
+                    // If not a retry code, return immediately instead of retrying
+                    return response;
+                }
+                numTries += 1;
+                if (numTries < maxTries) {
+                    yield response.readBody();
+                    yield this._performExponentialBackoff(numTries);
+                }
+            } while (numTries < maxTries);
+            return response;
+        });
+    }
+    /**
+     * Needs to be called if keepAlive is set to true in request options.
+     */
+    dispose() {
+        if (this._agent) {
+            this._agent.destroy();
+        }
+        this._disposed = true;
+    }
+    /**
+     * Raw request.
+     * @param info
+     * @param data
+     */
+    requestRaw(info, data) {
+        return __awaiter(this, void 0, void 0, function* () {
+            return new Promise((resolve, reject) => {
+                function callbackForResult(err, res) {
+                    if (err) {
+                        reject(err);
+                    }
+                    else if (!res) {
+                        // If `err` is not passed, then `res` must be passed.
+                        reject(new Error('Unknown error'));
+                    }
+                    else {
+                        resolve(res);
+                    }
+                }
+                this.requestRawWithCallback(info, data, callbackForResult);
+            });
+        });
+    }
+    /**
+     * Raw request with callback.
+     * @param info
+     * @param data
+     * @param onResult
+     */
+    requestRawWithCallback(info, data, onResult) {
+        if (typeof data === 'string') {
+            if (!info.options.headers) {
+                info.options.headers = {};
+            }
+            info.options.headers['Content-Length'] = Buffer.byteLength(data, 'utf8');
+        }
+        let callbackCalled = false;
+        function handleResult(err, res) {
+            if (!callbackCalled) {
+                callbackCalled = true;
+                onResult(err, res);
+            }
+        }
+        const req = info.httpModule.request(info.options, (msg) => {
+            const res = new HttpClientResponse(msg);
+            handleResult(undefined, res);
+        });
+        let socket;
+        req.on('socket', sock => {
+            socket = sock;
+        });
+        // If we ever get disconnected, we want the socket to timeout eventually
+        req.setTimeout(this._socketTimeout || 3 * 60000, () => {
+            if (socket) {
+                socket.end();
+            }
+            handleResult(new Error(`Request timeout: ${info.options.path}`));
+        });
+        req.on('error', function (err) {
+            // err has statusCode property
+            // res should have headers
+            handleResult(err);
+        });
+        if (data && typeof data === 'string') {
+            req.write(data, 'utf8');
+        }
+        if (data && typeof data !== 'string') {
+            data.on('close', function () {
+                req.end();
+            });
+            data.pipe(req);
+        }
+        else {
+            req.end();
+        }
+    }
+    /**
+     * Gets an http agent. This function is useful when you need an http agent that handles
+     * routing through a proxy server - depending upon the url and proxy environment variables.
+     * @param serverUrl  The server URL where the request will be sent. For example, https://api.github.com
+     */
+    getAgent(serverUrl) {
+        const parsedUrl = new URL(serverUrl);
+        return this._getAgent(parsedUrl);
+    }
+    _prepareRequest(method, requestUrl, headers) {
+        const info = {};
+        info.parsedUrl = requestUrl;
+        const usingSsl = info.parsedUrl.protocol === 'https:';
+        info.httpModule = usingSsl ? https : http;
+        const defaultPort = usingSsl ? 443 : 80;
+        info.options = {};
+        info.options.host = info.parsedUrl.hostname;
+        info.options.port = info.parsedUrl.port
+            ? parseInt(info.parsedUrl.port)
+            : defaultPort;
+        info.options.path =
+            (info.parsedUrl.pathname || '') + (info.parsedUrl.search || '');
+        info.options.method = method;
+        info.options.headers = this._mergeHeaders(headers);
+        if (this.userAgent != null) {
+            info.options.headers['user-agent'] = this.userAgent;
+        }
+        info.options.agent = this._getAgent(info.parsedUrl);
+        // gives handlers an opportunity to participate
+        if (this.handlers) {
+            for (const handler of this.handlers) {
+                handler.prepareRequest(info.options);
+            }
+        }
+        return info;
+    }
+    _mergeHeaders(headers) {
+        if (this.requestOptions && this.requestOptions.headers) {
+            return Object.assign({}, lowercaseKeys(this.requestOptions.headers), lowercaseKeys(headers || {}));
+        }
+        return lowercaseKeys(headers || {});
+    }
+    _getExistingOrDefaultHeader(additionalHeaders, header, _default) {
+        let clientHeader;
+        if (this.requestOptions && this.requestOptions.headers) {
+            clientHeader = lowercaseKeys(this.requestOptions.headers)[header];
+        }
+        return additionalHeaders[header] || clientHeader || _default;
+    }
+    _getAgent(parsedUrl) {
+        let agent;
+        const proxyUrl = pm.getProxyUrl(parsedUrl);
+        const useProxy = proxyUrl && proxyUrl.hostname;
+        if (this._keepAlive && useProxy) {
+            agent = this._proxyAgent;
+        }
+        if (this._keepAlive && !useProxy) {
+            agent = this._agent;
+        }
+        // if agent is already assigned use that agent.
+        if (agent) {
+            return agent;
+        }
+        const usingSsl = parsedUrl.protocol === 'https:';
+        let maxSockets = 100;
+        if (this.requestOptions) {
+            maxSockets = this.requestOptions.maxSockets || http.globalAgent.maxSockets;
+        }
+        // This is `useProxy` again, but we need to check `proxyURl` directly for TypeScripts's flow analysis.
+        if (proxyUrl && proxyUrl.hostname) {
+            const agentOptions = {
+                maxSockets,
+                keepAlive: this._keepAlive,
+                proxy: Object.assign(Object.assign({}, ((proxyUrl.username || proxyUrl.password) && {
+                    proxyAuth: `${proxyUrl.username}:${proxyUrl.password}`
+                })), { host: proxyUrl.hostname, port: proxyUrl.port })
+            };
+            let tunnelAgent;
+            const overHttps = proxyUrl.protocol === 'https:';
+            if (usingSsl) {
+                tunnelAgent = overHttps ? tunnel.httpsOverHttps : tunnel.httpsOverHttp;
+            }
+            else {
+                tunnelAgent = overHttps ? tunnel.httpOverHttps : tunnel.httpOverHttp;
+            }
+            agent = tunnelAgent(agentOptions);
+            this._proxyAgent = agent;
+        }
+        // if reusing agent across request and tunneling agent isn't assigned create a new agent
+        if (this._keepAlive && !agent) {
+            const options = { keepAlive: this._keepAlive, maxSockets };
+            agent = usingSsl ? new https.Agent(options) : new http.Agent(options);
+            this._agent = agent;
+        }
+        // if not using private agent and tunnel agent isn't setup then use global agent
+        if (!agent) {
+            agent = usingSsl ? https.globalAgent : http.globalAgent;
+        }
+        if (usingSsl && this._ignoreSslError) {
+            // we don't want to set NODE_TLS_REJECT_UNAUTHORIZED=0 since that will affect request for entire process
+            // http.RequestOptions doesn't expose a way to modify RequestOptions.agent.options
+            // we have to cast it to any and change it directly
+            agent.options = Object.assign(agent.options || {}, {
+                rejectUnauthorized: false
+            });
+        }
+        return agent;
+    }
+    _performExponentialBackoff(retryNumber) {
+        return __awaiter(this, void 0, void 0, function* () {
+            retryNumber = Math.min(ExponentialBackoffCeiling, retryNumber);
+            const ms = ExponentialBackoffTimeSlice * Math.pow(2, retryNumber);
+            return new Promise(resolve => setTimeout(() => resolve(), ms));
+        });
+    }
+    _processResponse(res, options) {
+        return __awaiter(this, void 0, void 0, function* () {
+            return new Promise((resolve, reject) => __awaiter(this, void 0, void 0, function* () {
+                const statusCode = res.message.statusCode || 0;
+                const response = {
+                    statusCode,
+                    result: null,
+                    headers: {}
+                };
+                // not found leads to null obj returned
+                if (statusCode === HttpCodes.NotFound) {
+                    resolve(response);
+                }
+                // get the result from the body
+                function dateTimeDeserializer(key, value) {
+                    if (typeof value === 'string') {
+                        const a = new Date(value);
+                        if (!isNaN(a.valueOf())) {
+                            return a;
+                        }
+                    }
+                    return value;
+                }
+                let obj;
+                let contents;
+                try {
+                    contents = yield res.readBody();
+                    if (contents && contents.length > 0) {
+                        if (options && options.deserializeDates) {
+                            obj = JSON.parse(contents, dateTimeDeserializer);
+                        }
+                        else {
+                            obj = JSON.parse(contents);
+                        }
+                        response.result = obj;
+                    }
+                    response.headers = res.message.headers;
+                }
+                catch (err) {
+                    // Invalid resource (contents not json);  leaving result obj null
+                }
+                // note that 3xx redirects are handled by the http layer.
+                if (statusCode > 299) {
+                    let msg;
+                    // if exception/error in body, attempt to get better error
+                    if (obj && obj.message) {
+                        msg = obj.message;
+                    }
+                    else if (contents && contents.length > 0) {
+                        // it may be the case that the exception is in the body message as string
+                        msg = contents;
+                    }
+                    else {
+                        msg = `Failed request: (${statusCode})`;
+                    }
+                    const err = new HttpClientError(msg, statusCode);
+                    err.result = response.result;
+                    reject(err);
+                }
+                else {
+                    resolve(response);
+                }
+            }));
+        });
+    }
+}
+exports.HttpClient = HttpClient;
+const lowercaseKeys = (obj) => Object.keys(obj).reduce((c, k) => ((c[k.toLowerCase()] = obj[k]), c), {});
+//# sourceMappingURL=index.js.map
+
+/***/ })
+/******/ ]);

@@ -6,6 +6,10 @@ import * as constants from './constants';
 import * as path from 'path';
 
 async function run() {
+  core.notice(
+    'The joschi/setup-jdk GitHub Action is deprecated. Please consider switching to the official actions/setup-java action v2 or later which also supports AdoptOpenJDK and its successor Eclipse Temurin: https://github.com/actions/setup-java/tree/v2.5.0#basic'
+  );
+
   try {
     // Type of release. Either a release version, known as General Availability ("ga") or an Early Access ("ea")
     const release_type = core.getInput(constants.INPUT_RELEASE_TYPE) || 'ga';

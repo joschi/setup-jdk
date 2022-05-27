@@ -1,5 +1,5 @@
 name: 'Setup AdoptOpenJDK (deprecated)'
-description: 'DEPRECATED: Please use actions/setup-java v2 or later. Set up a specific version of OpenJDK from AdoptOpenJDK and add it to the PATH.'
+description: 'DEPRECATED: Please use actions/setup-java v2 or later to set up OpenJDK from AdoptOpenJDK or Eclipse Temurin.'
 author: 'Jochen Schalanda'
 inputs:
   release_type:

@@ -1,6 +1,6 @@
-name: 'Setup AdoptOpenJDK'
-description: 'Set up a specific version of the Java JDK from AdoptOpenJDK and add the
-   command-line tools to the PATH'
+name: 'Setup AdoptOpenJDK (deprecated)'
+description: 'DEPRECATED: Please use actions/setup-java v2 or later. Set up a specific version of the Java JDK from AdoptOpenJDK and add the
+   command-line tools to the PATH.'
 author: 'Jochen Schalanda'
 inputs:
   release_type:

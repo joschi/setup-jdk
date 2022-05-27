@@ -1,3 +1,37 @@
+# 🚨 Notice
+
+The joschi/setup-jdk GitHub Action is deprecated.
+
+Please consider switching to the official [actions/setup-java](https://github.com/actions/setup-java) action v2 or later which also supports AdoptOpenJDK and its successor Eclipse Temurin:
+
+https://github.com/actions/setup-java/tree/v2.5.0#basic
+
+In order to migrate to [actions/setup-java](https://github.com/actions/setup-java) it is sufficient to replace the name of the action and set the `distribution` parameter to `temurin`.
+
+**Before:**
+
+```yaml
+steps:
+- uses: actions/checkout@v2
+- uses: joschi/setup-jdk@v2
+  with:
+    java-version: '11' # The OpenJDK version to make available on the path
+    architecture: 'x64' # defaults to 'x64'
+- run: java -cp java HelloWorldApp
+
+**After:**
+
+```
+steps:
+- uses: actions/checkout@v2
+- uses: actions/setup-java@v3
+  with:
+    distribution: 'temurin' # See 'Supported distributions' for available options
+    java-version: '11'
+    architecture: 'x64' # defaults to 'x64'
+- run: java -cp java HelloWorldApp
+```
+
 # setup-jdk
 
 <p align="left">

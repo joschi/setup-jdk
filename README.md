@@ -18,10 +18,11 @@ steps:
     java-version: '11' # The OpenJDK version to make available on the path
     architecture: 'x64' # defaults to 'x64'
 - run: java -cp java HelloWorldApp
+```
 
 **After:**
 
-```
+```yaml
 steps:
 - uses: actions/checkout@v2
 - uses: actions/setup-java@v3

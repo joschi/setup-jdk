@@ -1,6 +1,6 @@
 {
   "name": "setup-jdk",
-  "version": "2.5.0",
+  "version": "2.5.1",
   "private": true,
   "description": "Setup JDK action",
   "main": "dist/setup/index.js",

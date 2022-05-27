@@ -1,4 +1,4 @@
-name: 'Setup AdoptOpenJDK (deprecated)'
+name: 'Setup AdoptOpenJDK'
 description: 'DEPRECATED: Please use actions/setup-java v2 or later to set up OpenJDK from AdoptOpenJDK or Eclipse Temurin.'
 author: 'Jochen Schalanda'
 inputs:
